@@ -20,6 +20,7 @@
 /turf/open/floor/rogue/sandthin
     icon_state = "sandthin"
 /turf/open/floor/rogue/sandalt
+<<<<<<< Updated upstream
     icon_state = "sandalt"
 
 /turf/open/floor/plating/dirt/dark
@@ -39,3 +40,14 @@
 	clawfootstep = FOOTSTEP_SAND
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 	tiled_dirt = FALSE
+=======
+	icon = 'icons/turf/sand.dmi'
+	icon_state = "sandalt"
+/turf/open/floor/rogue/sandalt/cardinal_smooth(adjacencies)
+	roguesmooth(adjacencies)
+/turf/open/floor/rogue/sandalt/Initialize()
+	. = ..()
+	dir = pick(GLOB.cardinals)
+
+
+>>>>>>> Stashed changes

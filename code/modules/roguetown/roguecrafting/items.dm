@@ -79,7 +79,7 @@
 	name = "unstrung bow"
 	result = /obj/item/grown/log/tree/bowpartial
 	reqs = list(/obj/item/grown/log/tree/small = 1)
-	tools = /obj/item/rogueweapon/huntingknife
+	tools = list(/obj/item/rogueweapon/huntingknife)
 	verbage_simple = "carve"
 	verbage = "carves"
 
@@ -214,6 +214,16 @@
 
 
 /obj/item/rogueweapon/shield/wood/crafted
+	sellprice = 6
+
+/datum/crafting_recipe/roguetown/heatershield
+	name = "heater shield"
+	result = /obj/item/rogueweapon/shield/heater/crafted
+	reqs = list(/obj/item/grown/log/tree/small = 2,
+				/obj/item/natural/hide = 1)
+	skillcraft = /datum/skill/craft/carpentry
+
+/obj/item/rogueweapon/shield/heater/crafted
 	sellprice = 6
 
 /datum/crafting_recipe/roguetown/woodbucket
@@ -480,3 +490,16 @@
 				/obj/item/natural/fibers = 3)
 	skillcraft = /datum/skill/magic/druidic
 	craftdiff = 2 // druids & dendor clerics can craft
+
+// Woodcutting recipe
+
+/datum/crafting_recipe/roguetown/lumberjacking
+	skillcraft = /datum/skill/labor/lumberjacking
+	tools = list(/obj/item/rogueweapon/huntingknife = 1)
+
+/datum/crafting_recipe/roguetown/lumberjacking/cart_upgrade
+	name = "upgrade cog"
+	result = /obj/item/cart_upgrade/level_1
+	reqs = list(/obj/item/grown/log/tree/small = 2,
+				/obj/item/natural/stone = 1)
+	craftdiff = 2
