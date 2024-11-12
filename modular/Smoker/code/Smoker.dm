@@ -1,10 +1,9 @@
 /obj/item/storage/fancy/shhig
 	name = "Shhig Brand Zigs"
 	desc = "Dr. V's Shhig's; much like the image of serpents these zigs are synonymous with both healing and killing. Your life expectancy isnt very high anyway."
-	icon = 'modular/Smoker/icon/smokable.dmi'
-	icon_state = "smokebox"
-	icon_type = "smoke"
-	item_state = "smokebox"
+	icon = 'icons/turf/sand.dmi'
+	icon_state = "sandrock"
+	item_state = "sandrock"
 	fancy_open = TRUE
 	w_class = WEIGHT_CLASS_TINY
 	throwforce = 0
@@ -26,8 +25,8 @@
 /obj/item/reagent_containers/hypospray/medipen/snekbt
 	name = "Snake Bite"
 	desc = "Dr. V's;.....vim....and- Ask yourself this; What am I doing? It is litterally a fucking glowing viscous sludge you are about to put into your vascular system..."
-	icon = 'modular/Smoker/icon/smokable.dmi'
-	icon_state = "bite"
+	icon = 'icons/turf/sand.dmi'
+	icon_state = "sandrock"
 	volume = 8
 	amount_per_transfer_from_this = 10
 	list_reagents = list(/datum/reagent/drug/snekbt = 5, /datum/reagent/toxin/venom = 5)
@@ -35,11 +34,11 @@
 /obj/item/reagent_containers/hypospray/medipen/nourish
 	name = "NOURISH"
 	desc = "Dr. V's nutritional suppliment; normal people eat and drink, but true champions NOURISH."
-	icon = 'modular/Smoker/icon/smokable.dmi'
-	icon_state = "nourish"
+	icon = 'icons/turf/sand.dmi'
+	icon_state = "sandrock"
 	volume = 135
 	amount_per_transfer_from_this = 135
-	list_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/consumable/nutriment/vitamin = 3, /datum/reagent/water = 50) // as much water as a bucket so full hydrate. enough honey to IF good rng rolls get 30hp. 33% chance to decay into sugar, sugar has a 33% chance to decay into nutrients. so saturation varies.
+	list_reagents = list(/datum/reagent/consumable/honey = 30, /datum/reagent/consumable/nutriment/vitamin = 5, /datum/reagent/water = 100) // as much water as a bucket so full hydrate. enough honey to IF good rng rolls get 30hp. 33% chance to decay into sugar, sugar has a 33% chance to decay into nutrients. so saturation varies.
 
 /datum/reagent/drug/snekbt
 	name = "Snake Bite"
