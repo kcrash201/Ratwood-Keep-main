@@ -1,41 +1,46 @@
+//Sand floors
 /turf/open/floor/rogue/sand
-	gender = PLURAL
-	name = "sand"
-	desc = "The dirt is pocked with the scars of countless battles."
-	icon = 'icons/turf/sand.dmi'
-	icon_state = "sand"
-	baseturfs = /turf/open/chasm/jungle
-	initial_gas_mix = OPENTURF_LOW_PRESSURE
-	planetary_atmos = TRUE
-	attachment_holes = FALSE
-	footstep = FOOTSTEP_SAND
-	barefootstep = FOOTSTEP_SAND
-	clawfootstep = FOOTSTEP_SAND
-	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
-	tiled_dirt = FALSE
+    name = "sand"
+    desc = "Sandy sand."
+    icon = 'icons/turf/sand.dmi'
+    icon_state = "sand"
+    footstep = FOOTSTEP_SAND
+    barefootstep = FOOTSTEP_SAND
+    clawfootstep = FOOTSTEP_SAND
+    heavyfootstep = FOOTSTEP_GENERIC_HEAVY
+    canSmoothWith = list(/turf/open/floor/rogue/sandrock, /turf/open/floor/rogue/sandthin, /turf/open/floor/rogue/sandalt)
+/turf/open/floor/rogue/sand/cardinal_smooth(adjacencies)
+    roguesmooth(adjacencies)
+/turf/open/floor/rogue/sand/Initialize()
+    . = ..()
+    dir = pick(GLOB.cardinals)
+
 
 /turf/open/floor/rogue/sandrock
+    icon = 'icons/turf/sand.dmi'
     icon_state = "sandrock"
+/turf/open/floor/rogue/sandrock/cardinal_smooth(adjacencies)
+    roguesmooth(adjacencies)
+/turf/open/floor/rogue/sandrock/Initialize()
+    . = ..()
+    dir = pick(GLOB.cardinals)
+
 
 /turf/open/floor/rogue/sandthin
+    icon = 'icons/turf/sand.dmi'
     icon_state = "sandthin"
+/turf/open/floor/rogue/sandthin/cardinal_smooth(adjacencies)
+    roguesmooth(adjacencies)
+/turf/open/floor/rogue/sandthin/Initialize()
+    . = ..()
+    dir = pick(GLOB.cardinals)
+
+
 /turf/open/floor/rogue/sandalt
+    icon = 'icons/turf/sand.dmi'
     icon_state = "sandalt"
-
-/turf/open/floor/plating/dirt/dark
-	icon_state = "sand"
-
-/turf/open/floor/plating/dirt/try_replace_tile(obj/item/stack/tile/T, mob/user, params)
-	return
-//underworld
-/turf/open/floor/plating/dirt/underworld
-	gender = PLURAL
-	name = "ash"
-	desc = "The floor is strange.."
-	icon = 'icons/turf/floors.dmi'
-	icon_state = "underworld"
-	footstep = FOOTSTEP_SAND
-	barefootstep = FOOTSTEP_SAND
-	clawfootstep = FOOTSTEP_SAND
-	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
-	tiled_dirt = FALSE
+/turf/open/floor/rogue/sandalt/cardinal_smooth(adjacencies)
+    roguesmooth(adjacencies)
+/turf/open/floor/rogue/sandalt/Initialize()
+    . = ..()
+    dir = pick(GLOB.cardinals)

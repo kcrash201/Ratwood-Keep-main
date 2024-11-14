@@ -8459,6 +8459,10 @@
 /obj/item/reagent_containers/glass/bucket/wooden,
 /turf/open/floor/rogue/wood,
 /area/rogue)
+"ZF" = (
+/obj/effect/landmark/start/lord,
+/turf/open/floor/rogue/cobble,
+/area/rogue)
 "ZG" = (
 /obj/structure/table/wood{
 	dir = 4;
@@ -314513,7 +314517,7 @@ No
 No
 No
 No
-No
+ZF
 No
 No
 fQ
