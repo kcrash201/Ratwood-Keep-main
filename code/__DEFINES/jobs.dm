@@ -138,7 +138,7 @@
 #define ARCHIVIST	(1<<1)
 #define GUILDSMITH	(1<<2)
 #define ALCHEMIST	(1<<3)
-#define MASON		(1<<4)
+#define ARTIFICER	(1<<4)
 #define SEAMSTER	(1<<5)
 #define MERCHANT	(1<<6)
 #define SCRIBE		(1<<7)
@@ -187,10 +187,11 @@
 
 #define GOBLIN		(1<<8)
 
-#define GOBLINKING	(1<<0)
+#define GOBLINCHIEF	(1<<0)
 #define GOBLINCOOK	(1<<1)
 #define GOBLINGUARD	(1<<2)
 #define GOBLINSMITH	(1<<3)
+#define GOBLINRABBLE	(1<<4)
 
 #define SLOP		(1<<9)
 
@@ -257,7 +258,7 @@
 #define JDO_GUILDSMITH 20
 #define JDO_APPRENTICE 21
 
-#define JDO_MASON 22
+#define JDO_ARTIFICER 22
 
 #define JDO_SEAMSTER 23
 
@@ -288,10 +289,11 @@
 #define JDO_HOSTAGE 35.2
 #define JDO_LUNATIC 35.3
 
-#define JDO_GOBLINKING 36
+#define JDO_GOBLINCHIEF 36
 #define JDO_GOBLINCOOK 37
 #define JDO_GOBLINGUARD 38
 #define JDO_GOBLINSMITH 39
+#define JDO_GOBLINRABBLE 40
 
 #define MANOR_ROLES \
 	/datum/job/roguetown/jester,\
@@ -350,7 +352,7 @@
 	/datum/job/roguetown/archivist,\
 	/datum/job/roguetown/barkeep,\
 	/datum/job/roguetown/guildsmith,\
-	/datum/job/roguetown/mason,\
+	/datum/job/roguetown/artificer,\
 	/datum/job/roguetown/seamster, \
 	/datum/job/roguetown/merchant,\
 	/datum/job/roguetown/scribe
@@ -369,4 +371,4 @@
 	/datum/job/roguetown/gatemaster,\
 	/datum/job/roguetown/manorguard,\
 	/datum/job/roguetown/sheriff,\
-	/datum/job/roguetown/guardsman
+	/datum/job/roguetown/citywatch

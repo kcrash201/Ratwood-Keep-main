@@ -9,7 +9,7 @@
 	projectile_type = /obj/projectile/magic/lightning
 	releasedrain = 30
 	chargedrain = 1
-	chargetime = 15
+	chargetime = 20
 	charge_max = 20 SECONDS
 	warnie = "spellwarning"
 	no_early_release = TRUE
@@ -47,7 +47,8 @@
 			return BULLET_ACT_BLOCK
 		if(isliving(target))
 			var/mob/living/L = target
-			L.electrocute_act(1, src)
+			L.electrocute_act(1, src, 1, SHOCK_NOSTUN)
+			L.Paralyze(10)
 	qdel(src)
 
 /obj/effect/proc_holder/spell/invoked/projectile/bloodlightning
@@ -454,7 +455,7 @@
 
 	var/obj/effect/proc_holder/spell/targeted/touch/prestidigitation/base_spell = attached_spell
 	if (user)
-		adjust_experience(user, base_spell.associated_skill, fatigue)
+		add_sleep_experience(user, base_spell.associated_skill, fatigue)
 
 /obj/item/melee/touch_attack/prestidigitation/proc/handle_mote(mob/living/carbon/human/user)
 	// adjusted from /obj/item/wisp_lantern & /obj/item/wisp
@@ -1062,9 +1063,9 @@
 		QDEL_IN(src, timeleft) //delete after it runs out, see code/modules/mob/living/simple_animal/rogue/creacher/familiar.dm for timeleft var
 	summoner = user
 
-/obj/effect/proc_holder/spell/invoked/findfamiliar/cast(list/targets,mob/user = usr)
+/obj/effect/proc_holder/spell/invoked/findfamiliar/cast(list/targets, mob/user = usr)
 	var/turf/target_turf = get_turf(targets[1])
-		new /mob/living/simple_animal/hostile/retaliate/rogue/wolf/familiar(target_turf, user)
+	new /mob/living/simple_animal/hostile/retaliate/rogue/wolf/familiar(target_turf, user)
 	return TRUE
 
 

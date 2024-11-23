@@ -64,7 +64,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "generic_event"
 
 /obj/effect/landmark/events/haunts/Initialize(mapload)
-	..()
+	. = ..()
 	GLOB.hauntstart += src
 	icon_state = ""
 
@@ -99,7 +99,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 /obj/effect/landmark/start/bogguardlate
 	name = "Bogguardlate"
 	icon_state = "arrow"
-	jobspawn_override = list("Bog Master", "Bog Guard")
+	jobspawn_override = list("Warden", "Vanguard")
 	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/vagrantlate
@@ -177,7 +177,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/magician
-	name = "Court Magician"
+	name = "Court Magos"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/physician
@@ -189,11 +189,11 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/bogmaster
-	name = "Bog Master"
+	name = "Warden"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/bogguardsman
-	name = "Bog Guard"
+	name = "Vanguard"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/marshal
@@ -297,8 +297,8 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "Alchemist"
 	icon_state = "arrow"
 
-/obj/effect/landmark/start/mason
-	name = "Mason"
+/obj/effect/landmark/start/artificer
+	name = "Artificer"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/scribe
@@ -330,7 +330,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/lady
-	name = "Duchess Consort"
+	name = "Duchess"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/prince
@@ -409,21 +409,30 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 
 //goblin
 
-/obj/effect/landmark/start/goblinking
-	name = "Goblin King"
+/obj/effect/landmark/start/goblinchief
+	name = "Goblin Chief"
 	icon_state = "arrow"
+	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/goblincook
 	name = "Goblin Cook"
 	icon_state = "arrow"
+	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/goblinguard
 	name = "Goblin Guard"
 	icon_state = "arrow"
+	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/goblinsmith
 	name = "Goblin Smith"
 	icon_state = "arrow"
+	delete_after_roundstart = FALSE
+
+/obj/effect/landmark/start/goblinrabble
+	name = "Goblin Rabble"
+	icon_state = "arrow"
+	delete_after_roundstart = FALSE
 
 // START LANDMARKS FOLLOW. Don't change the names unless
 // you are refactoring shitty landmark code.
@@ -579,9 +588,10 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "department_sec"
 	icon_state = "Security Officer"
 
-/obj/effect/landmark/start/depsec/New()
+/obj/effect/landmark/start/depsec/Initialize()
 	..()
 	GLOB.department_security_spawns += src
+	return INITIALIZE_HINT_QDEL
 
 /obj/effect/landmark/start/depsec/Destroy()
 	GLOB.department_security_spawns -= src
@@ -609,6 +619,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 /obj/effect/landmark/start/wizard/Initialize()
 	..()
 	GLOB.wizardstart += loc
+	return INITIALIZE_HINT_QDEL
 
 /obj/effect/landmark/start/nukeop
 	name = "nukeop"
@@ -618,6 +629,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 /obj/effect/landmark/start/nukeop/Initialize()
 	..()
 	GLOB.nukeop_start += loc
+	return INITIALIZE_HINT_QDEL
 
 /obj/effect/landmark/start/bandit
 	name = "bandit"
@@ -627,6 +639,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 /obj/effect/landmark/start/bandit/Initialize()
 	..()
 	GLOB.bandit_starts += loc
+	return INITIALIZE_HINT_QDEL
 
 
 /obj/effect/landmark/start/delf
@@ -637,6 +650,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 /obj/effect/landmark/start/delf/Initialize()
 	..()
 	GLOB.delf_starts += loc
+	return INITIALIZE_HINT_QDEL
 
 
 /obj/effect/landmark/start/nukeop_leader
@@ -647,6 +661,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 /obj/effect/landmark/start/nukeop_leader/Initialize()
 	..()
 	GLOB.nukeop_leader_start += loc
+	return INITIALIZE_HINT_QDEL
 
 // Must be immediate because players will
 // join before SSatom initializes everything.
@@ -658,6 +673,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark/start/new_player)
 /obj/effect/landmark/start/new_player/Initialize()
 	..()
 	GLOB.newplayer_start += loc
+	return INITIALIZE_HINT_QDEL
 
 /obj/effect/landmark/latejoin
 	name = "JoinLate"
@@ -780,9 +796,10 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark/start/new_player)
 	layer = HIGH_LANDMARK_LAYER
 
 
-/obj/effect/landmark/event_spawn/New()
+/obj/effect/landmark/event_spawn/Initialize()
 	..()
 	GLOB.generic_event_spawns += src
+	return INITIALIZE_HINT_QDEL
 
 /obj/effect/landmark/event_spawn/Destroy()
 	GLOB.generic_event_spawns -= src

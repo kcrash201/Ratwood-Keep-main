@@ -34,13 +34,12 @@
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 	pants = /obj/item/clothing/under/roguetown/tights/black
 	shoes = /obj/item/clothing/shoes/roguetown/armor/nobleboot
-	head = /obj/item/clothing/head/roguetown/chaperon/marshal
 	backl = /obj/item/storage/backpack/rogue/satchel
 	belt = /obj/item/storage/belt/rogue/leather/plaquegold
 	beltl = /obj/item/keyring/marshal
 	beltr = /obj/item/rogueweapon/mace
 	cloak = /obj/item/clothing/cloak/stabard/surcoat/marshal
-	gloves = /obj/item/clothing/gloves/roguetown/angle
+	gloves = /obj/item/clothing/gloves/roguetown/leather/angle
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1)
 	if(H.mind)
@@ -115,19 +114,18 @@
 /mob/living/carbon/human/proc/request_outlaw()
 	set name = "Request Outlaw"
 	set category = "Martial Law"
-	var/title = src.get_role_title()
 	if(stat)
 		return
 	var/inputty = input("Outlaw a person", "MARTIAL LAW") as text|null
 	if(inputty)
 		if(hasomen(OMEN_NOLORD))
-			make_outlaw(inputty, title)
+			make_outlaw(inputty)
 		else
 			var/lord = find_lord()
 			if(lord)
 				INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(lord_outlaw_requested), src, lord, inputty)
 			else
-				make_outlaw(inputty, title)
+				make_outlaw(inputty)
 				
 /proc/find_lord(required_stat = CONSCIOUS)
 	var/mob/living/lord
