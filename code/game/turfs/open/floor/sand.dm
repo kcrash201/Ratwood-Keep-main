@@ -44,3 +44,12 @@
 /turf/open/floor/rogue/sandalt/Initialize()
 	. = ..()
 	dir = pick(GLOB.cardinals)
+
+/turf/open/floor/rogue/bigsandtile
+	icon = 'icons/roguetown/misc/256.dmi'
+	icon_state = "BigSandTile"
+/turf/open/floor/rogue/sandalt/cardinal_smooth(adjacencies)
+	roguesmooth(adjacencies)
+/turf/open/floor/rogue/sandalt/Initialize()
+	. = ..()
+	dir = pick(GLOB.cardinals)
