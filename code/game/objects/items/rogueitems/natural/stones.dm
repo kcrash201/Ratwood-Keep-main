@@ -388,3 +388,31 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 
 /obj/item/natural/rock/gem
 	mineralType = /obj/item/roguegem/random
+
+
+//New lines for desert map 
+
+/obj/item/natural/sandrock
+	name = "sandrock"
+	desc = "A rock protudes from the ground."
+	icon_state = "sandrock1"
+	dropshrink = 0
+	throwforce = 25
+	throw_range = 2
+	force = 18
+	obj_flags = CAN_BE_HIT
+	force_wielded = 15
+	gripped_intents = list(INTENT_GENERIC)
+	w_class = WEIGHT_CLASS_HUGE
+	twohands_required = TRUE
+	var/obj/item/stack/ore/mineralType = null
+	var/mineralAmt = 1
+	blade_dulling = DULLING_BASH
+	max_integrity = 90
+	destroy_sound = 'sound/foley/smash_rock.ogg'
+	attacked_sound = 'sound/foley/hit_rock.ogg'
+
+
+/obj/item/natural/rock/Initialize()
+	icon_state = "sandrock[rand(1, 4)]"
+	. = ..()
