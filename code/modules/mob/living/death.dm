@@ -23,7 +23,7 @@
 	return
 
 /mob/living/proc/spawn_gibs()
-	new /obj/effect/gibspawner/generic(drop_location(), src, get_static_viruses())
+	new /obj/effect/gibspawner/generic(drop_location(), src)
 
 /mob/living/proc/spill_embedded_objects()
 	for(var/obj/item/embedded_item as anything in simple_embedded_objects)
@@ -80,7 +80,9 @@
 	SSdroning.kill_loop(src.client)
 	SSdroning.kill_droning(src.client)
 	src.playsound_local(src, 'sound/misc/deth.ogg', 100)
-
+	if(src.mind)
+		if(src.mind.boneboy == TRUE)
+			handle_necromancy()
 	set_drugginess(0)
 	set_disgust(0)
 	cure_holdbreath()
@@ -91,15 +93,11 @@
 	update_damage_hud()
 	update_health_hud()
 	update_mobility()
-	med_hud_set_health()
-	med_hud_set_status()
-	if(!gibbed && !QDELETED(src))
-		addtimer(CALLBACK(src, PROC_REF(med_hud_set_status)), (DEFIB_TIME_LIMIT * 10) + 1)
-		apply_status_effect(/datum/status_effect/debuff/death_weaken)
 	stop_pulling()
 
 	. = ..()
 
+	SEND_SIGNAL(src, COMSIG_LIVING_DEATH, gibbed)
 	if(client)
 		client.move_delay = initial(client.move_delay)
 		var/atom/movable/screen/gameover/hog/H = new()

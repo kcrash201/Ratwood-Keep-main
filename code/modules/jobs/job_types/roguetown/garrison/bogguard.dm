@@ -8,7 +8,7 @@
 	selection_color = JCOLOR_SOLDIER
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_VERY_SHUNNED_UP
-	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
+	allowed_ages = ALL_AGES_LIST
 	tutorial = "Either a fresh lowborn recruit or a veteran of the now defunct bog guard, you have been assigned to the newly established Vanguard. \
 	You have a roof over your head, coin in your pocket, and a thankless job protecting the outskirts of town against what lurks beyond.\
 	The Bastion must not fall."
@@ -18,7 +18,7 @@
 	give_bank_account = 16
 	min_pq = 1
 	max_pq = null
-	advclass_cat_rolls = list(CTAG_BOG = 20)
+	subclass_cat_rolls = list(CTAG_BOG = 20)
 	advjob_examine = TRUE
 	always_show_on_latechoices = TRUE
 
@@ -36,7 +36,7 @@
 	. = ..()
 	if(ishuman(L))
 		var/mob/living/carbon/human/H = L
-		if(istype(H.cloak, /obj/item/clothing/cloak/raincloak/vanguard))
+		if(istype(H.cloak, /obj/item/clothing/cloak/shadow))
 			var/obj/item/clothing/S = H.cloak
 			var/index = findtext(H.real_name, " ")
 			if(index)
@@ -50,7 +50,7 @@
 /datum/outfit/job/roguetown/ranger
 	name = "Vanguard archer"
 
-/datum/advclass/bogguard
+/datum/subclass/bogguard
 	name = "Vanguard footman"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_VERY_SHUNNED_UP
@@ -59,7 +59,7 @@
 	You will stand in the front, and protect."
 	category_tags = list(CTAG_BOG)
 
-/datum/advclass/bogranger
+/datum/subclass/bogranger
 	name = "Vanguard archer"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_VERY_SHUNNED_UP
@@ -71,15 +71,15 @@
 
 /datum/outfit/job/roguetown/bog/pre_equip(mob/living/carbon/human/H)
 	head = /obj/item/clothing/head/roguetown/helmet/skullcap
-	armor = /obj/item/clothing/suit/roguetown/armor/gambeson
-	cloak = /obj/item/clothing/cloak/raincloak/vanguard
+	armor = /obj/item/clothing/suit/roguetown/shirt/shadow
+	cloak = /obj/item/clothing/cloak/shadow
 	neck = /obj/item/clothing/neck/roguetown/chaincoif
-	gloves = /obj/item/clothing/gloves/roguetown/leather
+	gloves = /obj/item/clothing/gloves/roguetown/leather/black
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
-	shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/bog
+	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
 	pants = /obj/item/clothing/under/roguetown/trou/leather
-	shoes = /obj/item/clothing/shoes/roguetown/armor/leather
-	beltl = /obj/item/keyring/bog_guard
+	shoes = /obj/item/clothing/shoes/roguetown/armor
+	beltl = /obj/item/storage/keyring/bog_guard
 	belt = /obj/item/storage/belt/rogue/leather
 
 /datum/outfit/job/roguetown/ranger/pre_equip(mob/living/carbon/human/H)

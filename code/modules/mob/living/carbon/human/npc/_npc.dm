@@ -193,19 +193,6 @@
 		if(put_in_hands(I))
 			return TRUE
 
-//	// CLOTHING
-//	else if(istype(I, /obj/item/clothing))
-//		var/obj/item/clothing/C = I
-//		monkeyDrop(C)
-//		addtimer(CALLBACK(src, PROC_REF(pickup_and_wear), C), 5)
-//		return TRUE
-
-	// EVERYTHING ELSE
-//	else
-//		if(!get_item_for_held_index(1) || !get_item_for_held_index(2))
-//			put_in_hands(I)
-//			return TRUE
-
 	blacklistItems[I] ++
 	return FALSE
 
@@ -293,13 +280,6 @@
 					if(I.force > 7)
 						equip_item(I)
 
-//			// switch targets
-//			if(prob(15))
-//				for(var/mob/living/L in around)
-//					if((L != target) && should_target(L) && (L.stat == CONSCIOUS))
-//						retaliate(L)
-//						return TRUE
-
 			// if can't reach target for long enough, go idle
 			if(frustration >= 15)
 				back_to_idle()
@@ -321,24 +301,6 @@
 		if(AI_FLEE)
 			back_to_idle()
 			return TRUE
-/*		if(AI_FLEE)
-			var/list/around = view(src, 7)
-			// flee from anyone who attacked us and we didn't beat down
-			for(var/mob/living/L in around)
-				if( enemies[L] && (L.stat != DEAD) )
-					target = L
-					break
-
-			if(target != null)
-				frustration++
-				if(Adjacent(target))
-					retalitate(target)
-					return TRUE
-				walk_away(src, target, 5, update_movespeed())
-			else
-				back_to_idle()
-
-			return TRUE*/
 
 	return IsStandingStill()
 
@@ -399,18 +361,6 @@
 	if(aggressive)
 		return
 
-//	// if we arn't enemies, we were likely recruited to attack this target, jobs done if we calm down so go back to idle
-//	if(!enemies[L])
-//		if( target == L )
-//			back_to_idle()
-//		return // already de-aggroed
-//
-	// if we are not angry at our target, go back to idle
-//	if(L in enemies)
-//		enemies.Remove(L)
-//		if( target == L )
-//			back_to_idle()
-
 // get angry at a mob
 /mob/living/carbon/human/proc/retaliate(mob/living/L)
 	if(!wander)
@@ -418,7 +368,7 @@
 	if(L == src)
 		return
 	if(mode != AI_OFF)
-		if (L.alpha == 0 && L.rogue_sneaking)
+		if(L.alpha == 0 && L.rogue_sneaking)
 			// we just got hit by something hidden so try and find them
 			if (prob(5))
 				visible_message(span_notice("[src] begins searching around frantically..."))
@@ -465,11 +415,9 @@
 	else
 		return FALSE
 
-
 /mob/living/carbon/human/attackby(obj/item/W, mob/user, params)
 	. = ..()
 	if((W.force) && (!target) && (W.damtype != STAMINA) )
 		retaliate(user)
-
 
 #undef MAX_RANGE_FIND

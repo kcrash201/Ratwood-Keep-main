@@ -60,7 +60,7 @@
 	if(ishuman(user))
 		var/mob/living/carbon/human/HU = user
 
-		if((HU.job != "Duke") && (HU.job != "Duchess"))
+		if((HU.job != "Duke") && (HU.job != "Duke Consort"))
 			to_chat(user, span_danger("The rod doesn't obey me."))
 			return
 
@@ -83,10 +83,9 @@
 				return
 
 			if(istype(user.used_intent, /datum/intent/lord_silence))
-				HU.visible_message(span_warning("[HU] silences [H] with the [src]."))
-				H.dna.add_mutation(/datum/mutation/human/mute)
-				addtimer(CALLBACK(H.dna, TYPE_PROC_REF(/datum/dna/, remove_mutation), /datum/mutation/human/mute), 20 SECONDS)
-				to_chat(H, span_danger("I'm silenced by the scepter!"))
+				HU.visible_message("<span class='warning'>[HU] silences [H] with \the [src].</span>")
+				H.set_silence(20 SECONDS)
+				to_chat(H, "<span class='danger'>I'm silenced by the scepter!</span>")
 				return
 
 /obj/item/rogueweapon/mace/stunmace
@@ -143,12 +142,12 @@
 /obj/item/rogueweapon/mace/stunmace/funny_attack_effects(mob/living/target, mob/living/user, nodmg)
 	. = ..()
 	if(on)
-		if(target.rogfat >= target.maxrogfat)
+		if(target.stamina >= target.max_stamina)
 			target.electrocute_act(5, src)
 			charge -= 6
 		else//TODO: Check target.STACON!!!!!!!!!!
-			target.rogstam_add(-10)
-			target.rogfat_add(5)
+			target.energy_add(-10)
+			target.stamina_add(5)
 			charge -= 3
 		if(charge <= 0)
 			on = FALSE

@@ -87,7 +87,7 @@
 		/obj/item/flint = 4,
 		/obj/item/rogueweapon/stoneaxe/woodcut = 3,
 		/obj/item/rogueweapon/stoneaxe = 3,
-		/obj/item/rogueweapon/hammer = 3,
+		/obj/item/rogueweapon/hammer/wood = 3,
 		/obj/item/rogueweapon/tongs = 3,
 		/obj/item/rogueweapon/pick = 3,
 
@@ -108,7 +108,7 @@
 
 
 		//food
-		/obj/item/reagent_containers/food/snacks/rogue/crackers = 3,
+		/obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw = 3,
 		/obj/item/reagent_containers/food/snacks/butterslice = 3,
 		/obj/item/reagent_containers/powder/salt = 3,
 		/obj/item/reagent_containers/food/snacks/egg = 3,

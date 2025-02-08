@@ -11,7 +11,7 @@
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED)
 	tutorial = "Responsible for the safety of the city and the enforcement of the law, \
 	you walk among the downtrodden, delivering justice and pain. \
-	Bound to the commands of many lords, both the Church and the Sheriff hold great sway over your life."
+	Your loyalty lies in the Sheriff and the cityfolk, for neither clergy nor nobility understand the hardships of a commoner."
 	display_order = JDO_TOWNGUARD
 	whitelist_req = TRUE
 
@@ -32,7 +32,7 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/citywatch
 	gloves = /obj/item/clothing/gloves/roguetown/chain
 	shoes = /obj/item/clothing/shoes/roguetown/armor
-	beltl = /obj/item/keyring/town_watch
+	beltl = /obj/item/storage/keyring/town_watch
 	belt = /obj/item/storage/belt/rogue/leather/black
 	beltr = /obj/item/rogueweapon/mace/stunmace
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
@@ -42,7 +42,6 @@
 	if(H.mind)
 		assign_skills(H)
 	H.verbs |= /mob/proc/haltyell
-	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 
 /datum/outfit/job/roguetown/citywatch/proc/assign_skills(mob/living/carbon/human/guard)

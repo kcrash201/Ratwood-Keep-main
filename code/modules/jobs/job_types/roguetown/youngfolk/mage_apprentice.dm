@@ -6,7 +6,7 @@
 	total_positions = 2
 	spawn_positions = 2
 
-	allowed_races = RACES_TOLERATED_UP
+	allowed_races = RACES_TOLERATED_UP_PLUS_SMOLFOLK
 	allowed_ages = list(AGE_ADULT)
 
 	tutorial = "Your master once saw potential in you, something you are uncertain if they still do with your recent studies. The path to using magic is something treacherous and untamed, and you are still decades away from calling yourself even a journeyman in the field. Listen and serve, and someday you will earn your hat."
@@ -25,7 +25,8 @@
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 	pants = /obj/item/clothing/under/roguetown/tights/random
 	belt = /obj/item/storage/belt/rogue/leather/rope
-	beltr = /obj/item/keyring/mage
+	beltr = /obj/item/storage/keyring/mage
+	beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 	r_hand = /obj/item/rogueweapon/woodstaff
 	if(H.gender == MALE)
 		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
@@ -33,7 +34,7 @@
 		backr = /obj/item/storage/backpack/rogue/satchel
 	else
 		shoes = /obj/item/clothing/shoes/roguetown/sandals
-		armor = /obj/item/clothing/suit/roguetown/armor/workervest
+		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/black //If girlmagi have to have sandals I'm giving them a dress
 		backr = /obj/item/storage/backpack/rogue/satchel
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)

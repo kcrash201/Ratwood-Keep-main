@@ -6,9 +6,9 @@
 
 /mob/living/carbon/human/spawn_gibs(with_bodyparts)
 	if(with_bodyparts)
-		new /obj/effect/gibspawner/human(drop_location(), src, get_static_viruses())
+		new /obj/effect/gibspawner/human(drop_location(), src)
 	else
-		new /obj/effect/gibspawner/human/bodypartless(drop_location(), src, get_static_viruses())
+		new /obj/effect/gibspawner/human/bodypartless(drop_location(), src)
 
 /mob/living/carbon/human/spawn_dust(just_ash = FALSE)
 	if(just_ash)
@@ -118,26 +118,23 @@
 
 		if(!gibbed && yeae)
 			for(var/mob/living/carbon/human/HU in viewers(7, src))
-				if(HU.marriedto == src)
-					HU.adjust_triumphs(-1)
+				if(HAS_TRAIT(HU, TRAIT_BLIND))
+					continue
+				if(HAS_TRAIT(HU, TRAIT_STEELHEARTED))
+					continue
+				if(HU.isFamily(src))
+					if(istype(HU.getRelationship(src),/datum/relation/spouse))
+						HU.adjust_triumphs(-1)
 
 	. = ..()
 
 	dizziness = 0
 	jitteriness = 0
-
-	if(ismecha(loc))
-		var/obj/mecha/M = loc
-		if(M.occupant == src)
-			M.go_out()
-
 	dna.species.spec_death(gibbed, src)
 
 	if(SSticker.HasRoundStarted())
 		SSblackbox.ReportDeath(src)
 		log_message("has died (BRUTE: [src.getBruteLoss()], BURN: [src.getFireLoss()], TOX: [src.getToxLoss()], OXY: [src.getOxyLoss()], CLONE: [src.getCloneLoss()])", LOG_ATTACK)
-	if(is_devil(src))
-		INVOKE_ASYNC(is_devil(src), TYPE_PROC_REF(/datum/antagonist/devil, beginResurrectionCheck), src)
 
 /mob/living/carbon/human/revive(full_heal, admin_revive)
 	. = ..()
@@ -154,26 +151,11 @@
 		if(CA != src && !HAS_TRAIT(CA, TRAIT_BLIND))
 			if(HAS_TRAIT(CA, TRAIT_STEELHEARTED))
 				continue
-			if(CA.marriedto == src)
-				CA.adjust_triumphs(-1)
+			if(CA.isFamily(src))
+				if(istype(CA.getRelationship(src),/datum/relation/spouse))
+					CA.adjust_triumphs(-1)
 			CA.add_stress(/datum/stressevent/viewgib)
 	return ..()
 
-/mob/living/carbon/human/proc/makeSkeleton()
-	ADD_TRAIT(src, TRAIT_DISFIGURED, TRAIT_GENERIC)
-	set_species(/datum/species/skeleton)
-	return TRUE
-
-/mob/living/carbon/proc/Drain()
-	become_husk(CHANGELING_DRAIN)
-	ADD_TRAIT(src, TRAIT_BADDNA, CHANGELING_DRAIN)
-	blood_volume = 0
-	return TRUE
-
-/mob/living/carbon/proc/makeUncloneable()
-	ADD_TRAIT(src, TRAIT_BADDNA, MADE_UNCLONEABLE)
-	blood_volume = 0
-	return TRUE
-
 /proc/can_death_zombify(mob/living/carbon/human)
-	return hasomen(OMEN_NOPRIEST) || !is_in_roguetown(human)
+	return TRUE

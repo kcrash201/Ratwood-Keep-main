@@ -76,24 +76,28 @@
 	name = "carp"
 	desc = "A majestic scaled fish bearing untold tales."
 	icon_state = "carp"
+	sellprice = 2
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/carp
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/carp
+	cooked_smell = /datum/pollutant/food/baked_carp
 
 /obj/item/reagent_containers/food/snacks/fish/clownfish
 	name = "clownfish"
 	desc = "This fish brings vibrant hues to the dark world of Rockhill."
 	icon_state = "clownfish"
-	sellprice = 40
+	sellprice = 15
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/clownfish
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/clownfish
+	cooked_smell = /datum/pollutant/food/baked_clownfish
 
 /obj/item/reagent_containers/food/snacks/fish/angler
 	name = "anglerfish"
 	desc = "A menacing abyssal predator."
 	icon_state = "angler"
-	sellprice = 15
+	sellprice = 10
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/angler
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/angler
+	cooked_smell = /datum/pollutant/food/baked_angler
 
 /obj/item/reagent_containers/food/snacks/fish/eel
 	name = "eel"
@@ -102,12 +106,13 @@
 	sellprice = 5
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/eel
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/eel
+	cooked_smell = /datum/pollutant/food/baked_eel
 
 /obj/item/reagent_containers/food/snacks/fish/shrimp
 	name = "shrimp"
 	desc = "As shrimple as that."
 	icon_state = "shrimp"
-	sellprice = 2
+	sellprice = 5
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/shrimp
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/shrimp
 
@@ -150,4 +155,3 @@
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/shrimp
 	icon_state = "shrimpcooked"
 	name = "cooked shrimp"
-

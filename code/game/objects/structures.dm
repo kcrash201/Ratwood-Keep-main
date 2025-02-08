@@ -1,6 +1,5 @@
 /obj/structure
 	icon = 'icons/obj/structures.dmi'
-	pressure_resistance = 8
 	max_integrity = 300
 	interaction_flags_atom = INTERACT_ATOM_ATTACK_HAND | INTERACT_ATOM_UI_INTERACT
 	layer = BELOW_OBJ_LAYER
@@ -27,7 +26,6 @@
 	if(redstone_id)
 		GLOB.redstone_objs += src
 		. = INITIALIZE_HINT_LATELOAD
-	GLOB.cameranet.updateVisibility(src)
 	if(leanable)
 		AddComponent(/datum/component/leanable)
 
@@ -46,7 +44,6 @@
 
 
 /obj/structure/Destroy()
-	GLOB.cameranet.updateVisibility(src)
 	if(isturf(loc))
 		for(var/mob/living/user in loc)
 			if(climb_offset)
@@ -103,8 +100,6 @@
 			return
 	if(!istype(O, /obj/item) || user.get_active_held_item() != O)
 		return
-	if(iscyborg(user))
-		return
 	if(!user.dropItemToGround(O))
 		return
 	if (O.loc != src.loc)
@@ -123,12 +118,8 @@
 		adjusted_climb_time *= 2
 	if(!ishuman(user))
 		adjusted_climb_time = 0 //simple mobs instantly climb
-	if(HAS_TRAIT(user, TRAIT_FREERUNNING)) //do you have any idea how fast I am???
-		adjusted_climb_time *= 0.8
 	adjusted_climb_time -= user.STASPD * 2
 	adjusted_climb_time = max(adjusted_climb_time, 0)
-//	if(adjusted_climb_time)
-//		user.visible_message(span_warning("[user] starts climbing onto [src]."), span_warning("I start climbing onto [src]..."))								
 	structureclimber = user
 	if(do_mob(user, user, adjusted_climb_time))
 		if(src.loc) //Checking if structure has been destroyed
@@ -136,8 +127,6 @@
 				user.visible_message(span_warning("[user] climbs onto [src]."), \
 									span_notice("I climb onto [src]."))
 				log_combat(user, src, "climbed onto")
-//				if(climb_offset)
-//					user.set_mob_offsets("structure_climb", _x = 0, _y = climb_offset)
 				if(climb_stun)
 					user.Stun(climb_stun)
 				if(climb_sound)

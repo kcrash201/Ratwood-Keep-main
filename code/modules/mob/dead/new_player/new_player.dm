@@ -467,10 +467,10 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 					return JOB_UNAVAILABLE_SLOTFULL
 		else
 			return JOB_UNAVAILABLE_SLOTFULL
-//	if(job.title == "Adventurer" && latejoin)
+//	if(job.title == "refugee" && latejoin)
 //		for(var/datum/job/J in SSjob.occupations)
 //			if(J && J.total_positions && J.current_positions < 1 && J.title != job.title && (IsJobUnavailable(J.title))
-//				return JOB_UNAVAILABLE_GENERIC //we can't play adventurer if there isn't 1 of every other job that we can play
+//				return JOB_UNAVAILABLE_GENERIC //we can't play refugee if there isn't 1 of every other job that we can play
 	if(latejoin && !job.special_check_latejoin(client))
 		return JOB_UNAVAILABLE_GENERIC
 	return JOB_AVAILABLE
@@ -530,45 +530,13 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 		Spl.Fade(TRUE)
 //			character.playsound_local(get_turf(character), 'sound/blank.ogg', 25)
 
-		character.update_parallax_teleport()
 
 	SSticker.minds += character.mind
 
 	var/mob/living/carbon/human/humanc
 	if(ishuman(character))
 		humanc = character	//Let's retypecast the var to be human,
-/*
-	if(humanc)	//These procs all expect humans
-		GLOB.data_core.manifest_inject(humanc)
-		if(SSshuttle.arrivals)
-			SSshuttle.arrivals.QueueAnnounce(humanc, rank)
-		else
-			AnnounceArrival(humanc, rank)
-		AddEmploymentContract(humanc)
-		if(GLOB.highlander)
-			to_chat(humanc, span_danger("<i>THERE CAN BE ONLY ONE!!!</i>"))
-			humanc.make_scottish()
-
-		if(GLOB.summon_guns_triggered)
-			give_guns(humanc)
-		if(GLOB.summon_magic_triggered)
-			give_magic(humanc)
-		if(GLOB.curse_of_madness_triggered)
-			give_madness(humanc, GLOB.curse_of_madness_triggered)
-*/
 	GLOB.joined_player_list += character.ckey
-/*
-	if(CONFIG_GET(flag/allow_latejoin_antagonists) && humanc)	//Borgs aren't allowed to be antags. Will need to be tweaked if we get true latejoin ais.
-		if(SSshuttle.emergency)
-			switch(SSshuttle.emergency.mode)
-				if(SHUTTLE_RECALL, SHUTTLE_IDLE)
-					SSticker.mode.make_antag_chance(humanc)
-				if(SHUTTLE_CALL)
-					if(SSshuttle.emergency.timeLeft(1) > initial(SSshuttle.emergencyCallTime)*0.5)
-						SSticker.mode.make_antag_chance(humanc)
-
-	if(humanc && CONFIG_GET(flag/roundstart_traits))
-		SSquirks.AssignQuirks(humanc, humanc.client, TRUE)*/
 	if(humanc)
 		var/fakekey = character.ckey
 		if(ckey in GLOB.anonymize)
@@ -587,20 +555,9 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 		try_apply_character_post_equipment(humanc)
 	log_manifest(character.mind.key,character.mind,character,latejoin = TRUE)
 
-/mob/dead/new_player/proc/AddEmploymentContract(mob/living/carbon/human/employee)
-	//TODO:  figure out a way to exclude wizards/nukeops/demons from this.
-	for(var/C in GLOB.employmentCabinets)
-		var/obj/structure/filingcabinet/employment/employmentCabinet = C
-		if(!employmentCabinet.virgin)
-			employmentCabinet.addFile(employee)
-
 
 /mob/dead/new_player/proc/LateChoices()
 	var/list/dat = list("<div class='notice' style='font-style: normal; font-size: 14px; margin-bottom: 2px; padding-bottom: 0px'>Round Duration: [DisplayTimeText(world.time - SSticker.round_start_time, 1)]</div>")
-	if(SSshuttle.emergency)
-		switch(SSshuttle.emergency.mode)
-			if(SHUTTLE_ESCAPE)
-				dat += "<div class='notice red'>The last boat has left Roguetown.</div><br>"
 	for(var/datum/job/prioritized_job in SSjob.prioritized_jobs)
 		if(prioritized_job.current_positions >= prioritized_job.total_positions)
 			SSjob.prioritized_jobs -= prioritized_job
@@ -614,6 +571,8 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 	omegalist += list(GLOB.courtier_positions)
 	omegalist += list(GLOB.garrison_positions)
 	omegalist += list(GLOB.church_positions)
+	omegalist += list(GLOB.inquisition_positions)
+	omegalist += list(GLOB.foreigner_positions)
 	omegalist += list(GLOB.yeoman_positions)
 	omegalist += list(GLOB.peasant_positions)
 	omegalist += list(GLOB.mercenary_positions)
@@ -622,7 +581,7 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 	if(istype(SSticker.mode, /datum/game_mode/chaosmode))
 		var/datum/game_mode/chaosmode/C = SSticker.mode
 		if(C.allmig)
-			omegalist = list(GLOB.allmig_positions)
+			omegalist = list(GLOB.foreigner_positions)
 	if(istype(SSticker.mode, /datum/game_mode/roguewar))
 		omegalist = list(GLOB.roguewar_positions)
 
@@ -655,6 +614,8 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 					cat_name = "Garrison"
 				if (CHURCHMEN)
 					cat_name = "Churchmen"
+				if (INQUISITION)
+					cat_name = "Inquisition"
 				if (YEOMEN)
 					cat_name = "Yeomen"
 				if (PEASANTS)
@@ -663,6 +624,8 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 					cat_name = "Sidefolk"
 				if (MERCENARIES)
 					cat_name = "Mercenaries"
+				if (FOREIGNERS)
+					cat_name = "Foreigners"
 				if (GOBLIN)
 					cat_name = "Goblins"
 

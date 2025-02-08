@@ -231,16 +231,6 @@
 	desc = "It's hard to think..."
 	icon_state = "fentanyl"
 
-//Death debuff
-
-/datum/status_effect/debuff/death_weaken
-	id = "death_weaken"
-	alert_type = null
-	status_type = STATUS_EFFECT_UNIQUE
-	examine_text = span_notice("They appear not entirely whole, as if some part of them was left behind.")
-	effectedstats = list("strength" = -2, "perception" = -2, "intelligence" = -2, "constitution" = -2, "endurance" = -2, "speed" = -2)
-	var/extralives = 1
-
 /// SURRENDERING DEBUFFS
 
 /datum/status_effect/debuff/breedable
@@ -251,10 +241,12 @@
 /datum/status_effect/debuff/breedable/on_apply()
 	. = ..()
 	ADD_TRAIT(owner, TRAIT_CRITICAL_RESISTANCE, id)
+	ADD_TRAIT(owner, TRAIT_SPELLCOCKBLOCK, id)
 
 /datum/status_effect/debuff/breedable/on_remove()
 	. = ..()
 	REMOVE_TRAIT(owner, TRAIT_CRITICAL_RESISTANCE, id)
+	REMOVE_TRAIT(owner, TRAIT_SPELLCOCKBLOCK, id)
 
 /atom/movable/screen/alert/status_effect/debuff/breedable
 	name = "Breedable"
@@ -309,4 +301,39 @@
 /atom/movable/screen/alert/status_effect/debuff/ravox_burden
 	name = "Ravox's Burden"
 	desc = "Some divine power is straining my mind!"
+	icon_state = "muscles"
+
+// Darkling debuffs
+/datum/status_effect/debuff/darkling_glare
+	id = "darkling_glare"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/darkling_glare
+	effectedstats = list("perception" = -1)
+	duration = 10 SECONDS
+
+/atom/movable/screen/alert/status_effect/debuff/darkling_glare
+	name = "Eye Strain"
+	desc = "My eyes are starting to water, the light burns."
+	icon_state = "stressb"
+
+/datum/status_effect/debuff/darkling_migraine
+	id = "darkling_migraine"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/darkling_migraine
+	effectedstats = list("endurance" = -1, "intelligence" = -1) //Will basically always be stacked with the eye strain penalty
+	duration = 20 SECONDS
+
+/atom/movable/screen/alert/status_effect/debuff/darkling_migraine
+	name = "Migraine"
+	icon_state = "muscles"
+	desc = "My head is pounding, I can barely think. I need to get away from the light and rest a while!"
+
+/// Strengthen undead debuff
+/datum/status_effect/debuff/weaken_living
+	id = "weaken_living"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/weaken_living
+	effectedstats = list("speed" = -3, "constitution" = -3)
+	duration = 25 SECONDS
+
+/atom/movable/screen/alert/status_effect/debuff/weaken_living
+	name = "Macabre chill"
+	desc = "I can feel the cold embrace of death seeping into my bones"
 	icon_state = "muscles"

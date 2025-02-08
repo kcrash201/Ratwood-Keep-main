@@ -9,18 +9,6 @@
 	export_price = 4
 	importexport_amt = 10
 
-/datum/roguestock/stockpile/wood/plank
-	name = "Wood Plank"
-	desc = "Wooden planks ready to be worked."
-	item_type = /obj/item/natural/wood/plank
-	held_items = list(2, 0)
-	payout_price = 4
-	withdraw_price = 5
-	transport_fee = 3
-	export_price = 5
-	importexport_amt = 10
-	passive_generation = 5
-
 /datum/roguestock/stockpile/stone
 	name = "Stone"
 	desc = "High quality rocks of stone used for construction."
@@ -62,10 +50,10 @@
 	desc = "Chunks of copper used for smithing and alloying."
 	item_type = /obj/item/rogueore/copper
 	held_items = list(6, 0)
-	payout_price = 3
-	withdraw_price = 5
-	transport_fee = 3
-	export_price = 5
+	payout_price = 7
+	withdraw_price = 10
+	transport_fee = 6
+	export_price = 10
 	importexport_amt = 10
 	passive_generation = 2
 
@@ -74,10 +62,10 @@
 	desc = "Chunks of tin used for smithing and alloying."
 	item_type = /obj/item/rogueore/tin
 	held_items = list(6, 0)
-	payout_price = 4
-	withdraw_price = 5
-	transport_fee = 4
-	export_price = 5
+	payout_price = 7
+	withdraw_price = 10
+	transport_fee = 6
+	export_price = 10
 	importexport_amt = 10
 	passive_generation = 2
 
@@ -91,7 +79,6 @@
 	transport_fee = 10
 	export_price = 75
 	importexport_amt = 10
-	passive_generation = 2
 
 /datum/roguestock/stockpile/silver
 	name = "Raw Silver"
@@ -103,7 +90,6 @@
 	transport_fee = 10
 	export_price = 100
 	importexport_amt = 10
-	passive_generation = 2
 
 /datum/roguestock/stockpile/cloth
 	name = "Cloth"
@@ -129,6 +115,17 @@
 	importexport_amt = 10
 	passive_generation = 4
 
+/datum/roguestock/stockpile/cured
+	name = "Cured Leather"
+	desc = "Cured Leather ready to be worked."
+	item_type = /obj/item/natural/hide/cured
+	held_items = list(2, 0)
+	payout_price = 5
+	withdraw_price = 7
+	transport_fee = 1
+	export_price = 7
+	importexport_amt = 10
+
 /datum/roguestock/stockpile/hide
 	name = "Hide"
 	desc = "Stripped hide from animals."
@@ -140,17 +137,6 @@
 	export_price = 15
 	importexport_amt = 5
 	passive_generation = 2
-
-/datum/roguestock/stockpile/cured
-	name = "Cured Leather"
-	desc = "Cured Leather ready to be worked."
-	item_type = /obj/item/natural/hide/cured
-	held_items = list(2, 0)
-	payout_price = 5
-	withdraw_price = 7
-	transport_fee = 1
-	export_price = 7
-	importexport_amt = 10
 
 /datum/roguestock/stockpile/fur
 	name = "Fur"

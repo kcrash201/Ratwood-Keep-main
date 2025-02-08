@@ -46,6 +46,9 @@
 	/// Amont of multiplicative slowdown applied if pulled. >1 makes you slower, <1 makes you faster.
 	var/drag_slowdown 
 
+	///If the item can be repaired by sewing.
+	var/sewrepair = FALSE
+
 	var/blade_dulling = DULLING_BASHCHOP
 
 	var/debris = null
@@ -115,38 +118,6 @@
 		visible_message(span_danger("[src] shatters into a million pieces!"))
 		qdel(src)
 
-
-/obj/assume_air(datum/gas_mixture/giver)
-	if(loc)
-		return loc.assume_air(giver)
-	else
-		return null
-
-/obj/remove_air(amount)
-	if(loc)
-		return loc.remove_air(amount)
-	else
-		return null
-
-/obj/return_air()
-	if(loc)
-		return loc.return_air()
-	else
-		return null
-
-/obj/proc/handle_internal_lifeform(mob/lifeform_inside_me, breath_request)
-	//Return: (NONSTANDARD)
-	//		null if object handles breathing logic for lifeform
-	//		datum/air_group to tell lifeform to process using that breath return
-	//DEFAULT: Take air from turf to give to have mob process
-
-	if(breath_request>0)
-		var/datum/gas_mixture/environment = return_air()
-		var/breath_percentage = BREATH_VOLUME / environment.return_volume()
-		return remove_air(environment.total_moles() * breath_percentage)
-	else
-		return null
-
 /obj/proc/updateUsrDialog()
 	if((obj_flags & IN_USE) && !(obj_flags & USES_TGUI))
 		var/is_in_use = FALSE
@@ -155,21 +126,12 @@
 			if ((M.client && M.machine == src))
 				is_in_use = TRUE
 				ui_interact(M)
-		if(issilicon(usr) || IsAdminGhost(usr))
+		if(IsAdminGhost(usr))
 			if (!(usr in nearby))
 				if (usr.client && usr.machine==src) // && M.machine == src is omitted because if we triggered this by using the dialog, it doesn't matter if our machine changed in between triggering it and this - the dialog is probably still supposed to refresh.
 					is_in_use = TRUE
 					ui_interact(usr)
 
-		// check for TK users
-
-		if(ishuman(usr))
-			var/mob/living/carbon/human/H = usr
-			if(!(usr in nearby))
-				if(usr.client && usr.machine==src)
-					if(H.dna.check_mutation(TK))
-						is_in_use = TRUE
-						ui_interact(usr)
 		if (is_in_use)
 			obj_flags |= IN_USE
 		else
@@ -184,12 +146,8 @@
 				if ((M.client && M.machine == src))
 					is_in_use = TRUE
 					src.interact(M)
-		var/ai_in_use = FALSE
-		if(update_ais)
-			ai_in_use = AutoUpdateAI(src)
-
-		if(update_viewers && update_ais) //State change is sure only if we check both
-			if(!ai_in_use && !is_in_use)
+		if(update_viewers) //State change is sure only if we check both
+			if(!is_in_use)
 				obj_flags &= ~IN_USE
 
 
@@ -226,10 +184,7 @@
 /obj/proc/hide(h)
 	return
 
-/obj/singularity_pull(S, current_size)
-	..()
-	if(!anchored || current_size >= STAGE_FIVE)
-		step_towards(src,S)
+/obj/singularity_pull()
 
 /obj/get_dumping_location(datum/component/storage/source,mob/user)
 	return get_turf(src)
@@ -344,14 +299,6 @@
 		current_skin = choice
 		icon_state = unique_reskin[choice]
 		to_chat(M, "[src] is now skinned as '[choice].'")
-
-/obj/analyzer_act(mob/living/user, obj/item/I)
-	if(atmosanalyzer_scan(user, src))
-		return TRUE
-	return ..()
-
-/obj/proc/plunger_act(obj/item/plunger/P, mob/living/user, reinforced)
-	return
 
 // Should move all contained objects to it's location.
 /obj/proc/dump_contents()

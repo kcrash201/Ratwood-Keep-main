@@ -27,6 +27,7 @@
 	color = null
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
+	ignore_sleeves_code = TRUE // No sleeves, otherwise arms will be over the sprite
 
 /obj/item/clothing/suit/roguetown/shirt/robe/noc
 	slot_flags = ITEM_SLOT_ARMOR
@@ -41,6 +42,7 @@
 	color = null
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
+	ignore_sleeves_code = TRUE // No sleeves, otherwise arms will be over the sprite
 
 /obj/item/clothing/suit/roguetown/shirt/robe/necromancer
 	slot_flags = ITEM_SLOT_ARMOR
@@ -55,6 +57,7 @@
 	color = null
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
+	ignore_sleeves_code = TRUE // No sleeves, otherwise arms will be over the sprite
 
 /obj/item/clothing/suit/roguetown/shirt/robe/dendor
 	slot_flags = ITEM_SLOT_ARMOR
@@ -69,6 +72,7 @@
 	color = null
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
+	ignore_sleeves_code = TRUE // No sleeves, otherwise arms will be over the sprite
 
 /obj/item/clothing/suit/roguetown/shirt/robe/necra
 	slot_flags = ITEM_SLOT_ARMOR
@@ -85,15 +89,19 @@
 	l_sleeve_status = SLEEVE_NORMAL
 
 /obj/item/clothing/suit/roguetown/shirt/robe/black
-	color = null
+	color = "#222222"
 
 /obj/item/clothing/suit/roguetown/shirt/robe/white
-	color = null
+	color = "#F9F9F9"
 
 /obj/item/clothing/suit/roguetown/shirt/robe/priest
 	name = "solar vestments"
 	desc = "Holy vestments sanctified by divine hands. Caution is advised if not a faithful."
+	body_parts_covered = CHEST|GROIN|ARMS|LEGS|VITALS
 	icon_state = "priestrobe"
+	resistance_flags = FIRE_PROOF | ACID_PROOF
+	armor = list("blunt" = 25, "slash" = 25, "stab" = 25, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	color = null
 
 /obj/item/clothing/suit/roguetown/shirt/robe/priest/pickup(mob/living/user)
@@ -168,3 +176,49 @@
 	flags_inv = HIDEBOOB|HIDETAIL //DO NOT CHANGE THIS, I WILL THROW HANDS WITH YOU IDIOTS
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
+	
+/obj/item/clothing/suit/roguetown/shirt/robe/eora
+	slot_flags = ITEM_SLOT_ARMOR
+	name = "eoran robe"
+	desc = "Holy robes, intended for use by followers of Eora."
+	body_parts_covered = CHEST|GROIN|ARMS|LEGS|VITALS
+	icon_state = "eorarobes"
+	icon = 'icons/roguetown/clothing/armor.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/armor.dmi'
+	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_armor.dmi'
+	boobed = TRUE
+	color = null
+	flags_inv = HIDEBOOB|HIDECROTCH
+	r_sleeve_status = SLEEVE_NORMAL
+	l_sleeve_status = SLEEVE_NORMAL
+	var/fanatic_wear = FALSE
+
+/obj/item/clothing/suit/roguetown/shirt/robe/eora/alt
+	name = "raised eoran robe"
+	desc = "A raised robe that exposes legs and makes getting around the terrain more comfortable."
+	body_parts_covered = null
+	icon_state = "eorastraps"
+	fanatic_wear = TRUE
+
+/obj/item/clothing/suit/roguetown/shirt/robe/eora/attack_right(mob/user)
+	switch(fanatic_wear)
+		if(FALSE)
+			name = "raised eoran robe"
+			desc = "A raised eoran robe that exposes legs and makes getting around the terrain more comfortable."
+			body_parts_covered = CHEST|GROIN|ARMS|VITALS
+			icon_state = "eorastraps"
+			fanatic_wear = TRUE
+			flags_inv = HIDEBOOB|HIDECROTCH
+			to_chat(usr, span_warning("Now wearing differently."))
+		if(TRUE)
+			name = "eoran robe"
+			desc = "Holy robes, intended for use by followers of Eora."
+			body_parts_covered = CHEST|GROIN|ARMS|LEGS|VITALS
+			icon_state = "eorarobes"
+			fanatic_wear = FALSE
+			flags_inv = HIDEBOOB|HIDECROTCH
+			to_chat(usr, span_warning("Now wearing normally."))
+	update_icon()
+	if(ismob(loc))
+		var/mob/L = loc
+		L.update_inv_armor()
