@@ -44,7 +44,7 @@
 	for(var/datum/mind/MF in get_minds())
 		owner.become_unknown_to(MF)
 	var/mob/living/carbon/human/L = owner.current
-	ADD_TRAIT(L, TRAIT_NOROGSTAM, "[type]")
+	ADD_TRAIT(L, TRAIT_NOSTAMINA, "[type]")
 	ADD_TRAIT(L, TRAIT_NOHUNGER, "[type]")
 	ADD_TRAIT(L, TRAIT_NOBREATH, "[type]")
 	ADD_TRAIT(L, TRAIT_NOPAIN, "[type]")
@@ -60,6 +60,8 @@
 	ADD_TRAIT(L, TRAIT_SEEPRICES, "[type]")
 	ADD_TRAIT(L, TRAIT_CRITICAL_RESISTANCE, "[type]")
 	ADD_TRAIT(L, TRAIT_HEAVYARMOR, "[type]")
+	ADD_TRAIT(L, TRAIT_SPECIALUNDEAD, "[type]") //Prevents necromancers from "reanimating" them to kill them. Any new undead type should have this.
+
 	L.cmode_music = 'sound/music/combat_cult.ogg'
 	L.faction = list("undead")
 	if(L.charflaw)
@@ -121,6 +123,7 @@
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/sickness)
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/fetch)
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/diagnose/secular)
+	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/revoke_unlife)
 	H.ambushable = FALSE
 
 	addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, choose_name_popup), "LICH"), 5 SECONDS)

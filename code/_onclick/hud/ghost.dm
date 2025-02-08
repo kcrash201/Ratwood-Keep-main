@@ -95,6 +95,7 @@
 	var/mob/dead/observer/G = usr
 	G.ghost_down()
 
+
 /datum/hud/ghost/New(mob/owner)
 	..()
 	var/atom/movable/screen/using
@@ -132,6 +133,7 @@
 	using = new /atom/movable/screen/ghost/teleport(null, src)
 	using.screen_loc = ui_ghost_teleport
 	static_inventory += using
+
 
 	using = new /atom/movable/screen/ghost/moveup(null, src)
 	using.screen_loc = ui_ghost_moveup

@@ -11,7 +11,7 @@
 	/datum/species/lupian,\
 	/datum/species/tabaxi,\
 	/datum/species/vulpkanin,\
-	/datum/species/akula,\
+	/datum/species/axian,\
 	/datum/species/moth,\
 	/datum/species/dracon,\
 	/datum/species/anthromorph,\
@@ -37,7 +37,7 @@
 #define RACES_TOLERATED \
 	/datum/species/lizardfolk,\
 	/datum/species/tabaxi,\
-	/datum/species/akula,\
+	/datum/species/axian,\
 	/datum/species/anthromorph,\
 	/datum/species/demihuman
 
@@ -56,6 +56,10 @@
 #define RACES_SEELIE \
 	/datum/species/seelie	//Seelie having its own global define and nothing else will prevent allowing it via RACES_ALL_KINDS
 
+#define RACES_SMOLFOLK \
+	/datum/species/anthromorphsmall,\
+	/datum/species/kobold
+
 #define RACES_ALL_KINDS list(RACES_SHUNNED, RACES_TOLERATED, RACES_VERY_SHUNNED, RACES_RESPECTED)
 
 #define RACES_NEARLY_ALL_PLUS_SEELIE list(RACES_SHUNNED, RACES_TOLERATED, RACES_VERY_SHUNNED, RACES_RESPECTED, RACES_SEELIE)
@@ -67,6 +71,8 @@
 #define RACES_SHUNNED_UP_PLUS_SEELIE list(RACES_SHUNNED, RACES_TOLERATED, RACES_RESPECTED, RACES_SEELIE)
 
 #define RACES_TOLERATED_UP list(RACES_TOLERATED, RACES_RESPECTED)
+
+#define RACES_TOLERATED_UP_PLUS_SMOLFOLK list(RACES_TOLERATED, RACES_SMOLFOLK, RACES_RESPECTED)
 
 #define NOBLE_RACES_TYPES list(\
 	/datum/species/human/northern,\
@@ -80,7 +86,7 @@
 	/datum/species/lupian,\
 	/datum/species/tabaxi,\
 	/datum/species/vulpkanin,\
-	/datum/species/akula,\
+	/datum/species/axian,\
 	/datum/species/moth,\
 	/datum/species/dracon,\
 	/datum/species/anthromorph,\
@@ -103,7 +109,7 @@
 	/datum/species/lupian,\
 	/datum/species/tabaxi,\
 	/datum/species/vulpkanin,\
-	/datum/species/akula,\
+	/datum/species/axian,\
 	/datum/species/moth,\
 	/datum/species/dracon,\
 	/datum/species/anthromorph,\
@@ -126,7 +132,7 @@
 	/datum/species/lupian,\
 	/datum/species/tabaxi,\
 	/datum/species/vulpkanin,\
-	/datum/species/akula,\
+	/datum/species/axian,\
 	/datum/species/moth,\
 	/datum/species/dracon,\
 	/datum/species/anthromorph,\
@@ -143,7 +149,7 @@
 	/datum/species/lupian,\
 	/datum/species/tabaxi,\
 	/datum/species/vulpkanin,\
-	/datum/species/akula,\
+	/datum/species/axian,\
 	/datum/species/moth,\
 	/datum/species/dracon,\
 	/datum/species/anthromorph,\
@@ -159,6 +165,17 @@
 	/datum/species/goblin/moon,\
 )
 
+
+#define RACES_WITH_BEARD_GROWTH list(\
+	/datum/species/human/northern,\
+	/datum/species/human/halfelf,\
+	/datum/species/elf/wood,\
+	/datum/species/dwarf/mountain,\
+	/datum/species/aasimar,\
+	/datum/species/demihuman,\
+	/datum/species/goblinp,\
+)
+
 #define ALL_CLERIC_PATRONS list(\
 	/datum/patron/divine/astrata,\
 	/datum/patron/divine/noc,\
@@ -167,6 +184,7 @@
 	/datum/patron/divine/pestra,\
 	/datum/patron/divine/malum,\
 	/datum/patron/divine/ravox,\
+	/datum/patron/divine/eora,\
 )
 
 #define ALL_ACOLYTE_PATRONS list(\
@@ -174,7 +192,8 @@
 	/datum/patron/divine/noc,\
 	/datum/patron/divine/dendor,\
 	/datum/patron/divine/pestra,\
-	/datum/patron/divine/malum\
+	/datum/patron/divine/malum,\
+	/datum/patron/divine/eora,\
 )
 
 #define ALL_DIVINE_PATRONS list(\
@@ -188,6 +207,24 @@
 	/datum/patron/divine/pestra,\
 	/datum/patron/divine/malum,\
 	/datum/patron/divine/eora\
+)
+
+#define ALL_PATRONS list(\
+	/datum/patron/divine/astrata,\
+	/datum/patron/divine/noc,\
+	/datum/patron/divine/dendor,\
+	/datum/patron/divine/abyssor,\
+	/datum/patron/divine/ravox,\
+	/datum/patron/divine/necra,\
+	/datum/patron/divine/xylix,\
+	/datum/patron/divine/pestra,\
+	/datum/patron/divine/malum,\
+	/datum/patron/divine/eora,\
+	/datum/patron/psydon,\
+	/datum/patron/zizo,\
+	/datum/patron/inhumen/matthios,\
+	/datum/patron/inhumen/baotha,\
+	/datum/patron/inhumen/graggar\
 )
 
 #define TEN_CURSES list(\
@@ -253,13 +290,14 @@ GLOBAL_LIST_INIT(lockhashes, list())
 GLOBAL_LIST_INIT(lockids, list())
 GLOBAL_LIST_EMPTY(credits_icons)
 GLOBAL_LIST_EMPTY(confessors)
+GLOBAL_LIST_EMPTY(cuckolds)
 
 //preference stuff
-#define FAMILY_NONE 1
+#define FAMILY_NONE 0
+#define FAMILY_FULL 1
 #define FAMILY_PARTIAL 2
-#define FAMILY_FULL 3
 
-GLOBAL_LIST_EMPTY(sunlights)
+
 GLOBAL_LIST_EMPTY(head_bounties)
 GLOBAL_LIST_EMPTY(job_respawn_delays)
 
@@ -270,17 +308,35 @@ GLOBAL_LIST_EMPTY(job_respawn_delays)
 	Currently used for classes
 */
 
+//General
 #define CTAG_ALLCLASS		"CAT_ALLCLASS"		// jus a define for allclass to not deal with actively typing strings
-#define CTAG_DISABLED 		"CAT_DISABLED" 		// Disabled, aka don't make it fuckin APPEAR
-#define CTAG_PILGRIM 		"CAT_PILGRIM"  		// Pilgrim classes
-#define CTAG_ADVENTURER 	"CAT_ADVENTURER"  	// Adventurer classes
-#define CTAG_TOWNER 		"CAT_TOWNER"  		// Villager class - Villagers can use it
-#define CTAG_ANTAG 			"CAT_ANTAG"  		// Antag class - results in an antag
+#define CTAG_DISABLED		"CAT_DISABLED"		// Disabled, aka don't make it fuckin APPEAR
+#define CTAG_CHALLENGE		"CAT_CHALLENGE"		// Challenge class - Meant to be free for everyone
+
+//City
+#define CTAG_TOWNER			"CAT_TOWNER"		// Villager class - Villagers can use it
+#define CTAG_MERCENARY		"CAT_MERCENARY"		// Mercs
+#define CTAG_HENCH			"CAT_HENCH"			// Whitevein Guards
+
+//Courtiers
+#define CTAG_SERVANT		"CAT_SERVANT"		// Maids and butlers
+#define CTAG_CLERK			"CAT_CLERK"			// Clerks
+
+//Garrison
+#define CTAG_BOG			"CAT_BOG"			// Vanguard
+#define CTAG_SQUIRE			"CAT_SQUIRE"		// Squires
+#define CTAG_MAA			"CAT_MAA"			// Man-At-Arms
+
+//Nobles			Eventually all of them will get their subclasses
+#define CTAG_HEIR			"CAT_HEIR"			// Heirs
+
+//Antags
 #define CTAG_BANDIT			"CAT_BANDIT"		// Bandit class - Tied to the bandit antag really
-#define CTAG_CHALLENGE 		"CAT_CHALLENGE"  	// Challenge class - Meant to be free for everyone
-#define CTAG_MERCENARY 		"CAT_MERCENARY" 	// Mercs
-#define CTAG_BOG 		"CAT_BOG" 	//Vanguard
-#define CTAG_GOBS 		"CAT_GOBS" 	// Goblin Guards
+#define CTAG_ANTAG			"CAT_ANTAG"			// Antag class - results in an antag
+#define CTAG_GOBS			"CAT_GOBS"			// Goblin Guards
+
+//Other
+#define CTAG_REFUGEE		"CAT_REFUGEE"		// Refugee classes
 
 /*
 	Defines for the triumph buy datum categories

@@ -225,6 +225,7 @@
 	character.mind.adjust_skillrank_up_to(/datum/skill/misc/stealing, 5, TRUE)
 	character.mind.adjust_skillrank_up_to(/datum/skill/misc/sneaking, 4, TRUE)
 	character.mind.adjust_skillrank_up_to(/datum/skill/misc/climbing, 3, TRUE)
+	character.mind.adjust_skillrank_up_to(/datum/skill/misc/lockpicking, 4, TRUE)
 
 /datum/special_trait/languagesavant
 	name = "Polyglot"
@@ -334,7 +335,7 @@
 	name = "Godless"
 	greet_text = span_notice("Gods may exist, but know what? I care not.")
 	req_text = "Non-Church Role"
-	restricted_jobs = list(CHURCH_ROLES)
+	restricted_jobs = list(CHURCH_ROLES, INQUISITION_ROLES)
 	weight = 100
 
 /datum/special_trait/atheism/on_apply(mob/living/carbon/human/character, silent)
@@ -355,12 +356,12 @@
 	greet_text = span_boldwarning("I've been denounced by the church for either reasons legitimate or not!")
 	req_text = "Non-church role"
 	weight = 100
-	restricted_jobs = list(CHURCH_ROLES)
+	restricted_jobs = list(CHURCH_ROLES, INQUISITION_ROLES)
 
 /datum/special_trait/hussite/on_apply(mob/living/carbon/human/character, silent)
 	GLOB.excommunicated_players += character.real_name
 	character.add_stress(/datum/stressevent/psycurse)
-	character.devotion.excommunicate()
+	character.devotion?.excommunicate()
 
 /datum/special_trait/bounty
 	name = "Hunted Man"
@@ -408,14 +409,6 @@
 /datum/special_trait/outlaw/on_apply(mob/living/carbon/human/character, silent)
 	make_outlaw(character.real_name, TRUE)
 
-/datum/special_trait/sillyvoice
-	name = "Annoying"
-	greet_text = span_sans("People really hate my voice for some reason.")
-	weight = 100
-
-/datum/special_trait/sillyvoice/on_apply(mob/living/carbon/human/character)
-	ADD_TRAIT(character, TRAIT_COMICSANS, "[type]")
-	character.dna.add_mutation(WACKY)
 
 /datum/special_trait/unlucky
 	name = "Unlucky"
@@ -424,7 +417,6 @@
 
 /datum/special_trait/unlucky/on_apply(mob/living/carbon/human/character, silent)
 	character.STALUC -= rand(1, 10)
-
 
 /datum/special_trait/jesterphobia
 	name = "Jesterphobic"
@@ -448,7 +440,7 @@
 	weight = 200
 
 /datum/special_trait/wild_night/on_apply(mob/living/carbon/human/character, silent)
-	var/turf/location = get_spawn_turf_for_job("Pilgrim")
+	var/turf/location = get_spawn_turf_for_job("Refugee")
 	character.forceMove(location)
 	grant_lit_torch(character)
 
@@ -490,82 +482,12 @@
 /datum/special_trait/nude_sleeper/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_NUDE_SLEEPER, "[type]")
 
-
-/datum/special_trait/loveless
-	name = "Loveless"
-	greet_text = span_boldwarning("I am unable to show any kind of affection or love, whether carnal or platonic.")
-	weight = 50
-
-/datum/special_trait/loveless/on_apply(mob/living/carbon/human/character, silent)
-	character.add_curse(/datum/curse/eora, TRUE)
-
-/datum/special_trait/pacifist
-	name = "Pacifist"
-	greet_text = span_boldwarning("Violence disgusts me. I cannot bring myself to wield any kind of weapon.")
-	weight = 50
-
-/datum/special_trait/pacifist/on_apply(mob/living/carbon/human/character, silent)
-	ADD_TRAIT(src, TRAIT_PACIFISM, TRAIT_GENERIC)
-
 //job specials
-/datum/special_trait/punkprincess //I think everyone will like the Rebellous Prince-Like Princess. I'd love to do one for the prince as well that gives him princess loadout, but, up to you!
-	name = "Rebellous Daughter"
-	greet_text = span_notice("I am quite rebellious for a noblewoman. Screw Noble Customs!")
-	req_text = "Be a princess"
-	allowed_sexes = list(FEMALE)
-	allowed_jobs = list(/datum/job/roguetown/prince)
-	weight = 50
-
-/datum/special_trait/punkprincess/on_apply(mob/living/carbon/human/character, silent)
-	QDEL_NULL(character.wear_pants)
-	QDEL_NULL(character.wear_shirt)
-	QDEL_NULL(character.wear_armor)
-	QDEL_NULL(character.shoes)
-	QDEL_NULL(character.belt)
-	QDEL_NULL(character.beltl)
-	QDEL_NULL(character.beltr)
-	QDEL_NULL(character.backr)
-	QDEL_NULL(character.head)
-	character.equip_to_slot_or_del(new /obj/item/clothing/under/roguetown/tights/random(character), SLOT_PANTS)
-	character.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/shirt/undershirt/guard(character), SLOT_SHIRT)
-	character.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/chainmail(character), SLOT_ARMOR)
-	character.equip_to_slot_or_del(new /obj/item/storage/belt/rogue/leather(character), SLOT_BELT)
-	character.equip_to_slot_or_del(new /obj/item/storage/belt/rogue/pouch/coins/rich(character), SLOT_BELT_R)
-	character.equip_to_slot_or_del(new /obj/item/storage/backpack/rogue/satchel(character), SLOT_BACK_R)
-	character.equip_to_slot_or_del(new /obj/item/clothing/shoes/roguetown/armor/nobleboot(character), SLOT_SHOES)
-	character.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
-	character.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
-	character.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
-	character.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
-	character.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
-	character.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
-	character.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
-	character.mind.adjust_skillrank(/datum/skill/misc/reading, -2, TRUE)
-	character.mind.adjust_skillrank(/datum/skill/misc/sneaking, -2, TRUE)
-	character.mind.adjust_skillrank(/datum/skill/misc/stealing, -2, TRUE)
-
-/datum/special_trait/vengantbum
-	name = "Vengant Bum"
-	greet_text = span_notice("I was once a nobleman, high on life until my father was murdered right in front of me. Thankfully, my mentor took me to safety and taught me all I needed to survive in these disgusting lands. They think I am a lowlife, but that's just an advantage.")
-	req_text = "Be a beggar or vagabond"
-	allowed_jobs = list(/datum/job/roguetown/beggar, /datum/job/roguetown/orphan)
-	weight = 7
-
-/datum/special_trait/vengantbum/on_apply(mob/living/carbon/human/character, silent)
-	ADD_TRAIT(character, TRAIT_NOBLE, "[type]")
-	ADD_TRAIT(character, TRAIT_DECEIVING_MEEKNESS, "[type]")
-	character.mind.adjust_skillrank(/datum/skill/combat/wrestling, 6, TRUE)
-	character.mind.adjust_skillrank(/datum/skill/combat/unarmed, 6, TRUE)
-	character.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 3, TRUE)
-	character.STASTR = 20
-	character.STACON = 20
-	character.STAEND = 20
-
 /datum/special_trait/my_precious
 	name = "My Precious"
 	greet_text = span_notice("The ring, it's so shiny.. so valuable, I can feel it's power. It's all mine!")
-	req_text = "Be a beggar or vagabond"
-	allowed_jobs = list(/datum/job/roguetown/beggar, /datum/job/roguetown/orphan)
+	req_text = "Be a beggar"
+	allowed_jobs = list(/datum/job/roguetown/beggar)
 	weight = 50
 
 /datum/special_trait/my_precious/on_apply(mob/living/carbon/human/character, silent)
@@ -593,7 +515,7 @@
 	name = "Reps for Redemption"
 	greet_text = span_notice("Pain has finally transformed into gain.")
 	req_text = "Be a Church Role"
-	allowed_jobs = list(CHURCH_ROLES)
+	allowed_jobs = list(CHURCH_ROLES, INQUISITION_ROLES)
 	weight = 50
 
 /datum/special_trait/reps_redemption/on_apply(mob/living/carbon/human/character)
@@ -606,11 +528,24 @@
 /datum/special_trait/seed_feed
 	name = "Seed & Feed"
 	greet_text = span_notice("Armed with seeds and the unwavering belief that sharing is mandatory. Bag safely stashed, until the next seed-worthy moment arises.")
-	req_text = "Be a Soilson, Towner or Pilgrim."
-	allowed_jobs = list(/datum/job/roguetown/farmer, /datum/job/roguetown/pilgrim, /datum/job/roguetown/villager)
+	req_text = "Be a Druid, Soilson, Towner or Refugee."
+	allowed_jobs = list(/datum/job/roguetown/farmer, /datum/job/roguetown/refugee, /datum/job/roguetown/towner, /datum/job/roguetown/druid)
 	weight = 100
 
 /datum/special_trait/seed_feed/on_apply(mob/living/carbon/human/character)
 	character.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
 	character.mind.special_items["The Bag"] = /obj/item/storage/roguebag/seedfeed
 	character.mind.special_items["The Sickle"] = /obj/item/rogueweapon/sickle
+
+//Keep that thang on ye, Priest, for the wicked folk will arrive soon.
+/datum/special_trait/priest_akimbo
+	name = "Runic Faith"
+	greet_text = span_notice("I keep two runelocks at me at all times. Unloaded, of course.")
+	req_text = "Be a Priest or Priestess"
+	allowed_jobs = list(/datum/job/roguetown/priest)
+	weight = 5
+
+/datum/special_trait/priest_akimbo/on_apply(mob/living/carbon/human/character, silent)
+	character.equip_to_slot_or_del(new /obj/item/gun/ballistic/revolver/grenadelauncher/runelock, SLOT_BELT_L)
+	character.equip_to_slot_or_del(new /obj/item/gun/ballistic/revolver/grenadelauncher/runelock, SLOT_BELT_R)
+	character.mind.adjust_skillrank(/datum/skill/combat/firearms, 4, TRUE)

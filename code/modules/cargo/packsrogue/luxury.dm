@@ -15,9 +15,14 @@
 	cost = 8
 	contains = list(/obj/item/clothing/mask/cigarette/rollie/cannabis)
 
+/datum/supply_pack/rogue/luxury/sshigs
+	name = "Sshig Brand Zigs"
+	cost = 25
+	contains = list(/obj/item/storage/fancy/shhig)
+
 /datum/supply_pack/rogue/luxury/perfume
 	name = "Perfume"
-	cost = 15
+	cost = 10 //steward can get these in bulk for 12 per
 	contains = list(/obj/item/perfume/random)
 
 /datum/supply_pack/rogue/luxury/ozium
@@ -80,6 +85,21 @@
 	cost = 10
 	contains = list(/obj/item/rogue/instrument/drum)
 
+/datum/supply_pack/rogue/luxury/deck
+	name = "Deck of cards"
+	cost = 15
+	contains = list(/obj/item/toy/cards/deck)
+
+/datum/supply_pack/rogue/luxury/dice
+	name = "Full bag of dice"
+	cost = 15
+	contains = list(/obj/item/storage/pill_bottle/dice)
+
+/datum/supply_pack/rogue/luxury/psiring
+	name = "Blessed Ring"
+	cost = 40
+	contains = list(/obj/item/clothing/ringP)
+
 /datum/supply_pack/rogue/luxury/nomag
 	name = "Ring of Null Magic"
 	cost = 300
@@ -92,15 +112,15 @@
 
 /datum/supply_pack/rogue/luxury/listenst
 	name = "Gemerald Choker"
-	cost = 250
+	cost = 200 //nerfs steward gaming
 	contains = list(/obj/item/listenstone)
 
 /datum/supply_pack/rogue/luxury/riddleofsteel
 	name = "Riddle of Steel"
-	cost = 400
+	cost = 200 //earlier freelance smith powerspikes and nerfs steward gaming
 	contains = list(/obj/item/riddleofsteel)
 
 /datum/supply_pack/rogue/luxury/lovepotion
 	name = "Love Potion"
-	cost = 600
-	contains = list(/obj/item/slimepotion/lovepotion)
+	cost = 300
+	contains = list(/obj/item/lovepotion)

@@ -5,7 +5,6 @@
 	name = "Tabaxi"
 	id = "tabaxi"
 
-	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | RACE_SWAP | ERT_SPAWN | SLIME_EXTRACT
 	desc = "<b>Tabaxi</b><br>\
 		Tabaxi are taller than most humans at six to seven feet.\
 		Their bodies are slender and covered in spotted or striped fur.\
@@ -46,6 +45,10 @@
 		"speed" = 2,
 		"fortune" = 0
 		)
+	specstats_f = list(
+		"strength" = -1,
+		"perception" = 1
+	)
 	enflamed_icon = "widefire"
 	organs = list(
 		ORGAN_SLOT_BRAIN = /obj/item/organ/brain,
@@ -106,9 +109,12 @@
 		/datum/body_marking/front,
 		/datum/body_marking/tonage,
 		/datum/body_marking/spotted,
+		/datum/body_marking/harlequin,
+		/datum/body_marking/harlequinreversed,
 	)
 	languages = list(
 		/datum/language/common,
+		/datum/language/felid
 	)
 	descriptor_choices = list(
 		/datum/descriptor_choice/height,
@@ -175,7 +181,61 @@
 /datum/species/tabaxi/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	..()
 	RegisterSignal(C, COMSIG_MOB_SAY, PROC_REF(handle_speech))
+	// Add Tabaxi-specific emotes
+	C.verbs += list(
+		/mob/proc/purr,
+		/mob/proc/hiss,
+		/mob/proc/meow,
+		/mob/proc/trill,
+	)
 
 /datum/species/tabaxi/on_species_loss(mob/living/carbon/C)
 	. = ..()
 	UnregisterSignal(C, COMSIG_MOB_SAY)
+	// Remove Tabaxi-specific emotes
+	C.verbs -= list(
+		/mob/proc/purr,
+		/mob/proc/hiss,
+		/mob/proc/meow,
+		/mob/proc/trill,
+	)
+
+/mob/proc/purr()
+	set name = "Purr"
+	set category = "Noises"
+	if(stat != CONSCIOUS)
+		return
+	if(next_move > world.time)
+		return
+	emote("purr")
+	next_move = world.time + 3 // 0.3 second cooldown
+
+/mob/proc/hiss()
+	set name = "Hiss"
+	set category = "Noises"
+	if(stat != CONSCIOUS)
+		return
+	if(next_move > world.time)
+		return
+	emote("hiss")
+	next_move = world.time + 3
+
+/mob/proc/meow()
+	set name = "Meow"
+	set category = "Noises"
+	if(stat != CONSCIOUS)
+		return
+	if(next_move > world.time)
+		return
+	emote("meow")
+	next_move = world.time + 3
+
+/mob/proc/trill()
+	set name = "Trill"
+	set category = "Noises"
+	if(stat != CONSCIOUS)
+		return
+	if(next_move > world.time)
+		return
+	emote("trill")
+	next_move = world.time + 3

@@ -40,6 +40,9 @@
 		return TRUE
 	return FALSE //return TRUE to avoid calling attackby after this proc does stuff
 
+/atom/proc/pre_attack_right(atom/A, mob/living/user, params)
+	return FALSE
+
 // No comment
 /atom/proc/attackby(obj/item/W, mob/user, params)
 	if(user.used_intent.tranged)
@@ -115,9 +118,9 @@
 				user.do_attack_animation(M, visual_effect_icon = user.used_intent.animname)
 			return
 	if(istype(user.rmb_intent, /datum/rmb_intent/strong))
-		user.rogfat_add(10)
+		user.stamina_add(10)
 	if(istype(user.rmb_intent, /datum/rmb_intent/swift))
-		user.rogfat_add(10)
+		user.stamina_add(10)
 	if(M.checkdefense(user.used_intent, user))
 		if(M.d_intent == INTENT_PARRY)
 			if(!M.get_active_held_item() && !M.get_inactive_held_item()) //we parried with a bracer, redirect damage
@@ -256,6 +259,9 @@
 				if(BCLASS_SMASH)
 					dullfactor = 1.5
 					cont = TRUE
+				if(BCLASS_DRILL)
+					dullfactor = 10
+					cont = TRUE
 				if(BCLASS_PICK)
 					dullfactor = 1.5
 					cont = TRUE
@@ -276,6 +282,9 @@
 				if(BCLASS_SMASH)
 					dullfactor = 1.5
 					cont = TRUE
+				if(BCLASS_DRILL)
+					dullfactor = 10
+					cont = TRUE
 				if(BCLASS_BLUNT)
 					cont = TRUE
 				if(BCLASS_PICK)
@@ -288,7 +297,8 @@
 		if(DULLING_PICK) //cannot deal damage if not a pick item. aka rock walls
 				    
 			if(user.used_intent.blade_class != BCLASS_PICK)
-				return 0
+				if(user.used_intent.blade_class != BCLASS_DRILL)
+					return 0
 			var/mob/living/miner = user
 			var/mineskill = miner.mind.get_skill_level(/datum/skill/labor/mining)
 			newforce = newforce * (8+(mineskill*1.5))
@@ -318,7 +328,7 @@
 	var/verbu = "hits"
 	verbu = pick(user.used_intent.attack_verb)
 	if(newforce > 1)
-		if(user.rogfat_add(5))
+		if(user.stamina_add(5))
 			user.visible_message(span_danger("[user] [verbu] [src] with [I]!"))
 		else
 			user.visible_message(span_warning("[user] [verbu] [src] with [I]!"))
@@ -345,7 +355,7 @@
 	var/verbu = "hits"
 	verbu = pick(user.used_intent.attack_verb)
 	if(newforce > 1)
-		if(user.rogfat_add(5))
+		if(user.stamina_add(5))
 			user.visible_message(span_danger("[user] [verbu] [src] with [I]!"))
 		else
 			user.visible_message(span_warning("[user] [verbu] [src] with [I]!"))

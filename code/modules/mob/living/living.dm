@@ -5,10 +5,6 @@
 	if(unique_name)
 		name = "[name] ([rand(1, 1000)])"
 		real_name = name
-	var/datum/atom_hud/data/human/medical/advanced/medhud = GLOB.huds[DATA_HUD_MEDICAL_ADVANCED]
-	medhud.add_to_hud(src)
-	for(var/datum/atom_hud/data/diagnostic/diag_hud in GLOB.huds)
-		diag_hud.add_to_hud(src)
 	faction += "[REF(src)]"
 	GLOB.mob_living_list += src
 	init_faith()
@@ -27,7 +23,6 @@
 	if(buckled)
 		buckled.unbuckle_mob(src,force=1)
 
-	remove_from_all_data_huds()
 	GLOB.mob_living_list -= src
 	QDEL_LIST(diseases)
 	for(var/s in ownedSoullinks)
@@ -42,18 +37,10 @@
 	sharedSoullinks = null
 	return ..()
 
-/mob/living/prepare_huds()
-	..()
-	prepare_data_huds()
-
-/mob/living/proc/prepare_data_huds()
-	med_hud_set_health()
-	med_hud_set_status()
-
 /mob/living/onZImpact(turf/T, levels)
 	if(HAS_TRAIT(src, TRAIT_NOFALLDAMAGE1))
-		if(levels <= 2 || isseelie(src))	
-			return 
+		if(levels <= 2 || isseelie(src))
+			return
 	var/points
 	for(var/i in 2 to levels)
 		i++
@@ -108,16 +95,6 @@
 	if(isliving(M))
 		var/mob/living/L = M
 		they_can_move = L.mobility_flags & MOBILITY_MOVE
-		//Also spread diseases
-		for(var/thing in diseases)
-			var/datum/disease/D = thing
-			if(D.spread_flags & DISEASE_SPREAD_CONTACT_SKIN)
-				L.ContactContractDisease(D)
-
-		for(var/thing in L.diseases)
-			var/datum/disease/D = thing
-			if(D.spread_flags & DISEASE_SPREAD_CONTACT_SKIN)
-				ContactContractDisease(D)
 
 		//Should stop you pushing a restrained person out of the way
 		if(L.pulledby && L.pulledby != src && L.pulledby != L && L.restrained())
@@ -258,23 +235,6 @@
 		if(!istype(M, /obj/item/clothing))
 			if(prob(I.block_chance*2))
 				return
-
-/mob/living/get_photo_description(obj/item/camera/camera)
-	var/list/mob_details = list()
-	var/list/holding = list()
-	var/len = length(held_items)
-	if(len)
-		for(var/obj/item/I in held_items)
-			if(!holding.len)
-				holding += "They are holding \a [I]"
-			else if(held_items.Find(I) == len)
-				holding += ", and \a [I]."
-			else
-				holding += ", \a [I]"
-	holding += "."
-	mob_details += "You can also see [src] on the photo[health < (maxHealth * 0.75) ? ", looking a bit hurt":""][holding ? ". [holding.Join("")]":"."]."
-	return mob_details.Join("")
-
 //Called when we bump onto an obj
 /mob/living/proc/ObjBump(obj/O)
 	return
@@ -299,14 +259,7 @@
 	if((AM.anchored && !push_anchored) || (force < (AM.move_resist * MOVE_FORCE_PUSH_RATIO)))
 		now_pushing = FALSE
 		return
-	if (istype(AM, /obj/structure/window))
-		var/obj/structure/window/W = AM
-		if(W.fulltile)
-			for(var/obj/structure/window/win in get_step(W,t))
-				now_pushing = FALSE
-				return
-//	if(pulling == AM)
-//		stop_pulling()
+
 	var/current_dir
 	if(isliving(AM))
 		current_dir = AM.dir
@@ -330,6 +283,8 @@
 /mob/living/carbon/proc/kick_attack_check(mob/living/L)
 	if(L == src)
 		return FALSE
+	if(!(src.mobility_flags & MOBILITY_STAND))
+		return TRUE
 	var/list/acceptable = list(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG, BODY_ZONE_R_ARM, BODY_ZONE_CHEST, BODY_ZONE_L_ARM)
 	if( !(check_zone(L.zone_selected) in acceptable) )
 		to_chat(L, span_warning("I can't reach that."))
@@ -392,18 +347,6 @@
 
 	changeNext_move(CLICK_CD_GRABBING)
 
-//	if(AM.pulledby && AM.pulledby != src)
-//		if(AM == src)
-//			to_chat(src, span_warning("I'm being grabbed by something!"))
-//			return FALSE
-//		else
-//			if(!supress_message)
-//				AM.visible_message(span_danger("[src] has pulled [AM] from [AM.pulledby]'s grip."), span_danger("[src] has pulled me from [AM.pulledby]'s grip."), null, null, src)
-//								
-//				to_chat(src, span_notice("I pull [AM] from [AM.pulledby]'s grip!"))
-//			log_combat(AM, AM.pulledby, "pulled from", src)
-//			AM.pulledby.stop_pulling() //an object can't be pulled by two mobs at once.
-
 	if(AM != src)
 		pulling = AM
 		AM.pulledby = src
@@ -415,17 +358,6 @@
 			M.LAssailant = null
 		else
 			M.LAssailant = usr
-
-		//Share diseases that are spread by touch
-		for(var/thing in diseases)
-			var/datum/disease/D = thing
-			if(D.spread_flags & DISEASE_SPREAD_CONTACT_SKIN)
-				M.ContactContractDisease(D)
-
-		for(var/thing in M.diseases)
-			var/datum/disease/D = thing
-			if(D.spread_flags & DISEASE_SPREAD_CONTACT_SKIN)
-				ContactContractDisease(D)
 
 		// Makes it so people who recently broke out of grabs cannot be grabbed again
 		if(TIMER_COOLDOWN_RUNNING(M, "broke_free") && M.stat == CONSCIOUS)
@@ -538,16 +470,11 @@
 		if(mob_offsets[index])
 			reset_offsets(index)
 		mob_offsets[index] = list("x" = _x, "y" = _y)
-//		pixel_x = pixel_x + mob_offsets[index]["x"]
-//		pixel_y = pixel_y + mob_offsets[index]["y"]
 	update_transform()
 
 /mob/living/proc/reset_offsets(index)
 	if(index)
 		if(mob_offsets[index])
-//			animate(src, pixel_x = pixel_x - mob_offsets[index]["x"], pixel_y = pixel_y - mob_offsets[index]["y"], 1)
-//			pixel_x = pixel_x - mob_offsets[index]["x"]
-//			pixel_y = pixel_y - mob_offsets[index]["y"]
 			mob_offsets[index] = null
 	update_transform()
 
@@ -638,11 +565,6 @@
 
 /mob/living/proc/InFullCritical()
 	return ((health <= HEALTH_THRESHOLD_FULLCRIT) && stat == UNCONSCIOUS)
-
-//This proc is used for mobs which are affected by pressure to calculate the amount of pressure that actually
-//affects them once clothing is factored in. ~Errorage
-/mob/living/proc/calculate_affecting_pressure(pressure)
-	return pressure
 
 /mob/living/proc/getMaxHealth()
 	return maxHealth
@@ -771,8 +693,6 @@
 	for(var/i in ret.Copy())			//iterate storage objects
 		var/atom/A = i
 		SEND_SIGNAL(A, COMSIG_TRY_STORAGE_RETURN_INVENTORY, ret)
-	for(var/obj/item/folder/F in ret.Copy())		//very snowflakey-ly iterate folders
-		ret |= F.contents
 	return ret
 
 // Living mobs use can_inject() to make sure that the mob is not syringe-proof in general.
@@ -793,17 +713,14 @@
 	if(HAS_TRAIT(src, TRAIT_SIMPLE_WOUNDS))
 		if(blood_volume <= 0)
 			health = 0
-	staminaloss = getStaminaLoss()
 	update_stat()
-	med_hud_set_health()
-	med_hud_set_status()
+	SEND_SIGNAL(src, COMSIG_LIVING_HEALTH_UPDATE)
 
 //Proc used to resuscitate a mob, for full_heal see fully_heal()
 /mob/living/proc/revive(full_heal = FALSE, admin_revive = FALSE)
 	SEND_SIGNAL(src, COMSIG_LIVING_REVIVE, full_heal, admin_revive)
 	if(full_heal)
 		fully_heal(admin_revive = admin_revive)
-		remove_status_effect(/datum/status_effect/debuff/death_weaken)
 	if(stat == DEAD && (admin_revive || can_be_revived())) //in some cases you can't revive (e.g. no brain)
 		GLOB.dead_mob_list -= src
 		GLOB.alive_mob_list += src
@@ -833,7 +750,6 @@
 	SetImmobilized(0, FALSE)
 	SetParalyzed(0, FALSE)
 	SetSleeping(0, FALSE)
-	setStaminaLoss(0)
 	SetUnconscious(0, FALSE)
 	if(should_update_mobility)
 		update_mobility()
@@ -855,7 +771,6 @@
 	setCloneLoss(0, 0)
 	remove_CC(FALSE)
 	set_disgust(0)
-	radiation = 0
 	set_nutrition(NUTRITION_LEVEL_FED + 50)
 	bodytemperature = BODYTEMP_NORMAL
 	set_blindness(0)
@@ -996,7 +911,7 @@
 				if((newdir in GLOB.cardinals) && (prob(50)))
 					newdir = turn(get_dir(target_turf, start), 180)
 				if(!blood_exists)
-					new /obj/effect/decal/cleanable/trail_holder(start, get_static_viruses())
+					new /obj/effect/decal/cleanable/trail_holder(start)
 
 				for(var/obj/effect/decal/cleanable/trail_holder/TH in start)
 					if((!(newdir in TH.existing_dirs) || trail_type == "trails_1" || trail_type == "trails_2") && TH.existing_dirs.len <= 16) //maximum amount of overlays is 16 (all light & heavy directions filled)
@@ -1014,35 +929,6 @@
 		return pick("ltrails_1", "ltrails_2")
 	else
 		return pick("trails_1", "trails_2")
-
-/mob/living/experience_pressure_difference(pressure_difference, direction, pressure_resistance_prob_delta = 0)
-	if(buckled)
-		return
-	if(client && client.move_delay >= world.time + world.tick_lag*2)
-		pressure_resistance_prob_delta -= 30
-
-	var/list/turfs_to_check = list()
-
-	if(has_limbs)
-		var/turf/T = get_step(src, angle2dir(dir2angle(direction)+90))
-		if (T)
-			turfs_to_check += T
-
-		T = get_step(src, angle2dir(dir2angle(direction)-90))
-		if(T)
-			turfs_to_check += T
-
-		for(var/t in turfs_to_check)
-			T = t
-			if(T.density)
-				pressure_resistance_prob_delta -= 20
-				continue
-			for (var/atom/movable/AM in T)
-				if (AM.density && AM.anchored)
-					pressure_resistance_prob_delta -= 20
-					break
-	if(!force_moving)
-		..(pressure_difference, direction, pressure_resistance_prob_delta)
 
 /mob/living/can_resist()
 	return !((next_move > world.time) || incapacitated(ignore_restraints = TRUE, ignore_stasis = TRUE))
@@ -1078,6 +964,8 @@
 	else if(mobility_flags & MOBILITY_MOVE)
 		if(on_fire)
 			resist_fire() //stop, drop, and roll
+		else if(has_status_effect(/datum/status_effect/leash_pet))
+			resist_leash()
 		else if(last_special <= world.time)
 			resist_restraints() //trying to remove cuffs.
 
@@ -1168,7 +1056,7 @@
 	if(moving_resist && client) //we resisted by trying to move
 		client.move_delay = world.time + 20
 	if(prob(resist_chance))
-		rogfat_add(rand(5,15))
+		stamina_add(rand(5,15))
 		visible_message(span_warning("[src] breaks free of [pulledby]'s grip!"), \
 						span_notice("I break free of [pulledby]'s grip!"), null, null, pulledby)
 		to_chat(pulledby, span_danger("[src] breaks free of my grip!"))
@@ -1183,7 +1071,7 @@
 
 		return FALSE
 	else
-		rogfat_add(rand(5,15))
+		stamina_add(rand(5,15))
 		var/shitte = ""
 //		if(client?.prefs.showrolls)
 //			shitte = " ([resist_chance]%)"
@@ -1214,6 +1102,9 @@
 	return TRUE
 
 /mob/living/proc/resist_fire()
+	return
+
+/mob/living/proc/resist_leash()
 	return
 
 /mob/living/proc/resist_restraints()
@@ -1272,7 +1163,7 @@
 	if(check_arm_grabbed(active_hand_index))
 		to_chat(src, span_warning("Someone is grabbing my arm!"))
 		return
-	
+
 	if(istype(src, /mob/living/carbon/spirit))
 		to_chat(src, span_warning("Your hands pass right through \the [what]!"))
 		return
@@ -1355,13 +1246,6 @@
 		else
 			src << browse(null,"window=mob[REF(who)]")
 
-/mob/living/singularity_pull(S, current_size)
-	..()
-	if(current_size >= STAGE_SIX) //your puny magboots/wings/whatever will not save you against supermatter singularity
-		throw_at(S, 14, 3, src, TRUE)
-	else if(!src.mob_negates_gravity())
-		step_towards(src,S)
-
 /mob/living/proc/do_jitter_animation(jitteriness)
 	var/amplitude = min(4, (jitteriness/100) + 1)
 	var/pixel_x_diff = rand(-amplitude, amplitude)
@@ -1371,18 +1255,6 @@
 	animate(src, pixel_x = pixel_x + pixel_x_diff, pixel_y = pixel_y + pixel_y_diff , time = 2, loop = 6)
 	animate(pixel_x = final_pixel_x , pixel_y = final_pixel_y , time = 2)
 	setMovetype(movement_type & ~FLOATING) // If we were without gravity, the bouncing animation got stopped, so we make sure to restart it in next life().
-
-/mob/living/proc/get_temperature(datum/gas_mixture/environment)
-	var/loc_temp = environment ? environment.temperature : T0C
-	if(isobj(loc))
-		var/obj/oloc = loc
-		var/obj_temp = oloc.return_temperature()
-		if(obj_temp != null)
-			loc_temp = obj_temp
-	else if(isspaceturf(get_turf(src)))
-		var/turf/heat_turf = get_turf(src)
-		loc_temp = heat_turf.temperature
-	return loc_temp
 
 /mob/living/proc/get_standard_pixel_x_offset(lying = 0)
 	var/_x = initial(pixel_x)
@@ -1419,9 +1291,6 @@
 		return FALSE
 	if(invisibility || alpha == 0)//cloaked
 		return FALSE
-	// Now, are they viewable by a camera? (This is last because it's the most intensive check)
-	if(!near_camera(src))
-		return FALSE
 	return TRUE
 
 //used in datum/reagents/reaction() proc
@@ -1452,12 +1321,6 @@
 		return FALSE
 	return TRUE
 
-/mob/living/proc/update_stamina()
-	return
-
-/mob/living/carbon/alien/update_stamina()
-	return
-
 /mob/living/proc/owns_soul()
 	if(mind)
 		return mind.soulOwner == mind
@@ -1466,24 +1329,10 @@
 /mob/living/proc/return_soul()
 	hellbound = 0
 	if(mind)
-		var/datum/antagonist/devil/devilInfo = mind.soulOwner.has_antag_datum(/datum/antagonist/devil)
-		if(devilInfo)//Not sure how this could be null, but let's just try anyway.
-			devilInfo.remove_soul(mind)
 		mind.soulOwner = mind
 
-/mob/living/proc/has_bane(banetype)
-	var/datum/antagonist/devil/devilInfo = is_devil(src)
-	return devilInfo && banetype == devilInfo.bane
-
 /mob/living/proc/check_weakness(obj/item/weapon, mob/living/attacker)
-	if(mind && mind.has_antag_datum(/datum/antagonist/devil))
-		return check_devil_bane_multiplier(weapon, attacker)
 	return 1 //This is not a boolean, it's the multiplier for the damage the weapon does.
-
-/mob/living/proc/check_acedia()
-	if(mind && mind.has_objective(/datum/objective/sintouched/acedia))
-		return TRUE
-	return FALSE
 
 /mob/living/throw_at(atom/target, range, speed, mob/thrower, spin=1, diagonals_first = 0, datum/callback/callback, force)
 	stop_pulling()
@@ -1500,27 +1349,6 @@
 	else
 		new_mob.key = key
 
-	for(var/para in hasparasites())
-		var/mob/living/simple_animal/hostile/guardian/G = para
-		G.summoner = new_mob
-		G.Recall()
-		to_chat(G, span_holoparasite("My summoner has changed form!"))
-
-/mob/living/rad_act(amount)
-	. = ..()
-
-	if(!amount || (amount < RAD_MOB_SKIN_PROTECTION) || HAS_TRAIT(src, TRAIT_RADIMMUNE))
-		return
-
-	amount -= RAD_BACKGROUND_RADIATION // This will always be at least 1 because of how skin protection is calculated
-
-	var/blocked = getarmor(null, "rad")
-
-	if(amount > RAD_BURN_THRESHOLD)
-		apply_damage(log(amount)*2, BURN, null, blocked)
-
-	apply_effect((amount*RAD_MOB_COEFFICIENT)/max(1, (radiation**2)*RAD_OVERDOSE_REDUCTION), EFFECT_IRRADIATE, blocked)
-
 /mob/living/anti_magic_check(magic = TRUE, holy = FALSE, tinfoil = FALSE, chargecost = 1, self = FALSE)
 	. = ..()
 	if(.)
@@ -1534,14 +1362,11 @@
 /mob/living/proc/fakefire()
 	return
 
-/mob/living/proc/unfry_mob() //Callback proc to tone down spam from multiple sizzling frying oil dipping.
-	REMOVE_TRAIT(src, TRAIT_OIL_FRIED, "cooking_oil_react")
-
 //Mobs on Fire
 /mob/living/proc/IgniteMob()
 	if(fire_stacks > 0 && !on_fire)
 		testing("ignis")
-		on_fire = 1
+		on_fire = TRUE
 		src.visible_message(span_warning("[src] catches fire!"), \
 						span_danger("I'm set on fire!"))
 		new/obj/effect/dummy/lighting_obj/moblight/fire(src)
@@ -1557,7 +1382,7 @@
 
 /mob/living/proc/ExtinguishMob()
 	if(on_fire)
-		on_fire = 0
+		on_fire = FALSE
 		fire_stacks = 0
 		for(var/obj/effect/dummy/lighting_obj/moblight/fire/F in src)
 			qdel(F)
@@ -1567,7 +1392,7 @@
 		update_fire()
 
 /mob/living/proc/adjust_fire_stacks(add_fire_stacks) //Adjusting the amount of fire_stacks we have on person
-	fire_stacks = CLAMP(fire_stacks + add_fire_stacks, -20, 20)
+	fire_stacks = CLAMP(fire_stacks + add_fire_stacks, -20, 100)
 	if(on_fire && fire_stacks <= 0)
 		ExtinguishMob()
 
@@ -1746,14 +1571,6 @@
 		statpanel("[A.panel]",A.get_panel_text(),A)
 
 /mob/living/lingcheck()
-	if(mind)
-		var/datum/antagonist/changeling/changeling = mind.has_antag_datum(/datum/antagonist/changeling)
-		if(changeling)
-			if(changeling.changeling_speak)
-				return LINGHIVE_LING
-			return LINGHIVE_OUTSIDER
-	if(mind && mind.linglink)
-		return LINGHIVE_LINK
 	return LINGHIVE_NONE
 
 /mob/living/forceMove(atom/destination)
@@ -1820,15 +1637,6 @@
 	mob_pickup(user)
 	return TRUE
 
-/mob/living/proc/get_static_viruses() //used when creating blood and other infective objects
-	if(!LAZYLEN(diseases))
-		return
-	var/list/datum/disease/result = list()
-	for(var/datum/disease/D in diseases)
-		var/static_virus = D.Copy()
-		result += static_virus
-	return result
-
 /mob/living/reset_perspective(atom/A)
 	if(..())
 		update_sight()
@@ -1837,7 +1645,6 @@
 			AT.get_remote_view_fullscreens(src)
 		else
 			clear_fullscreen("remote_view", 0)
-		update_pipe_vision()
 
 /mob/living/update_mouse_pointer()
 	..()
@@ -1893,7 +1700,6 @@
 			OXY:<font size='1'><a href='?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=oxygen' id='oxygen'>[getOxyLoss()]</a>
 			CLONE:<font size='1'><a href='?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=clone' id='clone'>[getCloneLoss()]</a>
 			BRAIN:<font size='1'><a href='?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=brain' id='brain'>[getOrganLoss(ORGAN_SLOT_BRAIN)]</a>
-			STAMINA:<font size='1'><a href='?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=stamina' id='stamina'>[getStaminaLoss()]</a>
 		</font>
 	"}
 
@@ -2036,7 +1842,7 @@
 	if(!istype(T))
 		return
 	changeNext_move(CLICK_CD_MELEE)
-	
+
 	var/_x = T.x-loc.x
 	var/_y = T.y-loc.y
 	var/dist = get_dist(src, T)
@@ -2096,7 +1902,7 @@
 		return
 
 	animate(client, pixel_x = 0, pixel_y = 0, 2, easing = SINE_EASING)
-	
+
 	if(client)
 		client.pixel_x = 0
 		client.pixel_y = 0

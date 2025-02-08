@@ -21,6 +21,16 @@
 	result = list(/obj/item/clothing/gloves/roguetown/leather)
 	reqs = list(/obj/item/natural/hide/cured = 1)
 
+/datum/crafting_recipe/roguetown/hunting/lcollar
+	name = "leather collar"
+	result = list(/obj/item/clothing/neck/roguetown/collar/leather)
+	reqs = list(/obj/item/natural/hide/cured = 1)
+
+/datum/crafting_recipe/roguetown/hunting/lleash
+	name = "leather leash"
+	result = list(/obj/item/leash/leather)
+	reqs = list(/obj/item/natural/hide/cured = 1)
+
 /datum/crafting_recipe/roguetown/hunting/bracers
 	name = "leather bracers"
 	result = list(/obj/item/clothing/wrists/roguetown/bracers/leather)
@@ -73,6 +83,14 @@
 				/obj/item/natural/fibers = 2)
 	sellprice = 15
 
+/datum/crafting_recipe/roguetown/hunting/powderflask
+	name = "powderflask"
+	result = /obj/item/powderflask
+	reqs = list(/obj/item/natural/hide/cured = 1,
+				/obj/item/natural/fibers = 2,
+				/datum/reagent/alch/syrum_ash = 15)
+	sellprice = 15
+
 /datum/crafting_recipe/roguetown/hunting/quiver
 	name = "quiver"
 	result = /obj/item/ammo_holder/quiver
@@ -80,6 +98,19 @@
 				/obj/item/natural/fibers = 2)
 	sellprice = 28
 
+/datum/crafting_recipe/roguetown/hunting/bulletpouch
+	name = "bullet pouch"
+	result = /obj/item/ammo_holder/bullet
+	reqs = list(/obj/item/natural/hide/cured = 2,
+				/obj/item/natural/fibers = 2)
+	sellprice = 28
+
+/datum/crafting_recipe/roguetown/hunting/bombpouch
+	name = "bomb pouch"
+	result = /obj/item/ammo_holder/bomb
+	reqs = list(/obj/item/natural/hide/cured = 2,
+				/obj/item/natural/fibers = 2)
+	sellprice = 28
 /datum/crafting_recipe/roguetown/hunting/saddle
 	name = "saddle"
 	result = /obj/item/natural/saddle
@@ -97,3 +128,9 @@
 	result = /obj/item/rogue/instrument/drum
 	reqs = list(/obj/item/natural/hide/cured = 1,/obj/item/grown/log/tree/small = 1)
 	sellprice = 5
+
+/datum/crafting_recipe/roguetown/hunting/bedroll
+	name = "bedroll"
+	result = /obj/item/bedroll
+	reqs = list(/obj/item/natural/hide/cured = 2, /obj/item/natural/cloth = 2, /obj/item/rope = 1)
+	sellprice = 50

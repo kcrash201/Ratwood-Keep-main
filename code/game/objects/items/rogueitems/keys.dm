@@ -12,6 +12,7 @@
 	lockhash = 0
 	lockid = null
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_MOUTH|ITEM_SLOT_NECK
+	drop_sound = 'sound/items/gems (1).ogg'
 	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/key/Initialize()
@@ -25,6 +26,20 @@
 				lockhash = rand(100,999)
 			GLOB.lockhashes += lockhash
 			GLOB.lockids[lockid] = lockhash
+
+/obj/item/lockpick
+	name = "lockpick"
+	desc = "A small, sharp piece of metal to aid opening locks in the absence of a key."
+	icon_state = "lockpick"
+	icon = 'icons/roguetown/items/keys.dmi'
+	lefthand_file = 'icons/mob/inhands/misc/food_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/misc/food_righthand.dmi'
+	w_class = WEIGHT_CLASS_TINY
+	dropshrink = 0.75
+	throwforce = 0
+	max_integrity = 10
+	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_MOUTH|ITEM_SLOT_NECK
+	destroy_sound = 'sound/items/pickbreak.ogg'
 
 //custom key
 /obj/item/key/custom
@@ -128,6 +143,12 @@
 	icon_state = "cheesekey"
 	lockid = "councillor"
 
+/obj/item/key/noble_guest_rooms
+	name = "noble guest rooms key"
+	desc = "This key opens the noble guest rooms."
+	icon_state = "cheesekey"
+	lockid = "guestroom"
+
 /obj/item/key/merchant
 	name = "merchant's key"
 	desc = "A merchant's key."
@@ -152,11 +173,11 @@
 	icon_state = "hornkey"
 	lockid = "tavern"
 
-/obj/item/key/velder
-	name = "elder's key"
-	desc = "This key should open and close the elder's home."
+/obj/item/key/mayor
+	name = "mayor's key"
+	desc = "This key should open and close the townhall and the mayor's home."
 	icon_state = "brownkey"
-	lockid = "velder"
+	lockid = "mayor"
 
 /obj/item/key/tavern/village
 	lockid = "vtavern"
@@ -319,15 +340,9 @@
 
 /obj/item/key/nightman
 	name = "nightmaster's key"
-	desc = "This regal key opens a few doors within the castle."
+	desc = "This rusted key opens the brothel."
 	icon_state = "greenkey"
 	lockid = "nightman"
-
-/obj/item/key/nightmaiden
-	name = "nightmaiden's key"
-	desc = "This regal key opens a few doors within the castle."
-	icon_state = "brownkey"
-	lockid = "nightmaiden"
 
 /obj/item/key/mercenary
 	name = "mercenary key"
@@ -482,4 +497,41 @@
 	icon_state = "eyekey"
 	lockid = "porta"
 
-// Towner homes keys
+// Ship key
+/obj/item/key/ship
+	name = "ship key"
+	desc = "This rusty key should open the lower dock of the harbor ship."
+	icon_state = "rustkey"
+	lockid = "ship"
+
+// Harbor key
+/obj/item/key/harbor
+	name = "harbor key"
+	desc = "This iron key should open harbor office, barracks and the watchtower."
+	icon_state = "spikekey"
+	lockid = "harbor"
+
+//Shop Keys
+/obj/item/key/portshop
+	name = "port shop key"
+	desc = "This old key opens shop in port area."
+	icon_state = "rustkey"
+	lockid = "portshop"
+
+/obj/item/key/street_smithshop01
+	name = "Street smithery key"
+	desc = "This old key opens shop in merchant street area."
+	icon_state = "rustkey"
+	lockid = "street_smithshop01"
+
+/obj/item/key/street_shop01
+	name = "Street shop key #1"
+	desc = "This old key opens shop #1 in merchant street area."
+	icon_state = "rustkey"
+	lockid = "street_shop01"
+
+/obj/item/key/street_shop02
+	name = "Street shop key #2"
+	desc = "This old key opens shop #2 behind the mayor's house."
+	icon_state = "rustkey"
+	lockid = "street_shop02"

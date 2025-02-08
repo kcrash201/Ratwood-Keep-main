@@ -51,9 +51,9 @@
 			else	
 				to_chat(user, span_warning("Wrong key."))
 				return
-	if(istype(P, /obj/item/keyring))
-		var/obj/item/keyring/K = P
-		for(var/obj/item/key/KE in K.keys)
+	if(istype(P, /obj/item/storage/keyring))
+		var/obj/item/storage/keyring/K = P
+		for(var/obj/item/key/KE in K.contents)
 			if(KE.lockid == lockid)
 				locked = !locked
 				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
@@ -276,3 +276,57 @@
 		held_items[P]["NAME"] = P.name
 		held_items[P]["PRICE"] = 100
 	update_icon()
+
+//Buyable shops vendors
+
+/obj/structure/roguemachine/vendor/portshop
+	lockid = "steward"
+	name = "Portshop key seller."
+	desc = "Get key from shop here!"
+
+/obj/structure/roguemachine/vendor/portshop/Initialize()
+	. = ..()
+	for(var/X in list(/obj/item/key/portshop))
+		var/obj/P = new X(src)
+		held_items[P] = list()
+		held_items[P]["NAME"] = P.name
+		held_items[P]["PRICE"] = 7
+
+/obj/structure/roguemachine/vendor/street_smithshop01
+	lockid = "steward"
+	name = "Smith shop key seller."
+	desc = "Get key from shop here!"
+
+/obj/structure/roguemachine/vendor/street_smithshop01/Initialize()
+	. = ..()
+	for(var/X in list(/obj/item/key/street_smithshop01))
+		var/obj/P = new X(src)
+		held_items[P] = list()
+		held_items[P]["NAME"] = P.name
+		held_items[P]["PRICE"] = 7
+
+/obj/structure/roguemachine/vendor/street_shop01
+	lockid = "steward"
+	name = "Street shop key seller."
+	desc = "Get key from shop here!"
+
+/obj/structure/roguemachine/vendor/street_shop01/Initialize()
+	. = ..()
+	for(var/X in list(/obj/item/key/street_shop01))
+		var/obj/P = new X(src)
+		held_items[P] = list()
+		held_items[P]["NAME"] = P.name
+		held_items[P]["PRICE"] = 7
+
+/obj/structure/roguemachine/vendor/street_shop02
+	lockid = "steward"
+	name = "Street shop key seller."
+	desc = "Get key from shop here!"
+
+/obj/structure/roguemachine/vendor/street_shop02/Initialize()
+	. = ..()
+	for(var/X in list(/obj/item/key/street_shop02))
+		var/obj/P = new X(src)
+		held_items[P] = list()
+		held_items[P]["NAME"] = P.name
+		held_items[P]["PRICE"] = 7

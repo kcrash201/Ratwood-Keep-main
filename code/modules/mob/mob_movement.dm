@@ -9,8 +9,6 @@
   */
 /client/verb/drop_item()
 	set hidden = 1
-	if(!iscyborg(mob) && mob.stat == CONSCIOUS)
-		mob.dropItemToGround(mob.get_active_held_item(), silent = FALSE)
 	return
 
 /**
@@ -116,9 +114,6 @@
 	if(mob.remote_control)					//we're controlling something, our movement is relayed to it
 		return mob.remote_control.relaymove(mob, direct)
 
-	if(isAI(mob))
-		return AIMove(n,direct,mob)
-
 	if(Process_Grab()) //are we restrained by someone's grip?
 		return
 
@@ -162,10 +157,13 @@
 			if(L.m_intent == MOVE_INTENT_RUN)
 				L.toggle_rogmove_intent(MOVE_INTENT_WALK)
 	else
-		if(L.dir != target_dir)
-			// Remove sprint intent if we change direction, but only if we sprinted atleast 1 tile
-			if(L.m_intent == MOVE_INTENT_RUN && L.sprinted_tiles > 0)
-				L.toggle_rogmove_intent(MOVE_INTENT_WALK)
+		if(prefs.toggles & RUN_MODE)
+			if(L.dir != target_dir)
+				if(L.m_intent == MOVE_INTENT_RUN && L.sprinted_tiles > 0)
+					L.toggle_rogmove_intent(MOVE_INTENT_WALK)
+		else if(L.dir != target_dir)
+			L.sprinted_tiles = 0
+
 
 	. = ..()
 
@@ -230,6 +228,13 @@
 			move_delay = world.time + 10
 			to_chat(src, span_warning("I can't move!"))
 			return TRUE
+	if(mob.pulling && isliving(mob.pulling))
+		var/mob/living/L = mob.pulling
+		var/mob/living/M = mob
+		if(L.cmode && !L.resting && !L.incapacitated() && M.grab_state < GRAB_AGGRESSIVE)
+			move_delay = world.time + 10
+			to_chat(src, span_warning("[L] still has footing! I need a stronger grip!"))
+			return TRUE    
 
 /**
   * Allows mobs to ignore density and phase through objects
@@ -302,10 +307,6 @@
 			if(stepTurf)
 				for(var/obj/effect/decal/cleanable/food/salt/S in stepTurf)
 					to_chat(L, span_warning("[S] bars your passage!"))
-					if(isrevenant(L))
-						var/mob/living/simple_animal/revenant/R = L
-						R.reveal(20)
-						R.stun(20)
 					return
 				if(stepTurf.flags_1 & NOJAUNT_1)
 					to_chat(L, span_warning("Some strange aura is blocking the way."))
@@ -348,8 +349,6 @@
 			continue
 		else if(isturf(A))
 			var/turf/turf = A
-			if(isspaceturf(turf))
-				continue
 			if(!turf.density && !mob_negates_gravity())
 				continue
 			return A
@@ -594,7 +593,7 @@
 /mob/living/update_sneak_invis(reset = FALSE) //Why isn't this in mob/living/living_movements.dm? Why, I'm glad you asked!
 	if(ishuman(src))
 		if(mind)
-			rogue_sneaking_light_threshhold = (mind.get_skill_level(/datum/skill/misc/sneaking) * 0.092)+0.1 //THIS IS WHERE WE DO A LITTLE TROLLING. At 6 sneak skill, this raises the lumcount max from 0.15 to 1.0 (massive); but at 0 sneak skill... you are now brutually punished by needing pitch black to sneak!
+			rogue_sneaking_light_threshhold = (mind.get_skill_level(/datum/skill/misc/sneaking) * 0.101)+0.18 //This fixes all known rogue complaints involving new sneak.
 	if(!reset && world.time < mob_timers[MT_INVISIBILITY]) // Check if the mob is affected by the invisibility spell
 		rogue_sneaking = TRUE
 		return
@@ -637,9 +636,9 @@
 		if(MOVE_INTENT_RUN)
 			if(isliving(src))
 				var/mob/living/L = src
-				if(L.rogfat >= L.maxrogfat)
+				if(L.stamina >= L.max_stamina)
 					return
-				if(L.rogstam <= 0)
+				if(L.energy <= 0)
 					return
 				if(ishuman(L))
 					var/mob/living/carbon/human/H = L

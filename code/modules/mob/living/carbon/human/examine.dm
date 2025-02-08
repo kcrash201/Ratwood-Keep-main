@@ -40,11 +40,6 @@
 		m2 = "my"
 		m3 = "I have"
 
-	if(isliving(user))
-		var/mob/living/L = user
-		if(HAS_TRAIT(L, TRAIT_PROSOPAGNOSIA))
-			obscure_name = TRUE
-
 	var/static/list/unknown_names = list(
 		"Unknown",
 		"Unknown Man",
@@ -63,6 +58,10 @@
 		var/used_name = name
 		var/used_title = get_role_title()
 		var/display_as_wanderer = FALSE
+		var/display_as_foreign = FALSE
+		var/am_foreign = FALSE
+		var/are_mercenary = FALSE
+		var/am_mercenary = FALSE
 		var/is_returning = FALSE
 		if(observer_privilege)
 			used_name = real_name
@@ -70,12 +69,29 @@
 			var/datum/migrant_role/migrant = MIGRANT_ROLE(migrant_type)
 			if(migrant.show_wanderer_examine)
 				display_as_wanderer = TRUE
+			if(migrant.show_foreign_examine)
+				display_as_foreign = TRUE
 		else if(job)
 			var/datum/job/J = SSjob.GetJob(job)
 			if(J.wanderer_examine)
 				display_as_wanderer = TRUE
-			if(islatejoin)
+			if(J.foreign_examine)
+				display_as_foreign = TRUE
+			if(J.mercenary_examine)
+				are_mercenary = TRUE
+			if(islatejoin && !are_mercenary)
 				is_returning = TRUE
+		if(user.migrant_type)
+			var/datum/migrant_role/am_migrant = MIGRANT_ROLE(user.migrant_type)
+			if(am_migrant.show_foreign_examine)
+				am_foreign = TRUE
+		else if(user.job)
+			var/datum/job/OJ = SSjob.GetJob(user.job)
+			if(OJ.foreign_examine)
+				am_foreign = TRUE
+			if(OJ.mercenary_examine)
+				am_mercenary = TRUE
+
 		if(display_as_wanderer)
 			. = list("<span class='info'>ø ------------ ø\nThis is <EM>[used_name]</EM>, the wandering [race_name].")
 		else if(used_title)
@@ -112,8 +128,20 @@
 
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
-			if(H.marriedto == name)
-				. += span_love("It's my spouse.")
+			if(H.isFamily(src))
+				var/datum/relation/R = H.getRelationship(src)
+				if(R)
+					. += "It's my [R.name]!"
+			else if(family)
+				var/datum/family/F = getFamily()
+				if(F)
+					. += "Ah, they belong to the [F.name] family!"
+
+		if(display_as_foreign && user != src)
+			if(are_mercenary && am_mercenary)
+				. += span_notice("A Mercenary")
+			else if(!am_foreign)
+				. += span_phobia("A Foreigner...")
 
 		if(name in GLOB.excommunicated_players)
 			. += span_userdanger("EXCOMMUNICATED!")
@@ -137,12 +165,13 @@
 			if(mind.special_role == "Bandit")
 				if(HAS_TRAIT(user, TRAIT_COMMIE))
 					commie_text = span_notice("Free man!")
-				else
-					commie_text = span_userdanger("BANDIT!")
+
 			if(mind.special_role == "Vampire Lord")
 				. += span_userdanger("A MONSTER!")
+
 			if(mind.assigned_role == "Lunatic")
 				. += span_userdanger("LUNATIC!")
+
 			if(HAS_TRAIT(src, TRAIT_PUNISHMENT_CURSE))
 				. += span_userdanger("CURSED!")
 
@@ -256,8 +285,8 @@
 	if(!(SLOT_GLASSES in obscured))
 		if(glasses)
 			. += "[m3] [glasses.get_examine_string(user)] covering [m2] eyes."
-		else if(eye_color == BLOODCULT_EYE && iscultist(src) && HAS_TRAIT(src, CULT_EYES))
-			. += span_warning("<B>[m2] eyes are glowing an unnatural red!</B>")
+		else if(eye_color == BLOODCULT_EYE)
+			. += "<span class='warning'><B>[m2] eyes are glowing an unnatural red!</B></span>"
 
 	//ears
 	if(ears && !(SLOT_HEAD in obscured))
@@ -277,9 +306,12 @@
 			. += "<span class='warning'>[m1] tied up with \a [handcuffed]!</span>"
 		else
 			. += "<A href='?src=[REF(src)];item=[SLOT_HANDCUFFED]'><span class='warning'>[m1] tied up with \a [handcuffed]!</span></A>"
- 
+
 	if(legcuffed)
 		. += "<A href='?src=[REF(src)];item=[SLOT_LEGCUFFED]'><span class='warning'>[m3] \a [legcuffed] around [m2] legs!</span></A>"
+
+	if(has_status_effect(/datum/status_effect/leash_pet))
+		. += "<A href='?src=[REF(src)];'><span class='warning'>[m3] \a leash hooked to [m2] collar!</span></A>"
 
 	//Gets encapsulated with a warning span
 	var/list/msg = list()
@@ -457,7 +489,7 @@
 			msg += span_warning("[m1] barely conscious.")
 		else
 			if(stat >= UNCONSCIOUS)
-				msg += "[m1] [IsSleeping() ? "sleeping" : "unconscious"]."
+				msg += "[m1] [IsSleeping() ? "sleeping" : "unconscious"].[client ? "" : " <b>They won't be waking up for a while.</b>"]"
 			else if(eyesclosed)
 				msg += "[capitalize(m2)] eyes are closed."
 			else if(has_status_effect(/datum/status_effect/debuff/sleepytime))
@@ -518,7 +550,7 @@
 				var/W = LAZYACCESS(heart.maniacs2wonder_ids, M)
 				var/N = M.owner?.name
 				. += span_notice("Inscryption[N ? " by [N]'s " : ""][W ? "Wonder #[W]" : ""]: [K ? K : ""]")
-				
+
 
 	if(Adjacent(user) || aghost_privilege)
 		if(observer_privilege)
@@ -554,48 +586,6 @@
 	var/trait_exam = common_trait_examine()
 	if(!isnull(trait_exam))
 		. += trait_exam
-
-	var/traitstring = get_trait_string()
-
-	var/perpname = get_face_name(get_id_name(""))
-	if(perpname && (HAS_TRAIT(user, TRAIT_SECURITY_HUD) || HAS_TRAIT(user, TRAIT_MEDICAL_HUD)))
-		var/datum/data/record/R = find_record("name", perpname, GLOB.data_core.general)
-		if(R)
-			. += "<span class='deptradio'>Rank:</span> [R.fields["rank"]]\n<a href='?src=[REF(src)];hud=1;photo_front=1'>\[Front photo\]</a><a href='?src=[REF(src)];hud=1;photo_side=1'>\[Side photo\]</a>"
-		if(HAS_TRAIT(user, TRAIT_MEDICAL_HUD))
-			var/cyberimp_detect
-			for(var/obj/item/organ/cyberimp/CI in internal_organs)
-				if(CI.status == ORGAN_ROBOTIC && !CI.syndicate_implant)
-					cyberimp_detect += "[name] is modified with a [CI.name]."
-			if(cyberimp_detect)
-				. += "Detected cybernetic modifications:"
-				. += cyberimp_detect
-			if(R)
-				var/health_r = R.fields["p_stat"]
-				. += "<a href='?src=[REF(src)];hud=m;p_stat=1'>\[[health_r]\]</a>"
-				health_r = R.fields["m_stat"]
-				. += "<a href='?src=[REF(src)];hud=m;m_stat=1'>\[[health_r]\]</a>"
-			R = find_record("name", perpname, GLOB.data_core.medical)
-			if(R)
-				. += "<a href='?src=[REF(src)];hud=m;evaluation=1'>\[Medical evaluation\]</a><br>"
-			if(traitstring)
-				. += "<span class='info'>Detected physiological traits:\n[traitstring]"
-
-		if(HAS_TRAIT(user, TRAIT_SECURITY_HUD))
-			if(!user.stat && user != src)
-			//|| !user.canmove || user.restrained()) Fluff: Sechuds have eye-tracking technology and sets 'arrest' to people that the wearer looks and blinks at.
-				var/criminal = "None"
-
-				R = find_record("name", perpname, GLOB.data_core.security)
-				if(R)
-					criminal = R.fields["criminal"]
-
-				. += "<span class='deptradio'>Criminal status:</span> <a href='?src=[REF(src)];hud=s;status=1'>\[[criminal]\]</a>"
-				. += jointext(list("<span class='deptradio'>Security record:</span> <a href='?src=[REF(src)];hud=s;view=1'>\[View\]</a>",
-					"<a href='?src=[REF(src)];hud=s;add_crime=1'>\[Add crime\]</a>",
-					"<a href='?src=[REF(src)];hud=s;view_comment=1'>\[View comment log\]</a>",
-					"<a href='?src=[REF(src)];hud=s;add_comment=1'>\[Add comment\]</a>"), "")
-	. += "ø ------------ ø</span>"
 
 /mob/living/proc/status_effect_examines(pronoun_replacement) //You can include this in any mob's examine() to show the examine texts of status effects!
 	var/list/dat = list()
