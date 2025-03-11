@@ -41,7 +41,6 @@
 	backl = null
 	if(H.mind)
 		assign_skills(H)
-	H.verbs |= /mob/proc/haltyell
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 
 /datum/outfit/job/roguetown/citywatch/proc/assign_skills(mob/living/carbon/human/guard)
@@ -61,8 +60,8 @@
 	guard.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 	guard.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
 	guard.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
-	guard.change_stat("strength", 1)
-	guard.change_stat("perception", 2)
+	guard.change_stat("strength", 2)
+	guard.change_stat("perception", 1)
 	guard.change_stat("constitution", 1)
 	guard.change_stat("endurance", 1)
 	guard.change_stat("speed", 1)

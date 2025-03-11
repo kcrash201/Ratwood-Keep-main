@@ -88,7 +88,6 @@
 	icon = 'icons/turf/walls/stonebrick.dmi'
 	icon_state = "stonebrick"
 	smooth = SMOOTH_MORE
-	wallclimb = FALSE
 	blade_dulling = DULLING_BASH
 	max_integrity = 1500
 	sheet_type = /obj/item/natural/stone
@@ -254,7 +253,6 @@
 	icon = 'icons/turf/roguewall.dmi'
 	icon_state = "decostone-b"
 	smooth = SMOOTH_MORE
-	wallclimb = FALSE
 	blade_dulling = DULLING_BASH
 	max_integrity = 1800
 	sheet_type = /obj/item/natural/stone
@@ -413,44 +411,3 @@
 
 /turf/closed/wall/mineral/rogue/decostone/mossy/red/cand
     icon_state = "decostone-cand-red"
-
-//Tiles for desert map
-
-/turf/closed/wall/mineral/rogue/sandstone
-	name = "sand stone"
-	desc = "typical sand stone"
-	icon = 'icons/turf/walls/sandstone.dmi'
-	icon_state = "sandstone"
-	smooth = SMOOTH_MORE
-	wallclimb = FALSE
-	blade_dulling = DULLING_BASH
-	max_integrity = 1500
-	sheet_type = /obj/item/natural/stone
-	break_sound = 'sound/combat/hits/onstone/stonedeath.ogg'
-	attacked_sound = list('sound/combat/hits/onstone/wallhit.ogg', 'sound/combat/hits/onstone/wallhit2.ogg', 'sound/combat/hits/onstone/wallhit3.ogg')
-	canSmoothWith = list(/turf/closed/wall/mineral/rogue/stonebrick, /turf/closed/wall/mineral/rogue/wooddark)
-	above_floor = /turf/open/floor/rogue/blocks
-	baseturfs = list(/turf/open/floor/rogue/blocks)
-	neighborlay = "dirtedge"
-	climbdiff = 4
-	damage_deflection = 20
-
-
-/turf/closed/wall/mineral/rogue/cavern_wall
-	name = "cavern wall"
-	desc = "cold and humid"
-	icon = 'icons/turf/walls/cavern_wall.dmi'
-	icon_state = "cavern_wall"
-	smooth = SMOOTH_MORE
-	wallclimb = FALSE
-	blade_dulling = DULLING_BASH
-	max_integrity = 1500
-	sheet_type = /obj/item/natural/stone
-	break_sound = 'sound/combat/hits/onstone/stonedeath.ogg'
-	attacked_sound = list('sound/combat/hits/onstone/wallhit.ogg', 'sound/combat/hits/onstone/wallhit2.ogg', 'sound/combat/hits/onstone/wallhit3.ogg')
-	canSmoothWith = list(/turf/closed/wall/mineral/rogue/stonebrick, /turf/closed/wall/mineral/rogue/wooddark)
-	above_floor = /turf/open/floor/rogue/blocks
-	baseturfs = list(/turf/open/floor/rogue/blocks)
-	neighborlay = "dirtedge"
-	climbdiff = 4
-	damage_deflection = 20
