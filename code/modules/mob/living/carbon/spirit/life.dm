@@ -22,16 +22,20 @@
 		switch(bodytemperature)
 			if(360 to 400)
 				throw_alert("temp", /atom/movable/screen/alert/hot, 1)
-				apply_damage(HEAT_DAMAGE_LEVEL_1, BURN)
+				adjust_hydration(-0.1)
 			if(400 to 460)
 				throw_alert("temp", /atom/movable/screen/alert/hot, 2)
-				apply_damage(HEAT_DAMAGE_LEVEL_2, BURN)
+				adjust_hydration(-0.2)
 			if(460 to INFINITY)
 				throw_alert("temp", /atom/movable/screen/alert/hot, 3)
+				adjust_hydration(-0.3)
 				if(on_fire)
 					apply_damage(HEAT_DAMAGE_LEVEL_3, BURN)
 				else
 					apply_damage(HEAT_DAMAGE_LEVEL_2, BURN)
+				else
+					apply_damage(HEAT_DAMAGE_LEVEL_1, BURN)
+
 
 	else if(bodytemperature < BODYTEMP_COLD_DAMAGE_LIMIT && !HAS_TRAIT(src, TRAIT_RESISTCOLD))
 		switch(bodytemperature)
