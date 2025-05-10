@@ -4,8 +4,10 @@
 
 #define PARTICLEWEATHER_RAIN "weather_rain"
 #define PARTICLEWEATHER_SNOW "weather_snow"
+#define PARTICLEWEATHER_SAND "weather_sand"
 
 #define MAX_LAYER_SNOW_LEVELS 3
+#define MAX_LAYER_SAND_LEVELS 3
 
 GLOBAL_LIST_EMPTY(weather_act_upon_list)
 
@@ -13,6 +15,7 @@ GLOBAL_LIST_EMPTY(weather_act_upon_list)
 #define TRAIT_SNOWSTORM_IMMUNE "snowstorm_immune"
 #define TRAIT_WEATHER_IMMUNE "weather_immune" //Immune to ALL weather effects.
 #define TRAIT_RAINSTORM_IMMUNE "rainstorm_immune"
+#define TRAIT_SANDSTORM_IMMUNE "sandstorm_immune"
 
 #define SUNLIGHT_DARK_MATRIX \
 	list                     \
