@@ -199,9 +199,9 @@
 		playsound(target, pick(list('sound/misc/mat/mouthend (1).ogg','sound/misc/mat/mouthend (2).ogg')), 100, FALSE, ignore_walls = FALSE)
 	else
 		playsound(target, 'sound/misc/mat/endin.ogg', 50, TRUE, ignore_walls = FALSE)
+	target.reagents.add_reagent(/datum/reagent/erpjuice/cum, 3)
 	after_ejaculation()
-	if(!oral)
-		after_intimate_climax()
+	after_intimate_climax()
 
 /datum/sex_controller/proc/ejaculate()
 	log_combat(user, user, "Ejaculated")
@@ -227,8 +227,6 @@
 	if(HAS_TRAIT(user, TRAIT_BAOTHA_CURSE))
 		user.apply_status_effect(/datum/status_effect/debuff/cumbrained)
 	SSticker.cums++
-	cuckold_check()
-
 
 /datum/sex_controller/proc/after_milking()
 	set_arousal(80)
@@ -247,12 +245,14 @@
 			user.adjust_triumphs(1)
 			to_chat(user, span_love("Our loving is a true TRIUMPH!"))
 			user.add_stress(/datum/stressevent/cumgood)
+			user.apply_status_effect(/datum/status_effect/buff/goodloving)
 	if(HAS_TRAIT(user, TRAIT_GOODLOVER))
 		if(!target.mob_timers["cumtri"])
 			target.mob_timers["cumtri"] = world.time
 			target.adjust_triumphs(1)
 			to_chat(target, span_love("Our loving is a true TRIUMPH!"))
-			user.add_stress(/datum/stressevent/cumgood)
+			target.add_stress(/datum/stressevent/cumgood)
+			target.apply_status_effect(/datum/status_effect/buff/goodloving)
 
 /datum/sex_controller/proc/just_ejaculated()
 	return (last_ejaculation_time + 2 SECONDS >= world.time)
@@ -786,25 +786,6 @@
 			return "<span class='love_high'>[string]</span>"
 		if(SEX_FORCE_EXTREME)
 			return "<span class='love_extreme'>[string]</span>"
-
-/datum/sex_controller/proc/cuckold_check()
-	//First, check if the target has a family.
-	var/datum/family/F = target.getFamily(TRUE)
-	if(!F)
-		return
-
-
-	//Second, check if target has a spouse relation.
-	var/list/rels = F.getRelations(target,REL_TYPE_SPOUSE)
-
-	if(!length(rels))
-		return
-
-	for(var/datum/relation/R in rels) //Loop through all the spouses (Should only be one.)
-		var/mob/living/carbon/human/cuckold = R.target:resolve()
-		if(!cuckold || cuckold == user)
-			continue
-		GLOB.cuckolds |= "[cuckold.job] [cuckold.real_name] (by [user.real_name])"
 
 /datum/sex_controller/proc/try_pelvis_crush(mob/living/carbon/human/target)
 	if(istype(user.rmb_intent, /datum/rmb_intent/strong))

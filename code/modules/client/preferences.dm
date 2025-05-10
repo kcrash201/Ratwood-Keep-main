@@ -60,6 +60,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	var/preferred_map = null
 	var/pda_style = MONO
 	var/pda_color = "#808000"
+	var/prefer_old_chat = FALSE
 
 	var/uses_glasses_colour = 0
 
@@ -68,6 +69,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	var/real_name						//our character's name
 	var/gender = MALE					//gender of character (well duh)
 	var/age = AGE_ADULT						//age of character
+	var/voice_type = VOICE_TYPE_MASC // voice pack they use
 	var/origin = "Default"
 	var/underwear = "Nude"				//underwear type
 	var/underwear_color = null			//underwear color
@@ -141,8 +143,6 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	var/datum/charflaw/charflaw
 
 	var/family = FAMILY_NONE
-	var/list/family_species = list()
-	var/list/family_gender = list()
 
 	var/crt = FALSE
 
@@ -185,15 +185,6 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 			return
 	//Set the race to properly run race setter logic
 	set_new_race(pref_species, null)
-
-	// Enable all races and genders for family preferences by default
-	family_species = list()
-	var/list/available_species = get_selectable_species()
-	for(var/species_name in available_species)
-		var/datum/species/S = GLOB.species_list[species_name]
-		family_species += S.id
-
-	family_gender = list(MALE,FEMALE)
 
 	if(!charflaw)
 		charflaw = pick(GLOB.character_flaws)
@@ -340,6 +331,9 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 				if(randomise[RANDOM_BODY] || randomise[RANDOM_BODY_ANTAG]) //doesn't work unless random body
 					dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_GENDER]'>Always Random Gender: [(randomise[RANDOM_GENDER]) ? "Yes" : "No"]</A>"
 					dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_GENDER_ANTAG]'>When Antagonist: [(randomise[RANDOM_GENDER_ANTAG]) ? "Yes" : "No"]</A>"
+			
+			// Allows you to select vioce pack					
+			dat += "<b>Voice Type</b>: <a href='?_src_=prefs;preference=voicetype;task=input'>[voice_type]</a><BR>"
 
 			dat += "<b>Age:</b> <a href='?_src_=prefs;preference=age;task=input'>[age]</a><BR>"
 
@@ -353,15 +347,8 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 			var/datum/faith/selected_faith = GLOB.faithlist[selected_patron?.associated_faith]
 			dat += "<b>Faith:</b> <a href='?_src_=prefs;preference=faith;task=input'>[selected_faith?.name || "FUCK!"]</a><BR>"
 			dat += "<b>Patron:</b> <a href='?_src_=prefs;preference=patron;task=input'>[selected_patron?.name || "FUCK!"]</a><BR>"
-			dat += "<b>Family:</b> <a href='?_src_=prefs;preference=family'>[family ? "Yes!" : "No"]</a><BR>" // Disabling until its working
-			if(family != FAMILY_NONE)
-				dat += "<B>Family Preferences:</B>"
-				if(gender == MALE)
-					family_gender = list(FEMALE)
-				else
-					family_gender = list(MALE)
-				dat += " <small><a href='?_src_=prefs;preference=familypref;res=race'>Race</a></small>"
-				dat += "<BR>"
+//			dat += "<b>Family:</b> <a href='?_src_=prefs;preference=family'>[family ? "Yes!" : "No"]</a><BR>" // Disabling until its working
+
 			dat += "<b>Dominance:</b> <a href='?_src_=prefs;preference=domhand'>[domhand == 1 ? "Left-handed" : "Right-handed"]</a><BR>"
 
 /*
@@ -755,6 +742,23 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	popup.open(FALSE)
 	onclose(user, "capturekeypress", src)
 
+/datum/preferences/proc/get_allowed_patrons(datum/outfit/job/roguetown/J)
+	if(J == null)
+		return ""
+	var/data = "("
+	var/datum/outfit/job/roguetown/U = new J
+	if(!U.allowed_patrons)
+		return ""
+	if(!U.allowed_patrons.len)
+		return ""
+	for(var/I = 1, I <= U.allowed_patrons.len, I++)
+		var/datum/patron/divine/E = U.allowed_patrons[I]
+		data += "[E.name]"
+		if(I != U.allowed_patrons.len)
+			data += ", "
+	data += " only)"
+	return data
+
 /datum/preferences/proc/SetChoices(mob/user, limit = 15, list/splitJobs = list("Court Magos", "Retinue Captain", "Priest", "Merchant", "Archivist", "Towner", "Grenzelhoft Mercenary", "Beggar", "Prisoner", "Goblin King"), widthPerColumn = 295, height = 670) //295 620
 	if(!SSjob)
 		return
@@ -845,6 +849,8 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 				HTML += "<b><span class='dark'><a href='?_src_=prefs;preference=job;task=tutorial;tut='[job.tutorial]''>[used_name]</a></span></b>"
 			else
 				HTML += span_dark("<a href='?_src_=prefs;preference=job;task=tutorial;tut='[job.tutorial]''>[used_name]</a>")*/
+			var/limitations = ""
+			limitations = get_allowed_patrons(job.outfit)
 
 			HTML += {"
 
@@ -881,7 +887,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 </style>
 
 <div class="tutorialhover"><font>[used_name]</font>
-<span class="tutorial">[job.tutorial]<br>
+<span class="tutorial"><font color='red'>[limitations]</font> [job.tutorial]<br>
 Slots: [job.spawn_positions]</span>
 </div>
 
@@ -1212,25 +1218,6 @@ Slots: [job.spawn_positions]</span>
 	else if(href_list["preference"] == "triumph_buy_menu")
 		SStriumphs.startup_triumphs_menu(user.client)
 
-	else if(href_list["preference"] == "familypref")
-		switch(href_list["res"])
-			if("race")
-				var/choice
-				while(choice != "(DONE)")
-					var/list/choices = list()
-					for(var/A in GLOB.roundstart_races)
-						var/datum/species/S = GLOB.species_list[A]
-						var/index = "[(S.id in family_species) ? "(+)" : ""][S.name]"
-						choices[index] = S.id
-					choices += "(DONE)"
-					choice = input(usr,"Out of all the many races, none catch my fancy quite like... (+) = ON","RACE") as anything in choices
-					if(choice != "(CANCEL)")
-						if(choices[choice] in family_species)
-							family_species -= choices[choice]
-						else
-							family_species += choices[choice]
-
-
 	else if(href_list["preference"] == "keybinds")
 		switch(href_list["task"])
 			if("close")
@@ -1410,6 +1397,14 @@ Slots: [job.spawn_positions]</span>
 						ResetJobs()
 						to_chat(user, "<font color='red'>Classes reset.</font>")
 
+
+				if ("voicetype")
+					var voicetype_input = input(user, "Choose your character's voice type", "Voice Type") as null|anything in GLOB.voice_types_list
+					if(voicetype_input)
+						voice_type = voicetype_input
+						to_chat(user, "<font color='red'>Your character will now vocalize with a [lowertext(voice_type)] affect.</font>")
+
+						
 				if("faith")
 					var/list/faiths_named = list()
 					for(var/path as anything in GLOB.preference_faiths)
@@ -1720,10 +1715,9 @@ Slots: [job.spawn_positions]</span>
 						to_chat(user, span_warning("You may switch your character and choose any role, if you don't meet the requirements (if any are specified) it won't be applied"))
 
 				if("family")
-					if(family == FAMILY_NONE)
-						family = FAMILY_FULL
-					else
-						family = FAMILY_NONE
+					var/list/loly = list("Not yet.","Work in progress.","Don't click me.","Stop clicking this.","Nope.","Be patient.","Sooner or later.")
+					to_chat(user, "<font color='red'>[pick(loly)]</font>")
+					return
 				if("hotkeys")
 					hotkeys = !hotkeys
 					if(hotkeys)
@@ -2066,6 +2060,7 @@ Slots: [job.spawn_positions]</span>
 	character.set_patron(selected_patron)
 	character.backpack = backpack
 	character.defiant = defiant
+	character.voice_type = voice_type
 	character.virginity = virginity
 
 	character.jumpsuit_style = jumpsuit_style

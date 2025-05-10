@@ -9,7 +9,7 @@
 	desc = "The Firstborn of Psydon, twin of Noc, gifted man the Sun as her divine gift."
 	worshippers = "The Noble Hearted, Zealots and Farmers"
 	t1 = /obj/effect/proc_holder/spell/invoked/sacred_flame_rogue
-	t2 = /obj/effect/proc_holder/spell/invoked/heal
+	t2 = /obj/effect/proc_holder/spell/targeted/smite
 	t3 = /obj/effect/proc_holder/spell/invoked/revive
 	confess_lines = list(
 		"ASTRATA IS MY LIGHT!",
@@ -38,7 +38,7 @@
 	worshippers = "Druids, Beasts, Madmen"
 	mob_traits = list(TRAIT_VINE_WALKER)
 	t1 = /obj/effect/proc_holder/spell/targeted/blesscrop
-	t2 = /obj/effect/proc_holder/spell/targeted/beasttame
+	t2 = /obj/effect/proc_holder/spell/invoked/beasttame
 	t3 = /obj/effect/proc_holder/spell/targeted/conjure_vines
 	confess_lines = list(
 		"DENDOR PROVIDES!",
@@ -109,7 +109,7 @@
 	worshippers = "The Sick, Phyicians, Apothecaries"
 	mob_traits = list(TRAIT_EMPATH, TRAIT_ROT_EATER)
 	t0 = list(/obj/effect/proc_holder/spell/invoked/diagnose, /obj/effect/proc_holder/spell/invoked/lesser_heal) // Combine both spells on t0
-	t1 = /obj/effect/proc_holder/spell/invoked/heal
+	t1 = /obj/effect/proc_holder/spell/invoked/mercy
 	t2 = /obj/effect/proc_holder/spell/invoked/attach_bodypart
 	t3 = /obj/effect/proc_holder/spell/invoked/cure_rot
 	confess_lines = list(

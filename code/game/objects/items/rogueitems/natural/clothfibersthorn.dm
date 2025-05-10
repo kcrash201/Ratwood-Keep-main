@@ -112,7 +112,7 @@
 	/// Effectiveness when used as a bandage, how much bloodloss we can tampon
 	var/bandage_effectiveness = 0.9
 
-/obj/item/natural/cloth/equipped(mob/living/carbon/human/user, slot)
+/obj/item/natural/cloth/equipped(mob/living/carbon/human/user, slot, initial = FALSE, silent = FALSE)
 	. = ..()
 	if(slot == SLOT_WEAR_MASK)
 		user.become_blind("blindfold_[REF(src)]")
@@ -191,9 +191,9 @@
 	// Heal the specific body part every second while bandaged and manage wound pain and disabling effects
 	addtimer(CALLBACK(src, /proc/heal_and_manage_pain_disabling, H, affecting), 10, 1, TRUE)
 	if (M == user)
-		user.visible_message("You bandage your [affecting].")
+		user.visible_message("You bandage your [affecting.name].")
 	else
-		user.visible_message("You bandage [M]'s [affecting].")
+		user.visible_message("You bandage [M]'s [affecting.name].")
 
 /proc/heal_and_manage_pain_disabling(var/mob/living/carbon/human/H, var/obj/item/bodypart/affecting)
 	if (!affecting) return
@@ -235,6 +235,7 @@
 	if(user.client && ((O in user.client.screen) && !user.is_holding(O)))
 		to_chat(user, span_warning("I need to take that [O.name] off before cleaning it!"))
 		return
+
 	if(istype(O, /obj/effect/decal/cleanable))
 		var/cleanme = TRUE
 		if(istype(O, /obj/effect/decal/cleanable/blood))
@@ -267,6 +268,9 @@
 		for(var/obj/effect/decal/cleanable/C in T)
 			qdel(C)
 		wet = max(wet-1, 0)
+
+		for(var/obj/effect/decal/remains/R in T)
+			qdel(R) //clean remains up
 
 		to_chat(user, span_info("I wipe \the [T.name] with [src]."))
 		playsound(user, "clothwipe", 100, TRUE)
@@ -308,9 +312,9 @@
 	H.update_damage_overlays()
 
 	if(M == user)
-		user.visible_message(span_notice("[user] bandages [user.p_their()] [affecting]."), span_notice("I bandage my [affecting]."))
+		user.visible_message(span_notice("[user] bandages [user.p_their()] [affecting.name]."), span_notice("I bandage my [affecting.name]."))
 	else
-		user.visible_message(span_notice("[user] bandages [M]'s [affecting]."), span_notice("I bandage [M]'s [affecting]."))
+		user.visible_message(span_notice("[user] bandages [M]'s [affecting.name]."), span_notice("I bandage [M]'s [affecting.name]."))
 
 /obj/item/natural/thorn
 	name = "thorn"

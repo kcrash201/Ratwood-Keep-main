@@ -1,6 +1,6 @@
 /datum/migrant_role/slaver/master
 	name = "Zybantynian Master"
-	greet_text = "The leader of the Zybantynian slave troup. You have came to the Isle of Enigma from the western deserts of Zybantine in the hopes of gathering wealth through the trade unfortunate laborers. The practice can be called despicable by some, but it is without a doubt efficient in filling your pockets before you return to Zybantine"
+	greet_text = "The leader of the Zybantynian slave troup. You have came to the Kingdom of Ferentia from the western deserts of Zybantine in the hopes of gathering wealth through the trade unfortunate laborers. The practice can be called despicable by some, but it is without a doubt efficient in filling your pockets before you return to Zybantine"
 	outfit = /datum/outfit/job/roguetown/slaver/master
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_TOLERATED_UP
@@ -19,10 +19,10 @@
 	belt = /obj/item/storage/belt/rogue/leather/shalalz
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/scale
 	cloak = /obj/item/clothing/cloak/cape/purple
-	backl = /obj/item/storage/backpack/rogue/satchel
+	backl = /obj/item/storage/backpack/rogue/backpack
 	beltl = /obj/item/flashlight/flare/torch/lantern
 	beltr = /obj/item/rogueweapon/whip/antique
-	backpack_contents = list(/obj/item/reagent_containers/glass/bottle/rogue/lesserhealthpot = 1, /obj/item/rope/chain = 1, /obj/item/flint = 1)
+	backpack_contents = list(/obj/item/reagent_containers/glass/bottle/rogue/lesserhealthpot = 2, /obj/item/rope/chain = 1, /obj/item/flint = 1, /obj/item/clothing/neck/roguetown/collar/leather/cursed = 2, /obj/item/leash/chain = 3)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 5, TRUE)
@@ -52,7 +52,7 @@
 
 /datum/migrant_role/slaver/slavemercsword
 	name = "Zybantynian Blade Mercenary"
-	greet_text = "A hired arm for the Zybantine Slave troup. You have come from the western deserts of Zybantine, and are hired for the week you are spending on this island."
+	greet_text = "A hired arm for the Zybantine Slave troup. You have come from the western deserts of Zybantine, and are hired for the week you are spending in this Kingdom."
 	outfit = /datum/outfit/job/roguetown/slaver/slavemercsword
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_TOLERATED_UP
@@ -105,7 +105,7 @@
 
 /datum/migrant_role/slaver/slavemercwhip
 	name = "Zybantynian Whip Mercenary"
-	greet_text = "A hired arm for the Zybantine Slave troup. You have come from the western deserts of Zybantine, and are hired for the week you are spending on this island."
+	greet_text = "A hired arm for the Zybantine Slave troup. You have come from the western deserts of Zybantine, and are hired for the week you are spending in this Kingdom."
 	outfit = /datum/outfit/job/roguetown/slaver/slavemercwhip
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_TOLERATED_UP
@@ -158,7 +158,7 @@
 
 /datum/migrant_role/slaver/slavemercbow
 	name = "Zybantynian Light Crossbow Mercenary"
-	greet_text = "A hired arm for the Zybantine Slave troup, and also a discount first aider. You have come from the western deserts of Zybantine, and are hired for the week you are spending on this island."
+	greet_text = "A hired arm for the Zybantine Slave troup, and also a discount first aider. You have come from the western deserts of Zybantine, and are hired for the week you are spending in this Kingdom."
 	outfit = /datum/outfit/job/roguetown/slaver/slavemercbow
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_TOLERATED_UP
@@ -211,7 +211,7 @@
 
 /datum/migrant_role/slaver/slavez
 	name = "Slave"
-	greet_text = "An unlucky slave, captured and trained for labor, now being transported from the western deserts of the Zybantines to the marsh filled Isle of Enigma."
+	greet_text = "An unlucky slave, captured and trained for labor, now being transported from the western deserts of the Zybantines to the Kingdom of Ferentia."
 	outfit = /datum/outfit/job/roguetown/slaver/slavez
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS

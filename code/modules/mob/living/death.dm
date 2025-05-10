@@ -10,7 +10,7 @@
 		gib_animation()
 
 	spill_embedded_objects()
-	
+
 	spill_organs(no_brain, no_organs, no_bodyparts)
 
 	if(!no_bodyparts)
@@ -42,7 +42,7 @@
 
 	if(drop_items)
 		unequip_everything()
-	
+
 	if(buckled)
 		buckled.unbuckle_mob(src, force = TRUE)
 
@@ -83,6 +83,8 @@
 	if(src.mind)
 		if(src.mind.boneboy == TRUE)
 			handle_necromancy()
+		else if(src.mind.awaken_caster)
+			src.handle_awakening()
 	set_drugginess(0)
 	set_disgust(0)
 	cure_holdbreath()

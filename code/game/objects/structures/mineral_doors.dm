@@ -185,6 +185,7 @@
 	if(lockhash)
 		GLOB.lockhashes += lockhash
 	else if(keylock)
+		AddElement(/datum/element/lockpickable, list(/obj/item/lockpick), list(/obj/item/lockpick), lockdiff)
 		if(lockid)
 			if(GLOB.lockids[lockid])
 				lockhash = GLOB.lockids[lockid]
@@ -209,11 +210,12 @@
 	..()
 	if(door_opened)
 		return
-	if(world.time < last_bump+20)
+	// An individual door can be bumped once every two seconds to avoid spamming knocks/rattles
+	if(world.time < last_bump + 2 SECONDS)
 		return
 	last_bump = world.time
-	if(ismob(AM))
-		var/mob/user = AM
+	if(isliving(AM))
+		var/mob/living/user = AM
 		if(HAS_TRAIT(user, TRAIT_BASHDOORS))
 			if(locked)
 				user.visible_message(span_warning("[user] bashes into [src]!"))
@@ -222,6 +224,10 @@
 				playsound(src, 'sound/combat/hits/onwood/woodimpact (1).ogg', 100)
 				force_open()
 				user.visible_message(span_warning("[user] smashes through [src]!"))
+			return
+		//And you can bump-open maybe 3 doors per second. This is to prevent weird mass door openings
+		//While keeping things feeling snappy
+		if(world.time - user.last_bumped <= 0.3 SECONDS)
 			return
 		if(locked)
 			if(istype(user.get_active_held_item(), /obj/item/key) || istype(user.get_active_held_item(), /obj/item/storage/keyring))
@@ -263,7 +269,7 @@
 			if(L.m_intent == MOVE_INTENT_SNEAK)
 				to_chat(user, span_warning("This door is locked."))
 				return
-		if(world.time >= last_bump+20)
+		if(world.time >= last_bump+2 SECONDS)
 			last_bump = world.time
 			playsound(src, 'sound/foley/doors/knocking.ogg', 100)
 			user.visible_message(span_warning("[user] knocks on [src]."), \
@@ -281,13 +287,11 @@
 		return
 	if(isliving(user))
 		var/mob/living/M = user
-		if(world.time - M.last_bumped <= 60)
-			return //NOTE do we really need that?
-		if(M.client)
-			if(iscarbon(M))
-				var/mob/living/carbon/C = M
-				if(!C.handcuffed)
-					if(C.m_intent == MOVE_INTENT_SNEAK)
+		if(ishuman(M))
+			var/mob/living/carbon/human/H = M
+			if(H.client)
+				if(!H.handcuffed)
+					if(H.m_intent == MOVE_INTENT_SNEAK)
 						SwitchState(TRUE)
 					else
 						SwitchState()
@@ -385,13 +389,10 @@
 			return
 //	else if(user.used_intent.type != INTENT_HARM)
 //		return attack_hand(user)
-	if(istype(I, /obj/item/lockpick))
-		trypicklock(I, user)
+	if(repairable && (user.mind.get_skill_level(repair_skill) > 0) && ((istype(I, repair_cost_first)) || (istype(I, repair_cost_second)))) // At least 1 skill level needed
+		repairdoor(I,user)
 	else
-		if(repairable && (user.mind.get_skill_level(repair_skill) > 0) && ((istype(I, repair_cost_first)) || (istype(I, repair_cost_second)))) // At least 1 skill level needed
-			repairdoor(I,user)
-		else
-			return ..()
+		return ..()
 
 /obj/structure/mineral_door/proc/repairdoor(obj/item/I, mob/user)
 	if(brokenstate)				
@@ -907,6 +908,10 @@
 /obj/structure/mineral_door/wood/towner/miner
 	resident_subclass = /datum/subclass/miner
 	lockid = "towner_miner"
+
+/obj/structure/mineral_door/wood/towner/minstrel
+	resident_subclass = /datum/subclass/minstrel
+	lockid = "towner_minstrel"
 
 /obj/structure/mineral_door/wood/towner/farmer
 	resident_subclass = /datum/subclass/farmer
