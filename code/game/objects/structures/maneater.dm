@@ -161,3 +161,23 @@
 	. = ..()
 	aggroed = world.time
 	update_icon()
+
+/obj/structure/flora/roguegrass/maneater/real/sandworm
+	max_integrity = 100
+	integrity_failure = 0.15
+	attacked_sound = list('sound/vo/mobs/plant/pain (1).ogg','sound/vo/mobs/plant/pain (2).ogg','sound/vo/mobs/plant/pain (3).ogg','sound/vo/mobs/plant/pain (4).ogg')
+	buckle_lying = 0
+	buckle_prevents_pull = 1
+
+/obj/structure/flora/roguegrass/maneater/real/sandworm/update_icon()
+	if(obj_broken)
+		name = "SANDWORM"
+		desc = "This cunning creature is thankfully defeated."
+		icon_state = "sandworm-dead"
+		return
+	if(aggroed)
+		name = "SANDWORM"
+		icon_state = "sandworm"
+	else
+		name = "grass"
+		icon_state = "maneater-hidden"

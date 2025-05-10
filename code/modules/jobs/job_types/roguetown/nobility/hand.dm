@@ -1,5 +1,7 @@
 /datum/job/roguetown/hand
 	title = "Hand"
+	map_specific_title = list("Hand", "Vizier") //0 = rockhill, 1 = zybantium, 2 = etc.
+
 	flag = HAND
 	department_flag = NOBLEMEN
 	faction = "Station"

@@ -4,6 +4,8 @@ GLOBAL_LIST_EMPTY(lord_titles)
 /datum/job/roguetown/ruler
 	title = "Duke"
 	f_title = "Duchess"
+	map_specific_title = list("Duke", "Sultan") //0 = rockhill, 1 = zybantium, 2 = etc.
+	map_specific_f_title = list("Duchess", "Sultana") //0 = rockhill, 1 = zybantium, 2 = etc.
 	flag = RULER
 	department_flag = NOBLEMEN
 	faction = "Station"
