@@ -64,6 +64,8 @@
 
 #define RACES_NEARLY_ALL_PLUS_SEELIE list(RACES_SHUNNED, RACES_TOLERATED, RACES_VERY_SHUNNED, RACES_RESPECTED, RACES_SEELIE)
 
+#define RACES_NEARLY_ALL_PLUS_SEELIE_PLUS_GOBLIN list(RACES_SHUNNED, RACES_TOLERATED, RACES_VERY_SHUNNED, RACES_RESPECTED, RACES_SEELIE, RACES_GOBLIN)
+
 #define RACES_VERY_SHUNNED_UP list(RACES_SHUNNED, RACES_TOLERATED, RACES_VERY_SHUNNED, RACES_RESPECTED)
 
 #define RACES_SHUNNED_UP list(RACES_SHUNNED, RACES_TOLERATED, RACES_RESPECTED)
@@ -218,6 +220,16 @@
 	/datum/patron/inhumen/graggar\
 )
 
+
+#define NON_DIVINE_PATRONS list(\
+	/datum/patron/zizo,\
+	/datum/patron/inhumen/matthios,\
+	/datum/patron/inhumen/baotha,\
+	/datum/patron/inhumen/graggar\
+)
+
+
+
 #define TEN_CURSES list(\
 	/datum/curse/astrata,\
 	/datum/curse/noc,\
@@ -281,12 +293,11 @@ GLOBAL_LIST_INIT(lockhashes, list())
 GLOBAL_LIST_INIT(lockids, list())
 GLOBAL_LIST_EMPTY(credits_icons)
 GLOBAL_LIST_EMPTY(confessors)
-GLOBAL_LIST_EMPTY(cuckolds)
 
 //preference stuff
-#define FAMILY_NONE 0
-#define FAMILY_FULL 1
+#define FAMILY_NONE 1
 #define FAMILY_PARTIAL 2
+#define FAMILY_FULL 3
 
 
 GLOBAL_LIST_EMPTY(head_bounties)
@@ -308,6 +319,7 @@ GLOBAL_LIST_EMPTY(job_respawn_delays)
 #define CTAG_TOWNER			"CAT_TOWNER"		// Villager class - Villagers can use it
 #define CTAG_MERCENARY		"CAT_MERCENARY"		// Mercs
 #define CTAG_HENCH			"CAT_HENCH"			// Whitevein Guards
+#define CTAG_WENCH			"CAT_WENCH"			// Whitevein workers
 
 //Courtiers
 #define CTAG_SERVANT		"CAT_SERVANT"		// Maids and butlers
@@ -320,6 +332,7 @@ GLOBAL_LIST_EMPTY(job_respawn_delays)
 
 //Nobles			Eventually all of them will get their subclasses
 #define CTAG_HEIR			"CAT_HEIR"			// Heirs
+#define CTAG_KNIGHT			"CAT_KNIGHT"		// Knights
 
 //Antags
 #define CTAG_BANDIT			"CAT_BANDIT"		// Bandit class - Tied to the bandit antag really

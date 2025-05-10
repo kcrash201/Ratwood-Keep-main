@@ -13,7 +13,7 @@
 		return	//return if humans in range
 	if(AIStatus == AI_IDLE)
 		new /obj/effect/particle_effect/smoke/bad(src.loc)
-		src.visible_message(span_notice("[src] returns to it's plane of origin."))
+		src.visible_message(span_notice("[src] returns to its plane of origin."))
 		dropcomponents()
 		qdel(src)
 
@@ -79,6 +79,16 @@
 			return "foreleg"
 	return ..()
 
+/mob/living/simple_animal/hostile/retaliate/rogue/fae/proc/spawn_death_components()
+	return
+
+/mob/living/simple_animal/hostile/retaliate/rogue/fae/death(gibbed)
+	..()
+	spawn_death_components()
+	update_icon()
+	spill_embedded_objects()
+	qdel(src)
+
 /mob/living/simple_animal/hostile/retaliate/rogue/fae/sprite
 	icon = 'icons/mob/summonable/32x32.dmi'
 	name = "sprite"
@@ -99,6 +109,7 @@
 	health = 50
 	maxHealth = 50
 	ranged = FALSE
+	obj_damage = 75
 	melee_damage_lower = 10
 	melee_damage_upper = 20
 	vision_range = 8
@@ -137,8 +148,7 @@
 	var/turf/leavespot = get_turf(src)
 	new /obj/item/reagent_containers/food/snacks/grown/rogue/manabloom(leavespot)
 
-/mob/living/simple_animal/hostile/retaliate/rogue/fae/sprite/death(gibbed)
-	..()
+/mob/living/simple_animal/hostile/retaliate/rogue/fae/sprite/spawn_death_components()
 	var/turf/deathspot = get_turf(src)
 	new /obj/item/natural/fairydust(deathspot)
 	new /obj/item/natural/fairydust(deathspot)
@@ -146,10 +156,6 @@
 	new /obj/item/natural/fairydust(deathspot)
 	new /obj/item/natural/fairydust(deathspot)
 	new /obj/item/natural/fairydust(deathspot)
-	update_icon()
-	spill_embedded_objects()
-	sleep(1)
-	qdel(src)
 
 
 
@@ -178,8 +184,9 @@
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	health = 170
 	maxHealth = 170
-	melee_damage_lower = 15
-	melee_damage_upper = 17
+	obj_damage = 75
+	melee_damage_lower = 20
+	melee_damage_upper = 25
 	vision_range = 7
 	aggro_vision_range = 9
 	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
@@ -197,7 +204,7 @@
 	deaggroprob = 0
 	defprob = 40
 	defdrain = 10
-	del_on_deaggro = 20 SECONDS
+	del_on_deaggro = 10 SECONDS
 	retreat_health = 0
 	food = 0
 	attack_sound = list()
@@ -214,8 +221,7 @@
 	var/turf/leavespot = get_turf(src)
 	new /obj/item/natural/melded/t1(leavespot)
 
-/mob/living/simple_animal/hostile/retaliate/rogue/fae/glimmerwing/death(gibbed)
-	..()
+/mob/living/simple_animal/hostile/retaliate/rogue/fae/glimmerwing/spawn_death_components()
 	var/turf/deathspot = get_turf(src)
 	new /obj/item/natural/iridescentscale(deathspot)
 	new /obj/item/natural/iridescentscale(deathspot)
@@ -225,9 +231,6 @@
 	new /obj/item/natural/fairydust(deathspot)
 	new /obj/item/natural/fairydust(deathspot)
 	new /obj/item/natural/fairydust(deathspot)
-	spill_embedded_objects()
-	update_icon()
-	qdel(src)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/fae/glimmerwing/AttackingTarget()
 	if(SEND_SIGNAL(src, COMSIG_HOSTILE_PRE_ATTACKINGTARGET, target) & COMPONENT_HOSTILE_NO_PREATTACK)
@@ -244,6 +247,15 @@
 		src.drug_cd = world.time
 	return
 
+
+/mob/living/simple_animal/hostile/retaliate/rogue/fae/dryad/dendor
+	del_on_deaggro = 999 MINUTES
+
+/mob/living/simple_animal/hostile/retaliate/rogue/fae/dryad/dendor/dropcomponents()
+	return // Don't drop anything
+
+/mob/living/simple_animal/hostile/retaliate/rogue/fae/dryad/dendor/spawn_death_components()
+	return // Ditto
 
 /mob/living/simple_animal/hostile/retaliate/rogue/fae/dryad
 	icon = 'icons/mob/summonable/32x64.dmi'
@@ -264,8 +276,9 @@
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	health = 650
 	maxHealth = 650
-	melee_damage_lower = 20
-	melee_damage_upper = 30
+	obj_damage = 75
+	melee_damage_lower = 25
+	melee_damage_upper = 35
 	vision_range = 7
 	aggro_vision_range = 9
 	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
@@ -283,7 +296,7 @@
 	deaggroprob = 0
 	defprob = 40
 	defdrain = 10
-	del_on_deaggro = 30 SECONDS
+	del_on_deaggro = 10 SECONDS
 	retreat_health = 0
 	food = 0
 	attack_sound = "plantcross"
@@ -301,8 +314,10 @@
 		var/turf/T = newloc
 		if(contains_vines(T))
 			src.move_to_delay = 2
+			src.STASPD = 15
 		else
 			src.move_to_delay = 8
+			src.STASPD = 4
 
 /mob/living/simple_animal/hostile/retaliate/rogue/fae/dryad/AttackingTarget()
 	if(SEND_SIGNAL(src, COMSIG_HOSTILE_PRE_ATTACKINGTARGET, target) & COMPONENT_HOSTILE_NO_PREATTACK)
@@ -375,19 +390,15 @@
 	var/turf/leavespot = get_turf(src)
 	new /obj/item/natural/melded/t2(leavespot)
 
-/mob/living/simple_animal/hostile/retaliate/rogue/fae/dryad/death(gibbed)
-	..()
+/mob/living/simple_animal/hostile/retaliate/rogue/fae/dryad/spawn_death_components()
 	var/turf/deathspot = get_turf(src)
-	new /obj/item/natural/melded/t1
+	new /obj/item/natural/melded/t1(deathspot)
 	new /obj/item/natural/iridescentscale(deathspot)
 	new /obj/item/natural/iridescentscale(deathspot)
 	new /obj/item/natural/heartwoodcore(deathspot)
 	new /obj/item/natural/heartwoodcore(deathspot)
 	new /obj/item/natural/fairydust(deathspot)
 	new /obj/item/natural/fairydust(deathspot)
-	spill_embedded_objects()
-	update_icon()
-	qdel(src)
 
 
 /mob/living/simple_animal/hostile/retaliate/rogue/fae/sylph/simple_add_wound(datum/wound/wound, silent = FALSE, crit_message = FALSE)	//no wounding the fiend
@@ -412,8 +423,9 @@
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	health = 700
 	maxHealth = 700
-	melee_damage_lower = 20
-	melee_damage_upper = 30
+	obj_damage = 75
+	melee_damage_lower = 30
+	melee_damage_upper = 40
 	vision_range = 7
 	aggro_vision_range = 9
 	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
@@ -430,7 +442,7 @@
 	deaggroprob = 0
 	defprob = 40
 	defdrain = 10
-	del_on_deaggro = 30 SECONDS
+	del_on_deaggro = 10 SECONDS
 	retreat_health = 0
 	food = 0
 	attack_sound = null
@@ -481,18 +493,13 @@
 	var/turf/leavespot = get_turf(src)
 	new /obj/item/natural/melded/t3(leavespot)
 
-/mob/living/simple_animal/hostile/retaliate/rogue/fae/sylph/death(gibbed)
-	..()
+/mob/living/simple_animal/hostile/retaliate/rogue/fae/sylph/spawn_death_components()
 	var/turf/deathspot = get_turf(src)
 	new /obj/item/natural/sylvanessence(deathspot)
 	new /obj/item/natural/fairydust(deathspot)
 	new /obj/item/natural/fairydust(deathspot)
-	new /obj/item/natural/melded/t2
+	new /obj/item/natural/melded/t2(deathspot)
 	new /obj/item/natural/iridescentscale(deathspot)
 	new /obj/item/natural/heartwoodcore(deathspot)
 	new /obj/item/natural/fairydust(deathspot)
 	new /obj/item/natural/fairydust(deathspot)
-
-	spill_embedded_objects()
-	update_icon()
-	qdel(src)

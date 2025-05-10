@@ -123,6 +123,7 @@
 #define MONK		(1<<1)
 #define GRAVEDIGGER	(1<<2)
 #define DRUID		(1<<3)
+#define HOSPITALLER	(1<<4)
 
 /// INQUISITION
 #define INQUISITION		(1<<3)
@@ -173,7 +174,7 @@
 #define YOUNGFOLK	(1<<7)
 
 #define APPRENTICE	(1<<0)
-#define CHURCHLING	(1<<1)
+#define NOVITIATE 	(1<<1)
 #define SQUIRE		(1<<2)
 #define SERVANT		(1<<3)
 #define PRINCE		(1<<4)
@@ -217,6 +218,7 @@
 #define JCOLOR_PEASANT "#b09262"
 #define JCOLOR_MERCENARY "#c86e3a"
 #define JCOLOR_FOREIGNER "#776759"
+#define JCOLOR_GOBLIN "#33CC33"
 
 
 // job display orders //
@@ -254,8 +256,9 @@
 #define JDO_TEMPLAR 10.1
 #define JDO_MONK 10.2
 #define JDO_DRUID 10.3
-#define JDO_CHURCHLING 10.4
+#define JDO_NOVITIATE 10.4
 #define JDO_GRAVEMAN 10.5
+#define JDO_HOSPITALLER 10.6
 
 #define JDO_PURITAN 11
 #define JDO_SHEPHERD 11.1
@@ -342,8 +345,9 @@
 	/datum/job/roguetown/ruler
 
 #define CHURCH_ROLES \
-	/datum/job/roguetown/churchling,\
+	/datum/job/roguetown/novitiate,\
 	/datum/job/roguetown/druid,\
+	/datum/job/roguetown/hospitaller,\
 	/datum/job/roguetown/monk,\
 	/datum/job/roguetown/undertaker,\
 	/datum/job/roguetown/priest,\

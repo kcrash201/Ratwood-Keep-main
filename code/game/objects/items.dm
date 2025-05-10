@@ -181,11 +181,6 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	var/icon/experimental_onhip = FALSE
 	var/icon/experimental_onback = FALSE
 
-	var/do_sound_bell = FALSE
-	var/do_sound_chain = FALSE
-	var/do_sound_plate = FALSE
-	var/bell = FALSE
-
 	///trying to emote or talk with this in our mouth makes us muffled
 	var/muteinmouth = TRUE
 	///using spit emote spits the item out of our mouth and falls out after some time
@@ -462,16 +457,20 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 		if(istype(src,/obj/item/clothing))
 			var/obj/item/clothing/C = src
+			inspec += "<br>"
+			inspec += C.defense_examine()
+			if(C.body_parts_covered)
+				inspec += "\n<b>COVERAGE: <br></b>"
+				inspec += " | "
+				for(var/zone in body_parts_covered2organ_names(C.body_parts_covered))
+					inspec += "<b>[capitalize(zone)]</b> | "
+				inspec += "<br>"
 			if(C.prevent_crits)
 				if(C.prevent_crits.len)
-					inspec += "\n<b>DEFENSE:</b>"
+					inspec += "\n<b>PREVENTS CRITS:</b>"
 					for(var/X in C.prevent_crits)
-						inspec += "\n<b>[X] damage</b>"
-
-			if(C.body_parts_covered)
-				inspec += "\n<b>COVERAGE:</b>"
-				for(var/zone in body_parts_covered2organ_names(C.body_parts_covered))
-					inspec += "\n<b>[zone]</b>"
+						inspec += ("\n<b>[capitalize(X)]</b>")
+				inspec += "<br>"
 
 //**** General durability
 
@@ -537,7 +536,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 		else
 			user.visible_message(span_warning("[user] burns [user.p_their()] hand putting out the fire on [src]!"))
 			extinguish()
-			var/obj/item/bodypart/affecting = C.get_bodypart("[(user.active_hand_index % 2 == 0) ? "r" : "l" ]_arm")
+			var/obj/item/bodypart/affecting = C.get_bodypart((user.active_hand_index % 2 == 0) ? BODY_ZONE_R_ARM : BODY_ZONE_L_ARM)
 			if(affecting && affecting.receive_damage( 0, 5 ))		// 5 burn damage
 				C.update_damage_overlays()
 			return
@@ -547,7 +546,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 		if(istype(C))
 			if(!C.gloves || (!(C.gloves.resistance_flags & (UNACIDABLE|ACID_PROOF))))
 				to_chat(user, span_warning("The acid on [src] burns my hand!"))
-				var/obj/item/bodypart/affecting = C.get_bodypart("[(user.active_hand_index % 2 == 0) ? "r" : "l" ]_arm")
+				var/obj/item/bodypart/affecting = C.get_bodypart((user.active_hand_index % 2 == 0) ? BODY_ZONE_R_ARM : BODY_ZONE_L_ARM)
 				if(affecting && affecting.receive_damage( 0, 5 ))		// 5 burn damage
 					C.update_damage_overlays()
 
@@ -673,7 +672,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 // for items that can be placed in multiple slots
 // The slot == refers to the new location of the item
 // Initial is used to indicate whether or not this is the initial equipment (job datums etc) or just a player doing it
-/obj/item/proc/equipped(mob/user, slot, initial = FALSE)
+/obj/item/proc/equipped(mob/user, slot, initial = FALSE, silent = FALSE)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ITEM_EQUIPPED, user, slot)
 	for(var/X in actions)
@@ -681,7 +680,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 		if(item_action_slot_check(slot, user)) //some items only give their actions buttons when in a specific slot.
 			A.Grant(user)
 	item_flags |= IN_INVENTORY
-	if(!initial)
+	if(!initial && !silent) // Only non initial, non silent play (silent is false by default)
 		var/slotbit = slotdefine2slotbit(slot)
 		if(slot == ITEM_SLOT_HANDS)
 			playsound(src, pickup_sound, PICKUP_SOUND_VOLUME, ignore_walls = FALSE)
@@ -1243,3 +1242,55 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 			ungrip(M, FALSE)
 
 
+/obj/item/proc/defense_examine()
+	var/list/str = list()
+	if(istype(src, /obj/item/clothing))
+		var/obj/item/clothing/C = src
+		if(C.armor)
+			var/defense = "<u><b>ABSORPTION: </b></u><br>"
+			var/datum/armor/def_armor = C.armor
+			defense += "[colorgrade_rating("BLUNT", def_armor.blunt)] | "
+			defense += "[colorgrade_rating("SLASH", def_armor.slash)] | "
+			defense += "[colorgrade_rating("STAB", def_armor.stab)] | "
+			defense += "[colorgrade_rating("PROJECTILE", def_armor.bullet)] "
+			str += "[defense]<br>"
+		else
+			str += "NO DEFENSE"
+	return str
+
+/proc/colorgrade_rating(input, rating)
+	var/str
+	switch(rating)
+		if(0)
+			var/color = "#f81a1a"
+			str = "<font color = '[color]'>[input] (F)</font>"
+		if(1 to 19)
+			var/color = "#680d0d"
+			str = "<font color = '[color]'>[input] (D)</font>"
+		if(20 to 39)
+			var/color = "#753e11"
+			str = "<font color = '[color]'>[input] (D+)</font>" 
+		if(40 to 49)
+			var/color = "#c0a739"
+			str = "<font color = '[color]'>[input] (C)</font>" 
+		if(50 to 59)
+			var/color = "#e3e63c"
+			str = "<font color = '[color]'>[input] (C+)</font>" 
+		if(60 to 69)
+			var/color = "#425c33"
+			str = "<font color = '[color]'>[input] (B)</font>" 
+		if(70 to 79)
+			var/color = "#1a9c00"
+			str = "<font color = '[color]'>[input] (B+)</font>"
+		if(80 to 89)
+			var/color = "#0fe021"
+			str = "<font color = '[color]'>[input] (A)</font>"
+		if(90 to 99)
+			var/color = "#ffffff"
+			str = "<font color = '[color]'>[input] (A+)</font>"
+		if(100)
+			var/color = "#339dff"
+			str = "<font color = '[color]'>[input] (S)</font>"
+		else
+			str = "[input] (Above 100 or under 0! Contact coders.)"
+	return str

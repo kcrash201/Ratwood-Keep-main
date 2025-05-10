@@ -235,6 +235,10 @@
 			move_delay = world.time + 10
 			to_chat(src, span_warning("[L] still has footing! I need a stronger grip!"))
 			return TRUE
+		if(M.buckled)
+			move_delay = world.time + 10
+			to_chat(src, span_warning("I can't be on a mount!"))
+			return TRUE
 	if(istype(mob.pulling, /mob/living/simple_animal) && isliving(mob.pulling))
 		var/mob/living/simple_animal/bound = mob.pulling
 		if(bound.binded)
@@ -603,7 +607,12 @@
 		rogue_sneaking = TRUE
 		return
 	var/turf/T = get_turf(src)
-	var/light_amount = T.get_lumcount()
+	// This is hacky but it's the only runtime that fixing decap gives
+	// please forgive me...
+	var/light_amount = 0
+	if(T != null)
+		light_amount = T.get_lumcount()
+		
 	var/used_time = 50
 	if(mind)
 		used_time = max(used_time - (mind.get_skill_level(/datum/skill/misc/sneaking) * 8), 0)
@@ -775,3 +784,8 @@
 /// Can this mob move between z levels
 /mob/proc/canZMove(direction, turf/target)
 	return FALSE
+
+/// A general-purpose proc used to centralise checks to skip turf, movement, step, etc. effects
+/// for mobs that are floating, flying, intangible, etc.
+/mob/proc/is_floor_hazard_immune()
+	return throwing || (movement_type & (FLYING|FLOATING))

@@ -62,6 +62,11 @@
 	var/immune_to_genderswap = FALSE
 	var/armor_class = ARMOR_CLASS_NONE
 
+	var/bell = FALSE
+	var/do_sound_bell = FALSE
+	var/do_sound_chain = FALSE
+	var/do_sound_plate = FALSE
+
 	sellprice = 1
 
 /obj/item
@@ -311,7 +316,7 @@
 					user.vars[variable] = user_vars_remembered[variable]
 		user_vars_remembered = initial(user_vars_remembered) // Effectively this sets it to null.
 
-/obj/item/clothing/equipped(mob/user, slot)
+/obj/item/clothing/equipped(mob/user, slot, initial = FALSE, silent = FALSE)
 	..()
 	if (!istype(user))
 		return
@@ -352,23 +357,14 @@
 		. += how_cool_are_your_threads.Join()
 */
 
+/obj/item/clothing/proc/obj_fix(damage_flag)
+	obj_broken = FALSE
+	if(damaged_clothes)
+		update_clothes_damaged_state(FALSE) 
+		
 /obj/item/clothing/obj_break(damage_flag)
 	if(!damaged_clothes)
 		update_clothes_damaged_state(TRUE)
-	var/brokemessage = FALSE
-	// So, what this does is it iterates over all vars on the object, and then it sets them to zero.
-	// Including the ones that don't represent armor values. This is BAD. 
-	// Also, accessing a type's variables with [] will stop working in 1641. You can do the same with .vars[] there but please don't
-	// Frankly just rewrite armor entirely. This system just sucks. This proc in particular should probably just set a broken flag,
-	// and code taking into account armor should check if an armor piece is not broken.
-
-	for(var/x in armor)
-		if(armor[x] > 0)
-			brokemessage = TRUE
-			armor[x] = 0
-	if(ismob(loc) && brokemessage)
-		var/mob/M = loc
-		to_chat(M, "ARMOR BROKEN..!")
 	..()
 
 /obj/item/clothing/proc/update_clothes_damaged_state(damaging = TRUE)

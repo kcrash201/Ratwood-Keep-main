@@ -12,7 +12,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	sewrepair = TRUE
 
-/obj/item/clothing/head/roguetown/equipped(mob/user, slot)
+/obj/item/clothing/head/roguetown/equipped(mob/user, slot, initial = FALSE, silent = FALSE)
 	. = ..()
 	user.update_fov_angles()
 
@@ -134,6 +134,7 @@
 	desc = "A silver opera mask worn by the faithful of Eora, usually during their rituals."
 	icon_state = "eoramask"
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/64x64/head.dmi'
+	slot_flags = ITEM_SLOT_MASK|ITEM_SLOT_HEAD
 	worn_x_dimension = 64
 	worn_y_dimension = 64
 	dynamic_hair_suffix = ""
@@ -1129,7 +1130,7 @@
 	sellprice = 100
 	desc = "Only the wisest of nimrods wear this."
 
-/obj/item/clothing/head/roguetown/wizhat/gen/wise/equipped(mob/user, slot)
+/obj/item/clothing/head/roguetown/wizhat/gen/wise/equipped(mob/user, slot, initial = FALSE, silent = FALSE)
 	. = ..()
 	if(!ishuman(user))
 		return
@@ -1200,7 +1201,7 @@
 	throw_speed = 1
 	throw_range = 3
 
-/obj/item/clothing/head/peaceflower/equipped(mob/living/carbon/human/user, slot)
+/obj/item/clothing/head/peaceflower/equipped(mob/living/carbon/human/user, slot, initial = FALSE, silent = FALSE)
 	. = ..()
 	if(slot == SLOT_HEAD)
 		ADD_TRAIT(user, TRAIT_PACIFISM, "peaceflower_[REF(src)]")
@@ -1494,7 +1495,7 @@
 
 /obj/item/clothing/head/roguetown/helmet/heavy/psydonhelm
 	name = "psydonian armet"
-	desc = "An ornate helmet, whose visor has been bound shut with blacksteel chains. The Order of Saint Eora often decorates these armets with flowers - not only as a lucky charm gifted to them by fair maidens and family, but also as a vibrant reminder that 'happiness has to be fought for.'" 
+	desc = "An ornate helmet, whose visor has been bound shut with blacksteel chains. The Order of Saint Eora often decorates these armets with flowers - not only as a lucky charm gifted to them by fair maidens and family, but also as a vibrant reminder that 'happiness has to be fought for.'"
 	icon_state = "psydonarmet"
 	item_state = "psydonarmet"
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
@@ -1595,6 +1596,7 @@
 /obj/item/clothing/head/roguetown/articap
 	desc = "A sporting cap with a small gear adornment. Popular fashion amongst engineers."
 	icon_state = "articap"
+	resistance_flags = FIRE_PROOF	//Artificers contraptions set them on fire with regular intervals. Thus, Fire retardent clothing.
 
 /obj/item/clothing/head/roguetown/brimmed
 	desc = "A simple brimmed hat that provides some relief from the sun."
@@ -1621,7 +1623,7 @@
 	sellprice = 50
 
 /obj/item/clothing/head/roguetown/helmet/otavan
-	name = "otavan helmet"
+	name = "captain helmet"
 	desc = ""
 	icon_state = "otavahelm"
 	item_state = "otavahelm"
@@ -1682,12 +1684,12 @@
 	block2add = FOV_BEHIND
 	smeltresult = /obj/item/ingot/steel
 
-/obj/item/clothing/head/roguetown/roguehood/feld
-	name = "feldsher's hood"
+/obj/item/clothing/head/roguetown/roguehood/bloodred
+	name = "blood-red hood"
 	desc = "My cure is most effective."
 	icon_state = "feldhood"
 	item_state = "feldhood"
-	body_parts_covered = HEAD|HAIR|EARS|NOSE
+	body_parts_covered = HEAD|HAIR|EARS
 	color = null
 
 /obj/item/clothing/head/roguetown/helmet/overseer
@@ -1702,7 +1704,7 @@
     body_parts_covered = FACE|HEAD|HAIR|EARS|NOSE
     flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
     block2add = FOV_BEHIND
-    slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_HIP
+    slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_HIP|ITEM_SLOT_MASK
     sellprice = 25
 
 /obj/item/clothing/head/roguetown/helmet/overseer/vice

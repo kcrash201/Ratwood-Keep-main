@@ -1,6 +1,6 @@
 /datum/migrant_role/fablefield/goliard
 	name = "Fablefield Goliard"
-	greet_text = "For years you've travelled to Fablefield, honing your craft at the annual grand festival of tales. You are a respected weaver of glorious and valorous stories, with a tongue and wit as sharp as your blade. Of late, you've been obsessed with the isle of Enigma... What fantastical adventures could you embark on here, with your proteges?"
+	greet_text = "For years you've travelled to Fablefield, honing your craft at the annual grand festival of tales. You are a respected weaver of glorious and valorous stories, with a tongue and wit as sharp as your blade. Of late, you've been obsessed with the Kingdom of Ferentia... What fantastical adventures could you embark on here, with your proteges?"
 	outfit = /datum/outfit/job/roguetown/fablefield/goliard
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_SHUNNED_UP
@@ -25,7 +25,7 @@
 	backr = /obj/item/rogue/instrument/guitar
 	beltl = /obj/item/rogueweapon/sword/rapier/dec
 	beltr = /obj/item/rogueweapon/huntingknife/elvish
-	backpack_contents = list(/obj/item/book/rogue/tales1, /obj/item/book/rogue/blackmountain, /obj/item/book/rogue/tales3)
+	backpack_contents = list(/obj/item/flashlight/flare/torch/lantern = 1, /obj/item/flint = 1, /obj/item/natural/feather = 1, /obj/item/paper/scroll = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/music, 6, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 5, TRUE)
@@ -52,7 +52,7 @@
 
 /datum/migrant_role/fablefield/troubadour
 	name = "Fablefield Troubadour"
-	greet_text = "At the last grand festival of tales in Fablefield, you were inspired by a figure who sung of dragons, faeries, gods and heroes. This year, you plan to be the hero of your own story. A talented bard, and good with a blade, you follow your muse with nothing but the highest hopes, although so far Enigma isn't quite what you expected..."
+	greet_text = "At the last grand festival of tales in Fablefield, you were inspired by a figure who sung of dragons, faeries, gods and heroes. This year, you plan to be the hero of your own story. A talented bard, and good with a blade, you follow your muse with nothing but the highest hopes, although so far Ferentia isn't quite what you expected..."
 	outfit = /datum/outfit/job/roguetown/fablefield/troubadour
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_SHUNNED_UP
@@ -77,7 +77,7 @@
 	backr = /obj/item/rogue/instrument/lute
 	beltl = /obj/item/rogueweapon/sword/rapier
 	beltr = /obj/item/rogueweapon/huntingknife/idagger/steel
-	backpack_contents = list(/obj/item/book/rogue/nitebeast, /obj/item/flashlight/flare/torch/lantern, /obj/item/flint)
+	backpack_contents = list(/obj/item/flashlight/flare/torch/lantern = 1, /obj/item/flint = 1, /obj/item/natural/feather = 1, /obj/item/paper/scroll = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/music, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)

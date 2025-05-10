@@ -11,8 +11,6 @@
 	var/ambushable = TRUE
 	var/soundpack_m
 	var/soundpack_f
-	var/stored_skills
-	var/stored_experience
 
 	var/STASTR
 	var/STASPD
@@ -65,11 +63,6 @@
 	STACON = zombie.STACON
 	STAEND = zombie.STAEND
 
-	stored_skills = owner.known_skills.Copy()
-	stored_experience = owner.skill_experience.Copy()
-	owner.known_skills = list()
-	owner.skill_experience = list()
-
 
 	return ..()
 
@@ -88,9 +81,6 @@
 		zombie.cut_overlay(rotflies)
 	zombie.base_intents = base_intents
 
-	owner.known_skills = stored_skills
-	owner.skill_experience = stored_experience
-
 	zombie.can_do_sex = TRUE
 
 	zombie.update_a_intents()
@@ -108,7 +98,7 @@
 	zombie.set_patron(patron)
 
 	for(var/trait in GLOB.traits_deadite)
-		REMOVE_TRAIT(zombie, trait, TRAIT_GENERIC)
+		REMOVE_TRAIT(zombie, trait, DEADITE_TRAIT)
 
 	zombie.remove_client_colour(/datum/client_colour/monochrome)
 

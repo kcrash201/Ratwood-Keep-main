@@ -70,12 +70,13 @@ All foods are distributed among various categories. Use common sense.
 
 	var/ingredient_size = 1
 	var/eat_effect
+	var/extra_eat_effect //ideally the eat_effect should just be able to work with lists, but for now, this'll do
 	var/rotprocess = FALSE
 	var/become_rot_type = null
 
 
 	var/fertamount = 50
-	
+
 	var/can_distill = FALSE //If FALSE, this object cannot be distilled into an alcohol.
 	var/distill_reagent //If NULL and this object can be distilled, it uses a generic fruit_wine reagent and adjusts its variables.
 	var/distill_amt = 12
@@ -120,8 +121,14 @@ All foods are distributed among various categories. Use common sense.
 /obj/item/reagent_containers/food/snacks/process()
 	..()
 	if(rotprocess)
-		if(!istype(loc, /obj/structure/closet/crate/chest) && !(locate(/obj/structure/table) in loc) && !istype(loc, /obj/structure/roguemachine/vendor))
-			warming -= 20 //ssobj processing has a wait of 20
+		if(!istype(loc, /obj/structure/closet/crate/chest) && ! istype(loc, /obj/item/cooking/platter)  && !istype(loc, /obj/structure/roguemachine/vendor) && !istype (loc, /obj/item/storage/backpack/rogue/backpack/artibackpack)&& !istype (loc, /obj/structure/table/cooling))
+			if(!locate(/obj/structure/table) in loc)
+				warming -= 20 //ssobj processing has a wait of 20
+			else
+				if(locate(/obj/structure/table/cooling) in loc)
+					warming -= 0
+				else
+					warming -= 10
 			if(warming < (-1*rotprocess))
 				if(become_rotten())
 					STOP_PROCESSING(SSobj, src)
@@ -150,6 +157,9 @@ All foods are distributed among various categories. Use common sense.
 		slices_num = 0
 		slice_path = null
 		cooktime = 0
+		if(istype(src.loc, /obj/item/cooking/platter/))
+			src.loc.update_icon()
+
 		return TRUE
 
 
@@ -230,6 +240,8 @@ All foods are distributed among various categories. Use common sense.
 
 	if(eat_effect)
 		eater.apply_status_effect(eat_effect)
+		if(extra_eat_effect)
+			eater.apply_status_effect(extra_eat_effect)
 	eater.taste(reagents)
 
 	if(!reagents.total_volume)
@@ -303,7 +315,7 @@ All foods are distributed among various categories. Use common sense.
 					var/mob/living/carbon/C = M
 					var/obj/item/bodypart/CH = C.get_bodypart(BODY_ZONE_HEAD)
 					if(C.cmode)
-						if(!CH.grabbedby)
+						if(!LAZYLEN(CH.grabbedby))
 							to_chat(user, span_info("[C.p_they(TRUE)] steals [C.p_their()] face from it."))
 							return FALSE
 				if(!do_mob(user, M))
@@ -351,6 +363,12 @@ All foods are distributed among various categories. Use common sense.
 				. += "[src] was bitten multiple times!"
 
 /obj/item/reagent_containers/food/snacks/attackby(obj/item/W, mob/user, params)
+
+	if(istype(W, /obj/item/kitchen/fork/) || istype(W, /obj/item/kitchen/ironfork/)) //why is this a different type????
+		if(do_after(user, 0.5 SECONDS))
+			attack(user, user, user.zone_selected)
+			return ..()
+
 	if(istype(W, /obj/item/storage))
 		..() // -> item/attackby()
 		return 0

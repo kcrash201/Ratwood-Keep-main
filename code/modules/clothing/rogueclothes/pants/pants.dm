@@ -164,8 +164,8 @@
 	name = "plated chausses"
 	desc = "Plated armor to protect the legs, especially against arrows."
 	gender = PLURAL
-	icon_state = "chain_legs"
-	item_state = "chain_legs"
+	icon_state = "plate_legs"
+	item_state = "plate_legs"
 //	adjustable = CAN_CADJUST
 	armor_class = ARMOR_CLASS_HEAVY
 	sewrepair = FALSE
@@ -205,8 +205,11 @@
 	item_state = "grenzelpants"
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/stonekeep_merc.dmi'
 	detail_tag = "_detail"
-	armor = list("blunt" = 15, "slash" = 15, "stab" = 15, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-	prevent_crits = list(BCLASS_BLUNT)
+	armor = list("blunt" = 45, "slash" = 30, "stab" = 35, "bullet" = 15, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT)
+	blocksound = SOFTUNDERHIT
+	blade_dulling = DULLING_BASHCHOP
+	armor_class = ARMOR_CLASS_LIGHT
 	colorgrenz = TRUE
 
 /obj/item/clothing/under/roguetown/grenzelpants/update_icon()
@@ -327,7 +330,7 @@
 //----------------- MORE AZURE SPRITEWORK ---------------------
 
 /obj/item/clothing/under/roguetown/trou/leather/pontifex
-	name = "pontifex's chaqchur"
+	name = "monk trousers"
 	desc = "A handmade pair of baggy, thin leather pants. They end in a tight stocking around the calf, ballooning out around the thigh."
 	icon_state = "monkpants"
 	item_state = "monkpants"
@@ -342,14 +345,14 @@
 	body_parts_covered = GROIN
 
 /obj/item/clothing/under/roguetown/trou/otavan
-	name = "otavan leather trousers"
-	desc = "padded leather armor made by Otavan tailors, its quality is remarkable."
+	name = "fencer leather trousers"
+	desc = "padded leather armor made by the most skilled of kingsfield's tailors, its quality is remarkable."
 	icon_state = "fencerpants"
 	resistance_flags = FIRE_PROOF
-	armor = list("blunt" = 85, "slash" = 75, "stab" = 70, "piercing" = 20, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 60, "slash" = 65, "stab" = 85, "bullet" = 20, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT)
 	blocksound = SOFTHIT
-	max_integrity = 300
+	max_integrity = 200
 	blade_dulling = DULLING_BASHCHOP
 	sewrepair = TRUE
 	allowed_race = NON_DWARVEN_RACE_TYPES
@@ -365,6 +368,7 @@
 	desc = "Thick leather trousers to protect from sparks or stray gear projectiles. Judging by the wear, its had plenty of use."
 	icon_state = "artipants"
 	item_state = "artipants"
+	resistance_flags = FIRE_PROOF	//Artificers contraptions set them on fire with regular intervals. Thus, Fire retardent clothing.
 
 /obj/item/clothing/under/roguetown/trou/leathertights
 	name = "leather tights"

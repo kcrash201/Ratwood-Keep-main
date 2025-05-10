@@ -5,7 +5,7 @@
 	var/smooth_icon = null
 	var/prettifyturf = FALSE
 	icon = 'icons/turf/roguefloor.dmi'
-	baseturfs = list(/turf/open/transparent/openspace)
+	baseturfs = /turf/open/transparent/openspace
 	neighborlay = ""
 
 /turf/open/floor/rogue/break_tile()
@@ -182,12 +182,17 @@
 	landsound = 'sound/foley/jumpland/grassland.wav'
 	slowdown = 0
 	smooth = SMOOTH_TRUE
+	canSmoothWith = list(/turf/open/floor/rogue/grassred, 
+						/turf/open/floor/rogue/grassyel, 
+						/turf/open/floor/rogue/grasscold,
+						/turf/open/floor/rogue/snowpatchy,
+						/turf/open/floor/rogue/snow,
+						/turf/open/floor/rogue/snowrough,)
 	neighborlay = "grassedge"
 	max_integrity = 1200
 
 /turf/open/floor/rogue/grass/Initialize()
-	dir = pick(GLOB.cardinals)
-//	GLOB.dirt_list += src
+	dir = pick(GLOB.alldirs)
 	. = ..()
 
 /turf/open/floor/rogue/grass/cardinal_smooth(adjacencies)
@@ -383,8 +388,7 @@
 
 /turf/open/floor/rogue/dirt/get_slowdown(mob/user)
 	//No tile slowdown for fairies
-	var/mob/living/carbon/human/FM = user
-	if(isseelie(FM) && !(FM.resting))	//Add wingcheck
+	if(user.is_floor_hazard_immune())
 		return 0
 
 	var/returned = slowdown
@@ -427,7 +431,8 @@
 	..()
 	if(ishuman(O))
 		var/mob/living/carbon/human/H = O
-		if(H.shoes && !(HAS_TRAIT(H, TRAIT_LIGHT_STEP) || isseelie(H))) //Seelie hover, so they won't step on blood
+		var/skip_footsteps = HAS_TRAIT(H, TRAIT_LIGHT_STEP) || H.is_floor_hazard_immune()
+		if(H.shoes && !skip_footsteps) //Seelie hover, so they won't step on blood
 			var/obj/item/clothing/shoes/S = H.shoes
 			if(!S.can_be_bloody)
 				return
@@ -527,6 +532,7 @@
 	for(var/A in neighborlay_list)
 		cut_overlay("[A]")
 		neighborlay_list -= A
+	LAZYINITLIST(neighborlay_list)
 	var/usedturf
 	if(adjacencies & N_NORTH)
 		usedturf = get_step(src, NORTH)
@@ -885,7 +891,7 @@
 	clawfootstep = FOOTSTEP_HARD_CLAW
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 	landsound = 'sound/foley/jumpland/stoneland.wav'
-	neighborlay = "cobbleedge"
+	neighborlay = "mossyedge"
 	smooth = SMOOTH_TRUE
 	canSmoothWith = list(/turf/open/floor/rogue/dirt, /turf/open/floor/rogue/grass)
 
@@ -911,6 +917,10 @@
 //	neighborlay = "cobblerock"
 	smooth = SMOOTH_MORE
 	canSmoothWith = list(/turf/open/floor/rogue, /turf/closed/mineral, /turf/closed/wall/mineral)
+
+/turf/open/floor/rogue/cobblerock/Initialize()
+	. = ..()
+	dir = pick(GLOB.cardinals)
 
 /turf/open/floor/rogue/cobblerock/cardinal_smooth(adjacencies)
 	roguesmooth(adjacencies)

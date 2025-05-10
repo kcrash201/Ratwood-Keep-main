@@ -113,8 +113,14 @@
 #define AGE_OLD				"Old"
 
 #define ALL_AGES_LIST list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
-#define AGE_VALUES list(AGE_ADULT = 1, AGE_MIDDLEAGED = 2, AGE_OLD = 3)
 
 //Voice ranges
 #define MIN_VOICE_PITCH		0.8
 #define MAX_VOICE_PITCH		1.35
+
+
+#define VOICE_TYPE_MASC	"Masculine"
+#define VOICE_TYPE_FEM	"Feminine"
+// #define VOICE_TYPE_ANDR	"Androgynous"
+
+GLOBAL_LIST_INIT(voice_types_list, list(VOICE_TYPE_MASC, VOICE_TYPE_FEM))
