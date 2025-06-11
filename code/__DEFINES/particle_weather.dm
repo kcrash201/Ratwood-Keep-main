@@ -4,7 +4,7 @@
 
 #define PARTICLEWEATHER_RAIN "weather_rain"
 #define PARTICLEWEATHER_SNOW "weather_snow"
-#define PARTICLEWEATHER_SAND "weather_sand"
+#define PARTICLEWEATHER_SNOW "weather_sand"
 
 #define MAX_LAYER_SNOW_LEVELS 3
 #define MAX_LAYER_SAND_LEVELS 3
