@@ -4,7 +4,11 @@
 
 #define PARTICLEWEATHER_RAIN "weather_rain"
 #define PARTICLEWEATHER_SNOW "weather_snow"
+<<<<<<< Updated upstream
 #define PARTICLEWEATHER_SAND "weather_sand"
+=======
+#define PARTICLEWEATHER_SNOW "weather_sand"
+>>>>>>> Stashed changes
 
 #define MAX_LAYER_SNOW_LEVELS 3
 #define MAX_LAYER_SAND_LEVELS 3
