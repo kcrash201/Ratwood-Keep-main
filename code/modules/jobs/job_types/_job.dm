@@ -1,7 +1,9 @@
 /datum/job
 	//The name of the job , used for preferences, bans and more. Make sure you know what you're doing before changing this.
-	var/title = "NOPE"
-	var/f_title
+	var/title = list("NOPE", "SAND NOPE") //0 = rockhill, 1 = sand map, 2 = etc.
+	var/f_title = list()
+	var/honorific = list()
+	var/f_honorific = list()
 
 	//Job access. The use of minimal_access or access is determined by a config setting: config.jobs_have_minimal_access
 	var/list/minimal_access = list()		//Useful for servers which prefer to only have access given to the places a job absolutely needs (Larger server population)
@@ -38,6 +40,7 @@
 
 	//Sellection screen color
 	var/selection_color = "#dbdce3"
+
 
 	//If this is set to 1, a text is printed to the player when jobs are assigned, telling him that he should let admins know that he has to disconnect.
 	var/req_admin_notify
@@ -127,9 +130,6 @@
 
 	/// This job re-opens slots if someone dies as it
 	var/job_reopens_slots_on_death = FALSE
-
-	//used on the carriage to allow leaving rounds
-	var/can_leave_round = TRUE
 
 	/// This job is immune to species-based swapped gender locks
 	var/immune_to_genderswap = FALSE
@@ -410,7 +410,3 @@
 	if(CONFIG_GET(flag/security_has_maint_access))
 		return list(ACCESS_MAINT_TUNNELS)
 	return list()
-
-// Whether the job should be anonymised when recorded in a character's memories
-/datum/job/proc/should_anonymise_job()
-	return ((wanderer_examine || foreign_examine) && !mercenary_examine)

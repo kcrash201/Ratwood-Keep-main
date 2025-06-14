@@ -1,5 +1,7 @@
 /datum/job/roguetown/knight
 	title = "Knight"
+		map_specific_title = list("Knight", "Cataphract") //0 = rockhill, 1 = zybantium, 2 = etc.
+
 	flag = KNIGHT
 	department_flag = NOBLEMEN
 	faction = "Station"
