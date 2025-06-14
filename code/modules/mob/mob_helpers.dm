@@ -634,17 +634,17 @@
 		if(8)
 			zone_selected = BODY_ZONE_R_ARM
 		if(7)
-			zone_selected = BODY_ZONE_PRECISE_R_HAND
-		if(6)
 			zone_selected = BODY_ZONE_L_ARM
+		if(6)
+			zone_selected = BODY_ZONE_PRECISE_R_HAND
 		if(5)
 			zone_selected = BODY_ZONE_PRECISE_L_HAND
 		if(4)
 			zone_selected = BODY_ZONE_R_LEG
 		if(3)
-			zone_selected = BODY_ZONE_PRECISE_R_FOOT
-		if(2)
 			zone_selected = BODY_ZONE_L_LEG
+		if(2)
+			zone_selected = BODY_ZONE_PRECISE_R_FOOT
 		if(1)
 			zone_selected = BODY_ZONE_PRECISE_L_FOOT
 
@@ -953,22 +953,9 @@
 			used_title = advjob
 	else if(job)
 		var/datum/job/J = SSjob.GetJob(job)
-		var/use_custom_title = FALSE
-		var/map_id = 0 //CHANGE THIS TO ACTUAL MAP ID
-
-		if(map_id != 0) //check for special map
-			use_custom_title = TRUE
-
-		if(use_custom_title && J.map_specific_title[map_id])
-			used_title = J.map_specific_title[map_id]
-			if(J.map_specific_f_title[map_id] && (gender == FEMALE))
-				used_title = J.map_specific_f_title[map_id]
-			if(J.advjob_examine)
-				used_title = advjob
-		else
-			used_title = J.title
-			if(J.f_title && (gender == FEMALE))
-				used_title = J.f_title
-			if(J.advjob_examine)
-				used_title = advjob
+		used_title = J.title
+		if(J.f_title && (gender == FEMALE))
+			used_title = J.f_title
+		if(J.advjob_examine)
+			used_title = advjob
 	return used_title
