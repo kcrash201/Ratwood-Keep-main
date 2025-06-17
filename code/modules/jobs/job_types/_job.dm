@@ -128,6 +128,9 @@
 	/// Cooldown for joining as this job again, if it was your last job
 	var/same_job_respawn_delay = FALSE
 
+	//used on the carriage to allow leaving rounds
+	var/can_leave_round = TRUE
+
 	/// This job re-opens slots if someone dies as it
 	var/job_reopens_slots_on_death = FALSE
 
