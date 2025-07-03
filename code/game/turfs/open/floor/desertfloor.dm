@@ -22,7 +22,7 @@
 
 /turf/open/floor/rogue/sandbrick
 	icon_state = "sand-brick1"
-	icon = 'icons/desert_town/sand_brick.dmi'
+	icon = 'icons/desert_town/sandbrick_floor.dmi'
 	footstep = FOOTSTEP_STONE
 	barefootstep = FOOTSTEP_HARD_BAREFOOT
 	clawfootstep = FOOTSTEP_HARD_CLAW
@@ -150,3 +150,42 @@
 
 
 
+/obj/effect/decal/desertgrassedge
+	name = ""
+	desc = ""
+	icon = 'icons/desert_town/desertgrass.dmi'
+	icon_state = "desertgrass_edges"
+	mouse_opacity = 0
+
+
+/turf/open/floor/rogue/desert_grass
+	name = "desert grass"
+	desc = "Grass, barely."
+	icon = 'icons/desert_town/desertgrass.dmi'
+	icon_state = "desertgrass1"
+	layer = MID_TURF_LAYER
+	footstep = FOOTSTEP_GRASS
+	barefootstep = FOOTSTEP_SOFT_BAREFOOT
+	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
+	tiled_dirt = FALSE
+	landsound = 'sound/foley/jumpland/grassland.wav'
+	slowdown = 0
+	smooth = SMOOTH_TRUE
+	canSmoothWith = list( 
+						/turf/open/floor/rogue/grass,
+						/turf/open/floor/rogue/dunes,
+						/turf/open/floor/rogue/citybrick,)
+	max_integrity = 1200
+
+/turf/open/floor/rogue/desert_grass/Initialize()
+	. = ..()
+	dir = pick(GLOB.cardinals)
+	icon_state = "desertgrass[rand(1,16)]"
+
+
+/turf/open/floor/rogue/desert_grass/cardinal_smooth(adjacencies)
+	roguesmooth(adjacencies)
+
+/turf/open/floor/rogue/desert_grass/turf_destruction(damage_flag)
+	. = ..()
+	src.ChangeTurf(/turf/open/floor/rogue/dirt, flags = CHANGETURF_INHERIT_AIR)

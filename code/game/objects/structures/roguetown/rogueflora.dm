@@ -325,6 +325,16 @@
     )
 
 
+/obj/structure/flora/roguegrass/bush/desert
+	name = "saigahorn"
+	desc = ""
+	icon = 'icons/desert_town/flora.dmi'
+	icon_state = "saigahorn1"
+
+/obj/structure/flora/desert_bush/Initialize()
+	. = ..()
+	icon_state = "saigahorn[rand(1, 3)]"
+
 
 /obj/structure/flora/roguegrass/bush/Initialize()
 	var/area/A = get_area(src)
