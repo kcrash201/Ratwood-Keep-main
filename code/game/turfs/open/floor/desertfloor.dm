@@ -20,7 +20,6 @@
 	dir = pick(GLOB.cardinals)
 	icon_state = "dune[rand(1,17)]"
 
-
 /turf/open/floor/rogue/sandbrick
 	icon_state = "sand-brick1"
 	icon = 'icons/desert_town/sand_brick.dmi'
@@ -111,7 +110,7 @@
 
 
 /turf/open/floor/rogue/lightpath
-	icon_state = "light-path"
+	icon_state = "light-path1"
 	icon = 'icons/desert_town/light_path.dmi'
 	canSmoothWith = list(/turf/open/floor/rogue, /turf/closed/mineral, /turf/closed/wall/mineral)
 	slowdown = 0
@@ -131,7 +130,7 @@
 
 
 /turf/open/floor/rogue/darkpath
-	icon_state = "dark-path"
+	icon_state = "dark-path1"
 	icon = 'icons/desert_town/dark_path.dmi'
 	canSmoothWith = list(/turf/open/floor/rogue, /turf/closed/mineral, /turf/closed/wall/mineral)
 	slowdown = 0
