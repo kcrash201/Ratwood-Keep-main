@@ -1001,6 +1001,7 @@
 #include "code\game\objects\structures\roguetown\musicbox.dm"
 #include "code\game\objects\structures\roguetown\newtree.dm"
 #include "code\game\objects\structures\roguetown\portal.dm"
+#include "code\game\objects\structures\roguetown\pots.dm"
 #include "code\game\objects\structures\roguetown\redstone.dm"
 #include "code\game\objects\structures\roguetown\rogueflora.dm"
 #include "code\game\objects\structures\roguetown\sandrock.dm"
