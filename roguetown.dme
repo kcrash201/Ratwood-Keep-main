@@ -1002,6 +1002,7 @@
 #include "code\game\objects\structures\roguetown\portal.dm"
 #include "code\game\objects\structures\roguetown\redstone.dm"
 #include "code\game\objects\structures\roguetown\rogueflora.dm"
+#include "code\game\objects\structures\roguetown\sandrock.dm"
 #include "code\game\objects\structures\roguetown\telescope.dm"
 #include "code\game\objects\structures\siege\onager.dm"
 #include "code\game\turfs\baseturf_skipover.dm"
