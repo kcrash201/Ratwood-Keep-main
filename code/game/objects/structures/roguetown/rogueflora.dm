@@ -331,7 +331,7 @@
 	icon = 'icons/desert_town/flora.dmi'
 	icon_state = "saigahorn1"
 
-/obj/structure/flora/desert_bush/Initialize()
+/obj/structure/flora/roguegrass/bush/desert/Initialize()
 	. = ..()
 	icon_state = "saigahorn[rand(1, 3)]"
 
