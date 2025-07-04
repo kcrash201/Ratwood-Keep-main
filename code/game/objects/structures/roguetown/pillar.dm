@@ -11,7 +11,7 @@
 	destroy_sound = 'sound/foley/smash_rock.ogg'
 	attacked_sound = 'sound/foley/hit_rock.ogg'
 	static_debris = list(/obj/item/natural/stone = 10)
-	layer = 4.81
+	layer = 4.82
 	pixel_x = -16
 	plane = GAME_PLANE_UPPER
 
