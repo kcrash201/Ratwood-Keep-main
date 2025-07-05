@@ -31,7 +31,7 @@
 "aE" = (/obj/structure/table/wood{icon_state = "tablewood2"; dir = 10},/obj/item/clothing/head/roguetown/helmet,/obj/item/clothing/head/roguetown/helmet,/obj/item/clothing/head/roguetown/helmet,/turf/open/floor/rogue/carpet,/area/rogue)
 "aF" = (/obj/structure/table/wood{icon_state = "tablewood2"; dir = 10},/obj/item/clothing/mask/rogue/facemask,/obj/item/clothing/mask/rogue/facemask,/obj/item/clothing/mask/rogue/facemask,/obj/item/clothing/mask/rogue/facemask,/obj/item/clothing/mask/rogue/facemask,/obj/item/clothing/mask/rogue/facemask,/turf/open/floor/rogue/carpet,/area/rogue)
 "aG" = (/obj/structure/table/wood{icon_state = "tablewood2"; dir = 10},/obj/item/clothing/under/roguetown/tights,/obj/item/clothing/under/roguetown/tights,/obj/item/clothing/under/roguetown/tights,/obj/item/clothing/under/roguetown/tights,/turf/open/floor/rogue/carpet,/area/rogue)
-"aH" = (/obj/structure/flora/roguetree,/turf/open/floor/rogue/dirt,/area/rogue/outdoors)
+"aH" = (/turf/open/floor/rogue/desert_grass,/area/rogue/outdoors)
 "aI" = (/obj/structure/table/wood{icon_state = "tablewood2"; dir = 10},/obj/item/clothing/neck/roguetown/chaincoif,/obj/item/clothing/neck/roguetown/chaincoif,/obj/item/clothing/neck/roguetown/chaincoif,/obj/item/clothing/neck/roguetown/chaincoif,/turf/open/floor/rogue/carpet,/area/rogue)
 "aJ" = (/obj/structure/table/wood{icon_state = "tablewood2"; dir = 10},/obj/item/clothing/ring/active/nomag,/obj/item/clothing/ring/active/nomag,/turf/open/floor/rogue/carpet,/area/rogue)
 "aK" = (/obj/structure/table/wood{icon_state = "tablewood2"; dir = 10},/obj/item/clothing/shoes/roguetown/armor,/obj/item/clothing/shoes/roguetown/armor,/obj/item/clothing/shoes/roguetown/armor,/obj/item/clothing/shoes/roguetown/armor,/obj/item/clothing/shoes/roguetown/armor,/turf/open/floor/rogue/carpet,/area/rogue)
@@ -204,10 +204,13 @@
 "dY" = (/obj/structure/mineral_door/bars{locked = 1; lockid = "mansionvampire"},/turf/open/floor/rogue/dirt/road,/area/rogue/outdoors/woods)
 "dZ" = (/obj/structure/bed/rogue/inn/wool,/obj/item/bedsheet/rogue/pelt,/turf/open/floor/rogue/blocks,/area/rogue/under/town/goblin)
 "eb" = (/obj/structure/table/wood{icon_state = "largetable_mid"; dir = 1},/turf/open/floor/rogue/hexstone,/area/rogue/indoors/banditcamp)
+"ef" = (/obj/structure/chair/wood/zybantine,/turf/open/floor/rogue/sandbrick,/area/rogue/outdoors)
+"eo" = (/obj/structure/stairs/desert,/turf/open/floor/rogue/dirt,/area/rogue/outdoors)
 "ez" = (/obj/structure/mirror,/obj/structure/table/wood{icon_state = "tablewood1"},/obj/item/clothing/mask/cigarette/pipe/crafted,/turf/open/floor/rogue/blocks,/area/rogue/under/town/goblin)
 "eE" = (/obj/structure/lever/wall{pixel_x = 18; redstone_id = "goblingate"},/turf/open/floor/rogue/naturalstone,/area/rogue/under/town/goblin)
 "eL" = (/obj/machinery/anvil,/turf/open/floor/rogue/metal,/area/rogue/under/town/goblin)
 "fi" = (/obj/structure/table/wood{icon_state = "tablewood2"; dir = 10},/obj/item/rogueweapon/eaglebeak,/obj/item/rogueweapon/eaglebeak,/obj/item/rogueweapon/eaglebeak,/obj/machinery/light/rogue/wallfire/candle{pixel_y = -32},/turf/open/floor/rogue/cobble,/area/rogue)
+"fk" = (/obj/machinery/light/rogue/firebowl/stump,/turf/open/floor/rogue/sandbrick,/area/rogue/outdoors)
 "fl" = (/obj/structure/stairs{dir = 1},/turf/open/floor/rogue/dirt/road,/area/rogue/under/town/goblin)
 "fq" = (/obj/structure/fermenting_barrel/beer,/turf/open/floor/rogue/cobble/mossy,/area/rogue/under/town/goblin)
 "ft" = (/obj/item/candle/skull,/turf/open/floor/rogue/herringbone,/area/rogue/indoors)
@@ -224,15 +227,18 @@
 "gZ" = (/obj/structure/table/wood{icon_state = "tablewood1"; dir = 1},/obj/item/rogueweapon/tongs,/obj/item/candle/skull/lit,/turf/open/floor/rogue/wood,/area/rogue/indoors/banditcamp)
 "hc" = (/obj/machinery/light/rogue/wallfire/candle,/turf/open/floor/rogue/blocks,/area/rogue)
 "hd" = (/obj/structure/table/wood{icon_state = "tablewood1"},/obj/item/reagent_containers/powder/flour,/obj/item/reagent_containers/food/snacks/rogue/meat/poultry,/obj/item/reagent_containers/food/snacks/rogue/dough,/turf/open/floor/rogue/cobble/mossy,/area/rogue/under/town/goblin)
+"hj" = (/obj/structure/drape/zybantine{dir = 8},/turf/open/floor/rogue/dirt/road,/area/rogue)
 "hA" = (/obj/structure/table/wood{icon_state = "tablewood1"},/obj/item/flashlight/flare/torch/lantern,/turf/open/floor/rogue/metal,/area/rogue/under/town/goblin)
 "hI" = (/obj/structure/fluff/railing/border{dir = 1},/turf/open/floor/rogue/cobble/mossy,/area/rogue/under/town/goblin)
 "hK" = (/obj/item/natural/rock,/turf/open/floor/rogue/cobble,/area/rogue/under/cavewet/bogcaves)
+"hO" = (/obj/effect/decal/desertgrassedge{dir = 5},/turf/open/floor/rogue/dirt/road,/area/rogue/outdoors)
 "hQ" = (/turf/open/floor/rogue/blocks,/area/rogue)
 "hV" = (/obj/effect/landmark/start/goblinguard,/turf/open/floor/rogue/blocks{icon_state = "paving"},/area/rogue/under/town/goblin)
 "ie" = (/obj/structure/table/wood{icon_state = "tablewood1"; dir = 1},/obj/item/candle/skull/lit,/turf/open/floor/rogue/ruinedwood{icon_state = "vertw"; dir = 1},/area/rogue/indoors/banditcamp)
 "ik" = (/turf/closed/wall/mineral/rogue/stone/window/moss,/area/rogue/under/town/goblin)
 "it" = (/obj/structure/mineral_door/wood/donjon{name = "Guard's Quarters"; dir = 8; locked = 1; lockid = "gobbo_guards"},/turf/open/floor/rogue/naturalstone,/area/rogue/under/town/goblin)
 "iB" = (/obj/machinery/light/rogue/torchholder{dir = 8},/turf/open/floor/rogue/blocks,/area/rogue/under/town/goblin)
+"iC" = (/obj/effect/decal/desertgrassedge{dir = 9},/turf/open/floor/rogue/dirt,/area/rogue/outdoors)
 "iG" = (/obj/item/candle/skull,/turf/open/floor/rogue/herringbone,/area/rogue/indoors/banditcamp)
 "iQ" = (/obj/structure/bed/rogue/inn/wooldouble,/obj/item/bedsheet/rogue/double_pelt,/turf/open/floor/carpet/red,/area/rogue/under/town/goblin)
 "iV" = (/obj/structure/rack/rogue,/obj/item/clothing/suit/roguetown/armor/plate/half/iron/goblin,/obj/item/clothing/suit/roguetown/armor/plate/half/iron/goblin,/obj/item/clothing/suit/roguetown/armor/plate/half/iron/goblin,/turf/open/floor/rogue/blocks,/area/rogue/under/town/goblin)
@@ -256,17 +262,20 @@
 "kF" = (/obj/structure/table/wood{icon_state = "tablewood2"; dir = 10},/obj/item/rogueweapon/greatsword,/obj/item/rogueweapon/greatsword,/obj/item/rogueweapon/greatsword,/obj/item/rogueweapon/greatsword,/obj/item/key/lord,/turf/open/floor/rogue/cobble,/area/rogue)
 "kM" = (/obj/structure/rack/rogue,/obj/item/reagent_containers/food/snacks/rogue/bread,/turf/open/floor/rogue/cobble/mossy,/area/rogue/under/town/goblin)
 "kR" = (/obj/structure/roguemachine/hoardbarrier,/turf/open/floor/rogue/carpet,/area/rogue/indoors/banditcamp)
+"kY" = (/obj/machinery/light/rogue/wallfire/desert,/turf/closed/wall/mineral/rogue/sandstone,/area/rogue/outdoors)
 "la" = (/obj/effect/landmark/start/bandit{dir = 8},/obj/structure/chair/stool/rogue,/turf/open/floor/rogue/herringbone,/area/rogue/indoors/banditcamp)
 "lf" = (/obj/machinery/light/rogue/torchholder{dir = 1},/turf/open/floor/rogue/cobble,/area/rogue/under/town/goblin)
 "lu" = (/turf/closed/wall/mineral/rogue/stone/moss,/area/rogue/under/town/goblin)
 "lw" = (/turf/open/floor/rogue/cobble,/area/rogue)
 "lM" = (/turf/open/floor/rogue/dirt/road,/area/rogue/indoors/banditcamp)
 "lW" = (/obj/structure/stairs,/turf/open/floor/rogue/cobble/mossy,/area/rogue/under/town/goblin)
+"mn" = (/obj/effect/decal/desertgrassedge{dir = 6},/turf/open/floor/rogue/dirt,/area/rogue/outdoors)
 "mp" = (/obj/machinery/light/rogue/firebowl/stump,/turf/open/floor/rogue/cobblerock,/area/rogue/outdoors/banditcamp)
 "mD" = (/obj/structure/rack/rogue,/obj/item/clothing/suit/roguetown/armor/leather/goblin,/obj/item/clothing/suit/roguetown/armor/leather/goblin,/obj/item/clothing/suit/roguetown/armor/leather/goblin,/turf/open/floor/rogue/blocks,/area/rogue/under/town/goblin)
 "mJ" = (/obj/structure/table/wood{icon_state = "largetable"; dir = 1},/turf/open/floor/rogue/cobble/mossy,/area/rogue/under/town/goblin)
 "mO" = (/obj/structure/table/wood{icon_state = "tablewood2"; dir = 10},/obj/item/ammo_holder/quiver/bolts,/obj/item/ammo_holder/quiver/bolts,/obj/item/ammo_holder/quiver/bolts,/obj/item/ammo_holder/quiver/bolts,/obj/item/ammo_holder/quiver/bolts,/turf/open/floor/rogue/dirt,/area/rogue/outdoors)
 "mQ" = (/obj/structure/bed/rogue/shit,/turf/open/floor/rogue/ruinedwood{icon_state = "vertw"; dir = 1},/area/rogue/indoors/banditcamp)
+"mR" = (/obj/structure/chair/wood/rogue/throne/zybantine,/turf/open/floor/rogue/sandbrick,/area/rogue/outdoors)
 "mV" = (/obj/machinery/light/rogue/firebowl/stump,/turf/open/floor/rogue/dirt/road,/area/rogue/outdoors)
 "mY" = (/obj/structure/chair/wood/rogue/chair3{dir = 1},/turf/open/floor/rogue/cobble,/area/rogue/under/town/goblin)
 "nc" = (/obj/effect/decal/cleanable/generic,/turf/open/floor/rogue/cobble/mossy,/area/rogue/under/town/goblin)
@@ -277,6 +286,7 @@
 "ns" = (/obj/effect/landmark/start/bandit{dir = 4},/obj/structure/chair/stool/rogue,/turf/open/floor/rogue/herringbone,/area/rogue/indoors/banditcamp)
 "nx" = (/obj/machinery/light/rogue/firebowl/stump,/turf/open/floor/rogue/dirt/road,/area/rogue/outdoors/banditcamp)
 "nC" = (/obj/structure/fluff/traveltile/goblin_interior{aportalid = "goblinin"; aportalgoesto = "goblinexit"},/turf/open/water/sewer,/area/rogue/under/town/goblin)
+"nD" = (/obj/structure/fermenting_barrel/fancypot,/obj/structure/fermenting_barrel/fancypot,/turf/open/floor/rogue/sand,/area/rogue/outdoors)
 "nG" = (/obj/item/chair/rogue,/obj/effect/landmark/start/bandit{dir = 4},/turf/open/floor/rogue/herringbone,/area/rogue/indoors/banditcamp)
 "nQ" = (/obj/structure/table/wood{icon_state = "tablewood2"; dir = 10},/obj/item/rogueweapon/sword/cutlass,/obj/item/rogueweapon/sword/cutlass,/obj/machinery/light/rogue/wallfire/candle{pixel_y = -32},/turf/open/floor/rogue/cobble,/area/rogue)
 "nS" = (/obj/structure/closet/crate/chest,/obj/item/reagent_containers/food/snacks/grown/apple,/obj/item/reagent_containers/food/snacks/grown/apple,/obj/item/reagent_containers/food/snacks/grown/apple,/obj/item/reagent_containers/food/snacks/grown/apple,/obj/machinery/light/rogue/wallfire/candle/l,/turf/open/floor/rogue/cobble/mossy,/area/rogue/under/town/goblin)
@@ -325,6 +335,7 @@
 "sh" = (/obj/effect/landmark/start/bandit{dir = 8},/obj/structure/chair/wood/rogue{dir = 8},/turf/open/floor/rogue/herringbone,/area/rogue/indoors/banditcamp)
 "sk" = (/obj/structure/fluff/traveltile/vampire{aportalid = "vampin"; aportalgoesto = "vampexit"},/turf/open/floor/rogue/dirt/road,/area/rogue/outdoors/woods)
 "so" = (/obj/structure/bars,/turf/open/floor/rogue/ruinedwood{icon_state = "vertw"; dir = 1},/area/rogue/indoors/banditcamp)
+"st" = (/obj/structure/fermenting_barrel/sandpot,/turf/open/floor/rogue/sandbrick,/area/rogue/outdoors)
 "sz" = (/obj/effect/landmark/events/testportal{aportalloc = "bandit"},/turf/open/floor/rogue/blocks,/area/rogue)
 "sC" = (/obj/structure/fermenting_barrel/water,/obj/machinery/light/rogue/torchholder{pixel_y = 26},/turf/open/floor/rogue/dirt/road,/area/rogue)
 "sN" = (/obj/structure/table/wood{icon_state = "largetable"; dir = 1},/turf/open/floor/rogue/hexstone,/area/rogue/indoors/banditcamp)
@@ -335,6 +346,7 @@
 "tq" = (/turf/open/floor/carpet/red,/area/rogue/under/town/goblin)
 "tH" = (/obj/structure/toilet,/turf/open/floor/rogue/greenstone,/area/rogue/under/town/goblin)
 "tN" = (/turf/closed/mineral/random/rogue,/area/rogue/under/cavewet/bogcaves)
+"tP" = (/obj/structure/drape/desert,/turf/open/floor/rogue/dirt/road,/area/rogue/outdoors)
 "uc" = (/obj/effect/decal/cleanable/vomit/old,/turf/open/floor/rogue/greenstone,/area/rogue/under/town/goblin)
 "ud" = (/obj/structure/fluff/traveltile/goblin_interior{aportalid = "goblin1in"; aportalgoesto = "goblin1exit"},/turf/open/floor/rogue/cobble,/area/rogue/under/town/goblin)
 "up" = (/obj/item/cooking/pan,/turf/open/floor/rogue/tile,/area/rogue/indoors)
@@ -352,19 +364,26 @@
 "vT" = (/obj/structure/mineral_door/wood/deadbolt{dir = 4},/turf/open/floor/rogue/ruinedwood{icon_state = "vertw"; dir = 1},/area/rogue/indoors/banditcamp)
 "wb" = (/obj/item/natural/rock,/turf/open/floor/rogue/cobble/mossy,/area/rogue/under/cavewet/bogcaves)
 "wf" = (/obj/machinery/light/rogue/torchholder{dir = 4},/turf/open/floor/rogue/blocks,/area/rogue/under/town/goblin)
+"wh" = (/obj/structure/chair/zybantine_sofa/left,/turf/open/floor/rogue/darkpath,/area/rogue/outdoors)
 "wk" = (/obj/machinery/light/rogue/firebowl/stump,/turf/open/floor/rogue/dirt,/area/rogue/outdoors/banditcamp)
+"wl" = (/obj/effect/decal/desertgrassedge{dir = 10},/turf/open/floor/rogue/dirt,/area/rogue/outdoors)
 "wB" = (/obj/effect/landmark/start/new_player,/turf/open/floor/rogue/dirt,/area/start)
 "wF" = (/obj/structure/bars,/turf/open/floor/rogue/greenstone,/area/rogue/under/town/goblin)
 "wO" = (/obj/structure/chair/wood/rogue/chair3,/turf/open/floor/rogue/cobble,/area/rogue/under/town/goblin)
+"wP" = (/obj/item/natural/rock/desert,/turf/open/floor/rogue/desert_grass,/area/rogue/outdoors)
 "xd" = (/turf/open/floor/rogue/cobble/mossy,/area/rogue/under/town/goblin)
+"xl" = (/turf/open/floor/rogue/sandbrick,/area/rogue/outdoors)
 "xr" = (/turf/open/floor/rogue/ruinedwood,/area/rogue/indoors/banditcamp)
 "xt" = (/obj/structure/fluff/psycross/crafted,/turf/open/floor/rogue/dirt,/area/rogue/outdoors/woods)
 "xy" = (/obj/structure/bed/rogue,/turf/open/floor/rogue/hexstone,/area/rogue/indoors/banditcamp)
+"xA" = (/obj/structure/drape/zybantine{dir = 1},/turf/open/floor/rogue/dirt/road,/area/rogue/outdoors)
 "xI" = (/obj/structure/closet/crate/roguecloset,/obj/item/clothing/mask/cigarette/rollie/nicotine,/obj/item/clothing/mask/cigarette/rollie/nicotine,/obj/item/clothing/mask/cigarette/rollie/nicotine,/obj/item/clothing/mask/cigarette/rollie/cannabis,/obj/item/clothing/mask/cigarette/rollie/cannabis,/obj/item/clothing/mask/cigarette/rollie/nicotine,/obj/item/clothing/mask/cigarette/rollie/nicotine,/turf/open/floor/rogue/herringbone,/area/rogue/indoors)
+"xJ" = (/obj/structure/fermenting_barrel/sandpot,/turf/open/floor/rogue/lightpath,/area/rogue/outdoors)
 "xO" = (/obj/structure/table/wood{icon_state = "tablewood2"; dir = 10},/obj/item/rogueweapon/huntingknife/idagger/steel,/obj/item/rogueweapon/huntingknife/idagger/steel,/obj/item/rogueweapon/huntingknife/idagger/steel,/obj/item/rogueweapon/huntingknife/idagger/steel,/obj/item/rogueweapon/huntingknife/idagger/steel,/turf/open/floor/rogue/cobble,/area/rogue)
 "xS" = (/turf/open/floor/rogue/carpet,/area/rogue/indoors/banditcamp)
 "xT" = (/obj/structure/mineral_door/wood/deadbolt,/turf/open/floor/rogue/herringbone,/area/rogue/indoors/banditcamp)
 "xU" = (/turf/open/water/sewer,/area/rogue/under/town/goblin)
+"yj" = (/obj/effect/decal/desertgrassedge{dir = 1},/turf/open/floor/rogue/dirt/road,/area/rogue/outdoors)
 "yw" = (/turf/open/floor/rogue/tile,/area/rogue/indoors/banditcamp)
 "yy" = (/obj/structure/table/wood{icon_state = "tablewood2"; dir = 10},/obj/item/gun/ballistic/revolver/grenadelauncher/bow,/obj/item/gun/ballistic/revolver/grenadelauncher/bow,/obj/item/gun/ballistic/revolver/grenadelauncher/bow,/obj/item/gun/ballistic/revolver/grenadelauncher/bow,/obj/item/gun/ballistic/revolver/grenadelauncher/bow,/obj/item/gun/ballistic/revolver/grenadelauncher/bow,/turf/open/floor/rogue/dirt,/area/rogue/outdoors)
 "yz" = (/obj/structure/fluff/statue/tdummy,/turf/open/floor/rogue/cobble,/area/rogue/outdoors)
@@ -390,11 +409,13 @@
 "Ba" = (/turf/open/floor/rogue/ruinedwood,/area/rogue/indoors)
 "Bf" = (/obj/structure/stairs/stone{dir = 4},/turf/open/floor/rogue/cobble,/area/rogue/under/town/goblin)
 "Bk" = (/obj/structure/table/wood{icon_state = "largetable"},/turf/open/floor/rogue/cobble,/area/rogue/under/town/goblin)
+"Bv" = (/obj/item/natural/rock/desert,/turf/open/floor/rogue/sandbrick,/area/rogue/outdoors)
 "BM" = (/obj/structure/mineral_door/wood/deadbolt{dir = 8},/turf/open/floor/rogue/herringbone,/area/rogue/indoors/banditcamp)
 "BS" = (/turf/open/floor/rogue/cobble,/area/rogue/under/cavewet/bogcaves)
 "BY" = (/obj/effect/landmark/mapGenerator/rogue/forest{endTurfX = 128; endTurfY = 128},/turf/closed/mineral/rogue/bedrock,/area/rogue/outdoors/woods)
 "Cd" = (/obj/structure/mineral_door/wood/donjon{name = "Smithery"; dir = 8; locked = 1; lockid = "gobbo"},/turf/open/floor/rogue/cobble/mossy,/area/rogue/under/town/goblin)
 "Cg" = (/obj/structure/fluff/traveltile/goblin_interior{aportalid = "goblin2in"; aportalgoesto = "goblin2exit"},/turf/open/floor/rogue/naturalstone,/area/rogue/under/town/goblin)
+"Ck" = (/obj/structure/sandrock/sandrock2,/obj/structure/pillar/sand1,/turf/open/floor/rogue/sandbrick,/area/rogue/outdoors)
 "Cm" = (/turf/open/floor/rogue/dirt,/area/rogue/outdoors/banditcamp)
 "Cp" = (/obj/structure/bed/rogue/inn/pileofshit,/turf/open/floor/rogue/cobble/mossy,/area/rogue/under/town/goblin)
 "Cy" = (/obj/structure/closet/crate/chest,/obj/item/roguegem/green,/obj/item/roguegem,/turf/open/floor/rogue/cobble/mossy,/area/rogue/under/town/goblin)
@@ -410,14 +431,19 @@
 "DB" = (/turf/open/water/cleanshallow,/area/rogue/outdoors/banditcamp)
 "DD" = (/obj/item/reagent_containers/powder/salt,/obj/item/reagent_containers/powder/salt,/obj/item/reagent_containers/powder/salt,/obj/structure/closet/crate/chest{lockid = "bandit"},/obj/item/reagent_containers/food/snacks/rogue/meat/steak,/obj/item/reagent_containers/food/snacks/rogue/meat/steak,/obj/item/reagent_containers/food/snacks/rogue/meat/steak,/obj/item/reagent_containers/food/snacks/rogue/meat/steak,/obj/item/reagent_containers/food/snacks/rogue/meat/steak,/obj/item/reagent_containers/food/snacks/rogue/meat/steak,/obj/item/reagent_containers/food/snacks/rogue/meat/steak,/obj/item/reagent_containers/food/snacks/rogue/meat/steak,/obj/item/reagent_containers/food/snacks/rogue/meat/steak,/obj/item/reagent_containers/food/snacks/rogue/meat/steak,/obj/item/reagent_containers/food/snacks/rogue/meat/steak,/obj/item/reagent_containers/food/snacks/rogue/meat/steak,/turf/open/floor/rogue/tile,/area/rogue/indoors/banditcamp)
 "DK" = (/turf/open/floor/rogue/blocks{icon_state = "paving"},/area/rogue/under/town/goblin)
+"DM" = (/turf/open/floor/rogue/darkpath,/area/rogue/outdoors)
+"DQ" = (/obj/effect/decal/desertgrassedge{dir = 8},/turf/open/floor/rogue/dirt,/area/rogue/outdoors)
+"Ee" = (/obj/structure/sandrock/sandrock3,/turf/open/floor/rogue/sandbrick,/area/rogue/outdoors)
 "Eq" = (/obj/structure/table/wood{icon_state = "tablewood2"; dir = 10},/obj/item/rogueweapon/huntingknife/idagger/silver,/obj/item/rogueweapon/huntingknife/idagger/silver,/obj/item/rogueweapon/huntingknife/idagger/silver,/obj/item/rogueweapon/huntingknife/idagger/silver,/obj/machinery/light/rogue/wallfire/candle{pixel_y = -32},/turf/open/floor/rogue/cobble,/area/rogue)
 "Es" = (/turf/open/floor/rogue/cobblerock,/area/rogue/outdoors/banditcamp)
 "EF" = (/obj/structure/table/wood{icon_state = "tablewood1"},/obj/item/reagent_containers/powder/flour,/obj/item/reagent_containers/powder/flour,/obj/item/reagent_containers/food/snacks/rogue/meat/bacon,/turf/open/floor/rogue/cobble,/area/rogue/under/town/goblin)
 "EI" = (/obj/structure/fluff/nest,/turf/open/floor/rogue/blocks,/area/rogue/under/town/goblin)
+"EX" = (/obj/structure/fermenting_barrel/fancypot,/turf/open/floor/rogue/sand,/area/rogue/outdoors)
 "Fc" = (/obj/structure/chair/wood/rogue/chair3{dir = 4},/turf/open/floor/rogue/blocks,/area/rogue/under/town/goblin)
 "Fd" = (/obj/machinery/light/rogue/torchholder{dir = 1},/turf/open/floor/rogue/cobble/mossy,/area/rogue/under/town/goblin)
 "Fj" = (/obj/structure/closet/crate/roguecloset,/obj/item/flashlight/flare/torch/metal,/obj/item/flashlight/flare/torch/metal,/obj/item/flashlight/flare/torch/metal,/turf/open/floor/rogue/herringbone,/area/rogue/indoors/banditcamp)
 "FA" = (/obj/item/natural/rock,/turf/open/floor/rogue/dirt/road,/area/rogue/under/cavewet/bogcaves)
+"FH" = (/turf/closed/wall/mineral/rogue/sandbrick,/area/rogue/outdoors)
 "FJ" = (/obj/structure/fluff/railing/fence{dir = 4},/turf/open/floor/rogue/cobblerock,/area/rogue/outdoors/banditcamp)
 "FO" = (/obj/structure/closet/crate/roguecloset,/obj/item/clothing/mask/cigarette/rollie/nicotine,/obj/item/clothing/mask/cigarette/rollie/nicotine,/obj/item/clothing/mask/cigarette/rollie/nicotine,/obj/item/clothing/mask/cigarette/rollie/nicotine,/obj/item/clothing/mask/cigarette/rollie/nicotine,/obj/item/storage/roguebag,/obj/item/storage/roguebag,/obj/item/storage/roguebag,/obj/item/storage/roguebag,/obj/item/storage/roguebag,/turf/open/floor/rogue/herringbone,/area/rogue/indoors/banditcamp)
 "FP" = (/obj/structure/mineral_door/wood/deadbolt{name = "Kitchen"; dir = 8; lockid = "gobbo"},/turf/open/floor/rogue/cobble,/area/rogue/under/town/goblin)
@@ -431,6 +457,7 @@
 "GY" = (/obj/structure/mineral_door/wood/deadbolt{dir = 4},/turf/open/floor/rogue/dirt,/area/rogue/under/town/goblin)
 "GZ" = (/obj/structure/closet/crate/chest,/obj/item/clothing/suit/roguetown/armor/leather/hide/goblin,/obj/item/clothing/suit/roguetown/armor/leather/hide/goblin,/obj/item/clothing/suit/roguetown/armor/leather/hide/goblin,/obj/item/clothing/suit/roguetown/armor/leather/hide/goblin,/obj/item/clothing/suit/roguetown/armor/leather/hide/goblin,/obj/item/clothing/suit/roguetown/armor/leather/hide/goblin,/obj/item/rope/chain,/obj/item/rope/chain,/obj/item/rope/chain,/obj/item/rope/chain,/turf/open/floor/rogue/blocks,/area/rogue/under/town/goblin)
 "Hf" = (/obj/structure/stairs/stone{dir = 1},/turf/open/floor/rogue/cobble,/area/rogue/under/town/goblin)
+"Hm" = (/obj/structure/pillar/sand1,/turf/open/floor/rogue/sandbrick,/area/rogue/outdoors)
 "Hn" = (/obj/machinery/light/rogue/hearth,/turf/open/floor/rogue/dirt/road,/area/rogue/indoors/banditcamp)
 "Hp" = (/obj/structure/table/wood{icon_state = "largetable"},/turf/open/floor/rogue/cobble/mossy,/area/rogue/under/town/goblin)
 "Hv" = (/obj/structure/chair/wood/rogue/chair3,/obj/machinery/light/rogue/torchholder{dir = 4},/turf/open/floor/rogue/cobble,/area/rogue/under/town/goblin)
@@ -457,9 +484,12 @@
 "Kd" = (/obj/structure/fluff/grindwheel,/turf/open/floor/rogue/dirt/road,/area/rogue/outdoors)
 "Kk" = (/obj/structure/stairs/stone,/turf/open/floor/rogue/naturalstone,/area/rogue/under/town/goblin)
 "Kl" = (/obj/structure/fluff/traveltile/bandit{aportalid = "banditin"; aportalgoesto = "banditexit"},/turf/open/floor/rogue/cobblerock,/area/rogue/outdoors/woods)
+"Kn" = (/obj/structure/flora/roguegrass/bush/desert,/turf/open/floor/rogue/desert_grass,/area/rogue/outdoors)
 "KN" = (/obj/structure/table/wood{icon_state = "largetable"; dir = 6},/obj/item/reagent_containers/glass/cup/wooden,/turf/open/floor/rogue/cobble,/area/rogue/under/town/goblin)
 "KO" = (/obj/structure/toilet,/turf/open/floor/rogue/blocks,/area/rogue/under/town/goblin)
 "KP" = (/obj/structure/closet/crate/chest,/turf/open/floor/rogue/cobble/mossy,/area/rogue/under/town/goblin)
+"KQ" = (/obj/structure/sandrock/sandrock4,/turf/open/floor/rogue/lightpath,/area/rogue/outdoors)
+"KT" = (/obj/item/chair/wood/zybantine,/turf/open/floor/rogue/sandbrick,/area/rogue/outdoors)
 "KU" = (/obj/structure/well,/turf/open/floor/rogue/dirt,/area/rogue/outdoors/banditcamp)
 "KV" = (/obj/machinery/light/rogue/torchholder{dir = 4},/turf/open/floor/rogue/cobble,/area/rogue/under/town/goblin)
 "KZ" = (/obj/machinery/light/rogue/wallfire/candle/l,/turf/open/floor/rogue/blocks,/area/rogue/under/town/goblin)
@@ -481,9 +511,11 @@
 "MA" = (/obj/structure/mineral_door/wood/donjon{name = "Armory"; locked = 1; lockid = "gobbo_guards"},/turf/open/floor/rogue/cobble/mossy,/area/rogue/under/town/goblin)
 "MF" = (/obj/structure/bed/rogue/shit,/turf/open/floor/rogue/wood,/area/rogue/indoors/banditcamp)
 "MM" = (/obj/structure/mineral_door/wood{lockid = "mansionvampire"},/turf/open/floor/rogue/herringbone,/area/rogue/indoors)
+"MN" = (/obj/item/reagent_containers/glass/bucket/wooden/tinypot,/turf/open/floor/rogue/sandbrick,/area/rogue/outdoors)
 "MO" = (/obj/structure/fermenting_barrel/beer,/obj/machinery/light/rogue/wallfire/candle/l,/turf/open/floor/rogue/cobble,/area/rogue/under/town/goblin)
 "MY" = (/turf/closed/mineral/random/rogue/high,/area/rogue/under/cavewet/bogcaves)
 "Nb" = (/obj/structure/stairs/stone{dir = 1},/turf/open/floor/rogue/cobble/mossy,/area/rogue/under/town/goblin)
+"Nj" = (/obj/structure/sandrock/sandrock1,/turf/open/floor/rogue/sandbrick,/area/rogue/outdoors)
 "Nm" = (/obj/structure/table/wood{icon_state = "tablewood1"},/obj/item/reagent_containers/food/snacks/grown/rogue/pipeweeddry,/obj/item/reagent_containers/food/snacks/grown/rogue/pipeweeddry,/obj/item/reagent_containers/food/snacks/grown/rogue/pipeweeddry,/turf/open/floor/rogue/blocks,/area/rogue/under/town/goblin)
 "Ns" = (/obj/structure/mineral_door/wood/donjon{name = "Barracks"; dir = 1; lockid = "gobbo_guards"},/turf/open/floor/rogue/cobble/mossy,/area/rogue/under/town/goblin)
 "NE" = (/turf/open/floor/rogue/dirt,/area/rogue/under/cavewet/bogcaves)
@@ -504,6 +536,7 @@
 "PA" = (/turf/closed/mineral/random/rogue/med,/area/rogue/under/cavewet/bogcaves)
 "PD" = (/obj/structure/pillory/double,/obj/effect/decal/cleanable/blood/splatter,/turf/open/floor/rogue/cobble/mossy,/area/rogue/under/town/goblin)
 "PF" = (/obj/effect/decal/cleanable/vomit/old,/obj/effect/decal/cleanable/generic,/turf/open/floor/rogue/blocks,/area/rogue/under/town/goblin)
+"PH" = (/turf/open/floor/rogue/lightpath,/area/rogue/outdoors)
 "Qm" = (/obj/structure/table/wood{icon_state = "tablewood1"},/obj/item/rogueweapon/hammer/iron,/turf/open/floor/rogue/cobble,/area/rogue/under/town/goblin)
 "Qv" = (/obj/structure/table/wood{icon_state = "longtable"},/obj/item/reagent_containers/glass/cup/skull,/obj/item/reagent_containers/glass/cup/skull,/turf/open/floor/rogue/herringbone,/area/rogue/indoors/banditcamp)
 "Qy" = (/obj/structure/pillory/double,/turf/open/floor/rogue/naturalstone,/area/rogue/under/town/goblin)
@@ -520,7 +553,7 @@
 "Rw" = (/obj/structure/fluff/statue/evil,/turf/open/floor/rogue/dirt/road,/area/rogue/outdoors/banditcamp)
 "RB" = (/turf/open/floor/rogue/herringbone,/area/rogue/indoors/banditcamp)
 "RC" = (/obj/machinery/light/rogue/wallfire/candle/r,/turf/open/floor/rogue/herringbone,/area/rogue/indoors)
-"RF" = (/obj/machinery/light/rogue/torchholder{pixel_y = 26},/turf/open/floor/rogue/dirt/road,/area/rogue)
+"RF" = (/obj/machinery/light/rogue/torchholder{pixel_y = 26},/obj/structure/drape/zybantine{dir = 8},/turf/open/floor/rogue/dirt/road,/area/rogue)
 "RG" = (/obj/structure/chair/wood/rogue/chair3{dir = 1},/turf/open/floor/rogue/blocks,/area/rogue/under/town/goblin)
 "RH" = (/turf/open/floor/rogue/dirt/road,/area/rogue/outdoors)
 "RK" = (/obj/effect/landmark/start/bandit,/turf/open/floor/rogue/tile,/area/rogue/indoors/banditcamp)
@@ -548,22 +581,27 @@
 "TV" = (/obj/structure/fermenting_barrel/random/water{name = "Water barrel"},/turf/open/floor/rogue/cobble/mossy,/area/rogue/under/town/goblin)
 "TX" = (/obj/machinery/light/rogue/torchholder{pixel_y = 26},/obj/machinery/light/rogue/smelter,/turf/open/floor/rogue/metal,/area/rogue/under/town/goblin)
 "Ut" = (/obj/structure/table/wood{icon_state = "tablewood2"; dir = 10},/obj/item/rogueweapon/mace/cudgel,/turf/open/floor/rogue/cobble,/area/rogue)
+"Uu" = (/obj/structure/chair/zybantine_sofa/right,/turf/open/floor/rogue/darkpath,/area/rogue/outdoors)
 "UH" = (/obj/structure/closet/crate/chest{lockid = "bandit"},/obj/item/key/walls{name = "old key"; lockid = "bandit"},/turf/open/floor/rogue/dirt/road,/area/rogue/outdoors/woods)
 "UI" = (/obj/structure/flora/roguetree,/turf/open/floor/rogue/dirt,/area/rogue/outdoors/banditcamp)
 "UW" = (/obj/item/natural/rock,/obj/machinery/light/rogue/torchholder{dir = 1},/turf/open/floor/rogue/cobble,/area/rogue/under/town/goblin)
 "Vh" = (/obj/structure/table/wood{icon_state = "tablewood2"; dir = 10},/obj/item/ammo_holder/quiver/arrows,/obj/item/ammo_holder/quiver/arrows,/obj/item/ammo_holder/quiver/arrows,/obj/item/ammo_holder/quiver/arrows,/obj/item/ammo_holder/quiver/arrows,/obj/item/ammo_holder/quiver/arrows,/turf/open/floor/rogue/dirt,/area/rogue/outdoors)
 "Vl" = (/obj/structure/fluff/wallclock/l,/turf/open/floor/rogue/ruinedwood,/area/rogue/indoors/banditcamp)
+"Vm" = (/obj/effect/decal/desertgrassedge{dir = 4},/turf/open/floor/rogue/dirt,/area/rogue/outdoors)
 "Vp" = (/obj/effect/decal/cleanable/vomit/old,/turf/open/floor/rogue/dirt,/area/rogue/under/town/goblin)
 "Vu" = (/obj/machinery/light/rogue/forge,/turf/open/floor/rogue/ruinedwood{icon_state = "weird1"},/area/rogue/indoors)
 "Vz" = (/turf/closed/indestructible/splashscreen,/area/start)
-"VF" = (/obj/structure/fluff/statue/tdummy,/turf/open/floor/rogue/dirt/road,/area/rogue/outdoors)
+"VF" = (/obj/structure/fluff/statue/tdummy,/turf/open/floor/rogue/desert_grass,/area/rogue/outdoors)
 "VM" = (/obj/structure/chair/wood/rogue/chair3,/turf/open/floor/rogue/blocks,/area/rogue/under/town/goblin)
+"VO" = (/obj/structure/drape/desert,/turf/open/floor/rogue/dirt,/area/rogue/outdoors)
 "VV" = (/turf/closed/mineral/rogue/bedrock,/area/rogue/under/town/goblin)
 "VW" = (/obj/structure/fluff/wallclock/r,/turf/open/floor/rogue/herringbone,/area/rogue/indoors/banditcamp)
+"Wa" = (/turf/closed/wall/mineral/rogue/sandstone,/area/rogue/outdoors)
 "Wb" = (/obj/structure/roguewindow,/turf/open/floor/rogue/ruinedwood{icon_state = "vertw"; dir = 1},/area/rogue/indoors/banditcamp)
 "Wp" = (/turf/open/floor/rogue/cobblerock,/area/rogue/outdoors/woods)
 "Wq" = (/obj/item/roguecoin/gold/pile,/turf/open/floor/rogue/cobble/mossy,/area/rogue/under/town/goblin)
 "Wu" = (/obj/machinery/light/rogue/forge,/turf/open/floor/rogue/metal,/area/rogue/under/town/goblin)
+"Wz" = (/turf/open/floor/rogue/sand,/area/rogue/outdoors)
 "WB" = (/turf/closed/wall/mineral/rogue/craftstone,/area/rogue/indoors)
 "WE" = (/obj/structure/toilet,/turf/open/floor/rogue/dirt/road,/area/rogue/outdoors/banditcamp)
 "WG" = (/obj/machinery/light/rogue/torchholder{pixel_y = 26},/obj/structure/fluff/nest,/turf/open/floor/rogue/cobble/mossy,/area/rogue/under/town/goblin)
@@ -576,19 +614,23 @@
 "Xp" = (/obj/structure/table/wood{icon_state = "largetable"; dir = 5},/obj/item/candle/skull/lit,/turf/open/floor/rogue/hexstone,/area/rogue/indoors/banditcamp)
 "Xr" = (/obj/item/clothing/neck/roguetown/talkstone,/obj/item/clothing/neck/roguetown/talkstone,/obj/item/clothing/neck/roguetown/talkstone,/obj/item/clothing/neck/roguetown/talkstone,/obj/structure/closet/crate/chest,/turf/open/floor/rogue/blocks,/area/rogue/under/town/goblin)
 "XC" = (/turf/open/floor/rogue/cobble,/area/rogue/outdoors)
+"XT" = (/obj/effect/decal/desertgrassedge,/turf/open/floor/rogue/dirt,/area/rogue/outdoors)
 "XV" = (/obj/structure/mineral_door/wood/deadbolt{dir = 1},/turf/open/floor/rogue/cobblerock,/area/rogue/outdoors/banditcamp)
 "XX" = (/obj/structure/table/wood{icon_state = "largetable"; dir = 1},/obj/item/reagent_containers/glass/bowl,/turf/open/floor/rogue/cobble/mossy,/area/rogue/under/town/goblin)
 "Yk" = (/obj/item/rogueweapon/pick,/turf/open/floor/rogue/dirt/road,/area/rogue/indoors)
 "Ym" = (/obj/effect/landmark/start/vampirelord,/turf/open/floor/carpet/inn,/area/rogue/indoors)
 "Yt" = (/turf/open/floor/rogue/dirt/road,/area/rogue/indoors)
 "Yv" = (/obj/machinery/light/rogue/firebowl/stump,/turf/open/floor/rogue/dirt/road,/area/rogue/outdoors/woods)
+"YA" = (/obj/structure/flora/roguegrass/bush/desert,/turf/open/floor/rogue/sandbrick,/area/rogue/outdoors)
 "YB" = (/obj/structure/table/wood{icon_state = "tablewood3"},/turf/open/floor/rogue/tile,/area/rogue/indoors/banditcamp)
 "YL" = (/obj/structure/mineral_door/wood/donjon/stone{lockid = "gobbo_chief"},/turf/open/floor/rogue/cobble/mossy,/area/rogue/under/town/goblin)
 "YM" = (/turf/open/floor/rogue/blocks,/area/rogue/under/town/goblin)
 "YS" = (/obj/structure/closet/crate/roguecloset,/obj/item/reagent_containers/food/snacks/grown/rogue/pipeweeddry,/turf/open/floor/rogue/hexstone,/area/rogue/indoors/banditcamp)
 "YV" = (/obj/structure/bars,/turf/open/floor/rogue/wood,/area/rogue/indoors/banditcamp)
 "Zl" = (/turf/open/floor/rogue/herringbone,/area/rogue/indoors)
+"Zp" = (/obj/structure/drape/zybantine{dir = 1},/turf/open/floor/rogue/sandbrick,/area/rogue/outdoors)
 "ZB" = (/obj/structure/chair/wood/rogue/throne,/obj/effect/landmark/start/goblinchief,/turf/open/floor/carpet/royalblack,/area/rogue/under/town/goblin)
+"ZR" = (/obj/machinery/light/rogue/wallfire/desert,/turf/closed/wall/mineral/rogue/sandbrick,/area/rogue/outdoors)
 
 (1,1,1) = {"
 rQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQ
@@ -730,22 +772,22 @@ bXbXbXbXbXbXbXbXbXbXbXbXbXbXbXbXbXbXbXbXbXbXbXbXbXbXbXrQrQrQrQrQrQrQrQrQrQrQrQrQ
 bXbXbXbXbXbXbXbXbXbXbXbXbXbXbXbXbXbXbXbXbXbXbXbXbXbXbXrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQbXtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNPAtNMYtNtNtNPAtNMYtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNMYMYtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNbX
 bXbXaaDwabacsCabacacadprRHprRHRHprDoDoDoDoprAUAUprAUbXrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQbXtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNPAtNMYtNMYtNtNtNtNtNtNtNtNtNtNtNtNtNMYtNtNMYtNtNtNtNPAtNtNtNPAtNtNtNtNPAtNtNtNtNtNtNtNtNbX
 bXbXQRDwDwDwDwDwDwDwRFRHRHRHRHprprDoDoSuprXCyzRHprAUbXrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQbXtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNtNMYtNtNtNPAtNtNtNtNtNtNtNtNPAtNtNtNtNPAtNtNMYtNtNtNtNtNtNPAtNtNtNtNMYtNMYtNtNMYtNtNtNMYtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNMYtNtNtNtNtNbX
-bXbXafDwagDwDwagDwDwDwRHRHRHXCXCprprDoprXCXCXCRHprAUbXrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQbXtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNPAtNPAtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNMYPAtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNPAtNPAPAtNtNtNtNtNtNtNtNtNMYMYtNtNtNtNtNbX
-bXbXahDwDwDwDwDwDwDwDwRHRHXCXCXCXCXCXCXCXCXCXCRHprprbXrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQbXtNtNtNtNtNMYtNtNtNtNtNtNtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNtNtNtNtNPAtNtNtNMYtNtNtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNtNtNtNtNtNtNPAPAtNPAtNtNtNtNPAtNtNtNtNtNtNtNtNMYMYtNtNtNtNtNtNbX
-bXbXaiDwDwDwDwDwDwTbadKdRHRHRHRHRHRHXCXCXCXCXCRHRHprbXrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQbXtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNPAMYtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNtNPAPAtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNtNMYtNtNtNtNtNtNtNbX
-bXbXajDwakakakalalaladRHRHRHRHRHRHRHRHRHXCXCXCRHRHprbXrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQbXtNtNtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNPAtNtNtNMYtNtNtNtNtNtNtNtNtNtNMYtNtNtNtNtNtNtNtNtNPAtNPAtNtNtNtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNbX
-bXbXbXbXbXbXbXbXbXbXadprprprLZRHRHVFRHRHXCXCXCRHRHprbXrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQbXtNtNtNMYtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNPAtNtNtNtNPAtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNtNtNtNPAtNtNtNtNPAPAtNtNtNtNtNtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNtNMYtNtNtNtNtNtNtNtNtNbX
-bXvPvPvPvPvPvPvPvPvPadprprprprRHRHXCXCXCRHXCXCmVRHprbXrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQbXtNtNMYMYMYtNtNtNtNtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNMYtNtNtNPAPAtNtNMYtNtNtNtNtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNMYtNtNtNtNtNtNtNtNtNtNbX
-bXvPamaoapaqarasatvPadprprprRHRHRHXCXCXCXCXCXCRHprprbXrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQbXtNtNtNtNtNMYtNMYtNtNPAtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNMYtNtNtNPAtNtNtNtNtNtNtNtNPAtNtNtNPAtNtNtNtNtNtNtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNMYtNtNtNtNtNtNtNtNtNtNtNbX
-bXvPauayayayayayayvPadprprRHRHRHRHXCXCXCRHXCXCRHprprbXrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQbXtNtNtNtNtNtNtNtNtNMYtNtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNMYtNPAPAtNtNtNtNPAtNtNtNtNtNtNtNtNtNtNtNtNtNtNMYtNtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNtNMYtNtNtNtNtNtNtNtNtNtNtNtNbX
-bXvPawayayayayayaylwlwXCXCXCXCXCXCXCXCXCXCXCXCRHprprbXrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQbXtNtNtNtNtNtNtNtNtNtNtNMYtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNMYPAPAMYtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNbX
-bXvPaxayayayayayayvPadRHRHXCXCXCXCXCXCXCXCXCXCRHprprbXrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQbXtNtNtNtNtNtNtNtNtNtNtNtNtNMYtNtNtNtNtNPAtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNMYMYtNtNtNtNtNtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNPAPAPAtNtNtNtNtNtNtNtNtNMYtNtNtNtNtNtNtNtNtNtNtNtNtNbX
-bXvPazayayayayayaAvPadprRHRHRHRHRHRHRHRHmVXCXCRHRHprbXrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQbXtNtNtNtNtNtNtNtNtNtNtNtNtNtNMYtNMYMYtNPAtNtNtNtNtNtNtNtNtNtNtNtNtNtNPAtNtNtNtNPAtNPAtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNtNtNtNMYtNtNtNtNtNtNtNtNtNMYtNtNtNtNtNbX
-bXvPaBayayaCayayaDvPadprRHRHXCXCXCXCXCXCXCXCXCVFRHprbXrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQbXtNtNtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNMYtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNMYtNtNtNtNtNtNtNtNtNtNPAtNtNtNPAPAtNtNtNtNtNtNtNtNtNtNtNPAtNtNMYMYtNtNtNtNtNbX
-bXvPaEayayaFayayaGvPadpraHaHLZRHRHprprRHRHXCXCRHRHprbXrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQbXtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNMYMYtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNPAPAtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNtNPAtNtNtNtNPAtNtNtNtNtNtNPAtNtNtNMYtNtNtNtNtNtNtNtNtNMYtNtNtNtNtNtNbX
-bXvPaIayayaJayayaKvPadpraHprprprprprprprRHXCXCprprprbXrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQbXtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNMYtNtNMYPAtNtNtNtNtNtNtNtNtNtNtNtNtNPAtNtNtNPAtNtNtNtNtNtNtNtNPAtNPAtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNMYtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNtNPAMYtNtNtNtNtNtNtNtNtNMYtNtNtNtNtNtNtNbX
-bXvPaLayayaMayayaNvPadprprpraHprprprprprRHXCXCprprprbXrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQbXtNtNtNtNtNtNtNtNtNtNtNtNtNtNMYtNtNtNtNtNMYtNtNtNtNtNtNtNtNtNtNtNtNtNPAtNtNPAtNtNtNPAPAtNtNtNtNtNtNtNtNtNtNPAtNPAPAtNPAPAtNPAtNPAtNPAtNtNMYtNtNtNtNPAtNtNtNtNtNtNtNtNtNtNMYMYtNtNtNtNtNtNPAPAtNMYtNtNtNtNtNtNtNbX
-bXvPaOayayayayayaPvPadXjXjaHprprcxmOyyVhRHXCXCprprprbXbXrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQbXtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNMYtNtNtNtNtNtNtNtNtNtNtNtNPAtNtNtNPAtNtNtNtNtNtNPAPAtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNMYMYtNtNPAtNtNtNtNtNtNtNtNtNtNtNMYtNPAPAtNtNtNtNPAtNtNtNtNtNtNtNtNtNtNbX
+bXbXafDwagDwDwagDwDwhjRHRHRHXCXCprprDoprXCXCXCRHprAUbXrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQbXtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNPAtNPAtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNMYPAtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNPAtNPAPAtNtNtNtNtNtNtNtNtNMYMYtNtNtNtNtNbX
+bXbXahDwDwDwDwDwDwDwhjRHRHXCXCNjxlxlWzWzFHFHWzWzprprbXrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQbXtNtNtNtNtNMYtNtNtNtNtNtNtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNtNtNtNtNPAtNtNtNMYtNtNtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNtNtNtNtNtNtNPAPAtNPAtNtNtNtNPAtNtNtNtNtNtNtNtNMYMYtNtNtNtNtNtNbX
+bXbXaiDwDwDwDwDwDwTbadKdRHRHRHWaEexlWzFHFHFHFHEXRHprbXrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQbXtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNPAMYtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNtNPAPAtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNtNMYtNtNtNtNtNtNtNbX
+bXbXajDwakakakalalaladxAxAxAxAWaWaxlWzWzFHFHEXEXRHprbXrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQbXtNtNtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNPAtNtNtNMYtNtNtNtNtNtNtNtNtNtNMYtNtNtNtNtNtNtNtNtNPAtNPAtNtNtNtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNbX
+bXbXbXbXbXbXbXbXbXbXadprprprLZWaWakYkYWzWzZREXnDRHprbXrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQbXtNtNtNMYtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNPAtNtNtNtNPAtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNtNtNtNPAtNtNtNtNPAPAtNtNtNtNtNtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNtNMYtNtNtNtNtNtNtNtNtNbX
+bXvPvPvPvPvPvPvPvPvPadprprprprWaWaxlxlxlxlMNMNmVRHprbXrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQbXtNtNMYMYMYtNtNtNtNtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNMYtNtNtNPAPAtNtNMYtNtNtNtNtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNMYtNtNtNtNtNtNtNtNtNtNbX
+bXvPamaoapaqarasatvPadVOVOVOtPWaHmefKTmRxlZpxlBvprprbXrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQbXtNtNtNtNtNMYtNMYtNtNPAtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNMYtNtNtNPAtNtNtNtNtNtNtNtNPAtNtNtNPAtNtNtNtNtNtNtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNMYtNtNtNtNtNtNtNtNtNtNtNbX
+bXvPauayayayayayayvPadprprRHRHHmxlxlxlxlxlxlxlxlprprbXrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQbXtNtNtNtNtNtNtNtNtNMYtNtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNMYtNPAPAtNtNtNtNPAtNtNtNtNtNtNtNtNtNtNtNtNtNtNMYtNtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNtNMYtNtNtNtNtNtNtNtNtNtNtNtNbX
+bXvPawayayayayayaylwlwXCXCwhUuxlxlPHPHPHKQPHststxlprbXrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQbXtNtNtNtNtNtNtNtNtNtNtNMYtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNMYPAPAMYtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNbX
+bXvPaxayayayayayayvPadRHDMDMDMDMxlxlPHPHPHstxJstBvprbXrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQbXtNtNtNtNtNtNtNtNtNtNtNtNtNMYtNtNtNtNtNPAtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNMYMYtNtNtNtNtNtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNPAPAPAtNtNtNtNtNtNtNtNtNMYtNtNtNtNtNtNtNtNtNtNtNtNtNbX
+bXvPazayayayayayaAvPadprRHRHDMDMxlCkxlstfkststxlYAprbXrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQbXtNtNtNtNtNtNtNtNtNtNtNtNtNtNMYtNMYMYtNPAtNtNtNtNtNtNtNtNtNtNtNtNtNtNPAtNtNtNtNPAtNPAtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNtNtNtNMYtNtNtNtNtNtNtNtNtNMYtNtNtNtNtNbX
+bXvPaBayayaCayayaDvPadiCyjhOXCWaWaxlxlBvxlBvKnVFaHprbXrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQbXtNtNtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNMYtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNMYtNtNtNtNtNtNtNtNtNtNPAtNtNtNPAPAtNtNtNtNtNtNtNtNtNtNtNPAtNtNMYMYtNtNtNtNtNbX
+bXvPaEayayaFayayaGvPadDQaHVmLZxlWaBvxlKnaHaHaHprRHprbXrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQbXtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNMYMYtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNPAPAtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNtNPAtNtNtNtNPAtNtNtNtNtNtNPAtNtNtNMYtNtNtNtNtNtNtNtNtNMYtNtNtNtNtNtNbX
+bXvPaIayayaJayayaKvPadwlXTmnprxleoxlpraHKnwPprprprprbXrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQbXtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNMYtNtNMYPAtNtNtNtNtNtNtNtNtNtNtNtNtNPAtNtNtNPAtNtNtNtNtNtNtNtNPAtNPAtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNMYtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNtNPAMYtNtNtNtNtNtNtNtNtNMYtNtNtNtNtNtNtNbX
+bXvPaLayayaMayayaNvPadprprprprprprprprpraHprprprprprbXrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQbXtNtNtNtNtNtNtNtNtNtNtNtNtNtNMYtNtNtNtNtNMYtNtNtNtNtNtNtNtNtNtNtNtNtNPAtNtNPAtNtNtNPAPAtNtNtNtNtNtNtNtNtNtNPAtNPAPAtNPAPAtNPAtNPAtNPAtNtNMYtNtNtNtNPAtNtNtNtNtNtNtNtNtNtNMYMYtNtNtNtNtNtNPAPAtNMYtNtNtNtNtNtNtNbX
+bXvPaOayayayayayaPvPadXjXjprprprcxmOyyVhRHXCXCprprprbXbXrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQbXtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNMYtNtNtNtNtNtNtNtNtNtNtNtNPAtNtNtNPAtNtNtNtNtNtNPAPAtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNMYMYtNtNPAtNtNtNtNtNtNtNtNtNtNtNMYtNPAPAtNtNtNtNPAtNtNtNtNtNtNtNtNtNtNbX
 bXvPvPhQvPvPvPhQvPvPadadadadadadadadadadadlwadadadadadbXrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQbXtNtNtNtNtNtNtNtNtNtNtNMYtNtNtNtNtNtNtNMYMYPAtNtNtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNtNtNtNtNtNtNPAPAPAtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNPAtNMYtNPAtNtNtNtNtNtNtNtNtNtNtNtNtNMYtNPAPAtNPAPAtNtNtNMYtNtNtNtNtNtNtNbX
 bXvPhQhQhQhchQhQaQaRvPaSaTaUaVaWaXaYaZbabblwbcbdbebfvPbXrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQbXtNtNtNtNtNtNtNtNtNMYMYtNtNtNtNtNtNtNtNtNMYPAtNtNtNPAtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNMYPAtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNMYtNtNPAPAPAtNtNtNtNtNtNtNtNtNtNtNtNbX
 bXvPbghQhQbhhQbibkhQvPlwlwlwlwlwlwlwlwlwlwlwlwlwlwblvPbXrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQrQbXtNtNtNtNtNtNtNtNMYMYtNtNtNtNtNtNtNtNtNtNMYPAPAtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNtNtNtNtNtNPAtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNtNMYPAtNPAtNtNtNtNtNtNtNtNtNtNtNtNtNMYPAtNPAtNtNtNPAPAPAtNtNMYtNtNtNtNtNtNbX
