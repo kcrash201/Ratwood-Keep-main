@@ -2025,10 +2025,6 @@
 /obj/item/candle/yellow,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/church/chapel)
-"cwm" = (
-/obj/structure/pillory/reinforced/keep_dungeon,
-/turf/open/floor/rogue/darkpath,
-/area/rogue/under/town/basement)
 "cwT" = (
 /obj/structure/table/wood{
 	icon_state = "tablewood1"
@@ -6383,10 +6379,6 @@
 /turf/open/floor/rogue/cobble,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/shop)
-"hyU" = (
-/obj/structure/pillory/reinforced/keep_dungeon,
-/turf/open/floor/rogue/hexstone,
-/area/rogue/under/town/basement)
 "hyX" = (
 /obj/structure/table/wood{
 	dir = 4;
@@ -18021,10 +18013,6 @@
 "uPz" = (
 /turf/open/floor/rogue/dunes,
 /area/rogue)
-"uQd" = (
-/obj/structure/pillory/town_square,
-/turf/open/floor/rogue/wood/nosmooth,
-/area/rogue)
 "uQt" = (
 /obj/structure/table/wood,
 /obj/structure/bars{
@@ -18511,7 +18499,6 @@
 	dir = 1;
 	icon_state = "borderfall"
 	},
-/obj/structure/pillory/town_square,
 /turf/open/floor/rogue/darkpath,
 /area/rogue/outdoors/town)
 "vsN" = (
@@ -183239,7 +183226,7 @@ qkD
 nNn
 ray
 ray
-hyU
+ray
 nNn
 ray
 ray
@@ -207394,7 +207381,7 @@ xtZ
 xtZ
 xtZ
 xtZ
-cwm
+xtZ
 xtZ
 vHb
 fWN
@@ -359404,7 +359391,7 @@ uPz
 uPz
 cZk
 mKt
-uQd
+mKt
 skv
 lPV
 lPV
@@ -360008,7 +359995,7 @@ cuC
 uPz
 cZk
 mKt
-uQd
+mKt
 skv
 lPV
 lPV
