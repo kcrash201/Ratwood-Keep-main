@@ -397,6 +397,17 @@
 	crossfire = FALSE
 	cookonme = TRUE
 
+// This doesnt have a spent sprite variant, decorative purpose only.
+/obj/machinery/light/rogue/wallfire/desert
+	name = "desert fireplace"
+	icon = 'icons/desert_town/fireplace.dmi'
+	icon_state = "fireplace1"
+	base_state = "fireplace"
+	fueluse = 0
+	density = FALSE
+	anchored = TRUE
+	cookonme = FALSE
+
 /obj/machinery/light/rogue/wallfire/candle
 	name = "candles"
 	icon_state = "wallcandle1"

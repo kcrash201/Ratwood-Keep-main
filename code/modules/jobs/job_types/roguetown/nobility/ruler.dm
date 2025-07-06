@@ -4,6 +4,8 @@ GLOBAL_LIST_EMPTY(lord_titles)
 /datum/job/roguetown/ruler
 	title = "Duke"
 	f_title = "Duchess"
+	//map_specific_title = list("Duke", "Sultan") //0 = rockhill, 1 = zybantium, 2 = etc.
+	//map_specific_f_title = list("Duchess", "Sultana") //0 = rockhill, 1 = zybantium, 2 = etc.
 	flag = RULER
 	department_flag = NOBLEMEN
 	faction = "Station"
@@ -12,23 +14,6 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	selection_color = JCOLOR_NOBLE
 	allowed_races = RACES_TOLERATED_UP
 	allowed_sexes = list(MALE, FEMALE)
-	can_leave_round = FALSE
-	allowed_patrons = list(\
-	/datum/patron/divine/astrata,\
-	/datum/patron/divine/noc,\
-	/datum/patron/divine/dendor,\
-	/datum/patron/divine/abyssor,\
-	/datum/patron/divine/ravox,\
-	/datum/patron/divine/necra,\
-	/datum/patron/divine/xylix,\
-	/datum/patron/divine/pestra,\
-	/datum/patron/divine/malum,\
-	/datum/patron/divine/eora,\
-	/datum/patron/zizo,\
-	/datum/patron/inhumen/matthios,\
-	/datum/patron/inhumen/baotha,\
-	/datum/patron/inhumen/graggar\
-) //combining defines into a list like this didn't work for some raisin so...
 
 	spells = list(
 		SPELL_GRANT_TITLE,
@@ -265,7 +250,6 @@ GLOBAL_LIST_EMPTY(lord_titles)
 /obj/effect/proc_holder/spell/self/grant_nobility
 	name = "Grant Nobility"
 	desc = "Make someone a noble, or strip them of their nobility."
-	overlay_state = "recruit_noble"
 	antimagic_allowed = TRUE
 	charge_max = 100
 	/// Maximum range for nobility granting

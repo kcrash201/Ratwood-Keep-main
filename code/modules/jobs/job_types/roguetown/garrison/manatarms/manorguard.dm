@@ -1,5 +1,7 @@
 /datum/job/roguetown/manorguard
 	title = "Man at Arms"
+//	map_specific_title = list("Man at Arms", "Mamluk") //0 = rockhill, 1 = zybantium, 2 = etc.
+
 	flag = MANATARMS
 	department_flag = GARRISON
 	faction = "Station"

@@ -1,5 +1,7 @@
 /datum/job/roguetown/hand
 	title = "Hand"
+//	map_specific_title = list("Hand", "Vizier") //0 = rockhill, 1 = zybantium, 2 = etc.
+
 	flag = HAND
 	department_flag = NOBLEMEN
 	faction = "Station"
@@ -11,7 +13,6 @@
 	display_order = JDO_HAND
 	tutorial = "You owe everything to your liege. Once, you were just a humble friend- now you are one of the most important men within the realm itself. You have played spymaster and confidant to the Noble-Family for so long that you are a vault of intrigue, something you exploit with potent conviction. Let no man ever forget whose ear you whisper into. You've killed more men with those lips than any blademaster could ever claim to."
 	seelie_tutorial = "It wasn't easy for a fae, but your liege saw great potential in you. Once, you were just an adventuring companion; now, you are one of the highest-status fae within the entire realm. It's come at a cost, you've lost your more mischievous spells and nature over time, but gained ones more useful to dealing with the chaos of court."
-	can_leave_round = FALSE
 	whitelist_req = TRUE
 	give_bank_account = 44
 	min_pq = 3
