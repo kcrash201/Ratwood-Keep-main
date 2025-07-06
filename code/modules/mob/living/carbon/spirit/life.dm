@@ -31,7 +31,7 @@
 				adjust_hydration(-0.3)
 				if(on_fire)
 					apply_damage(HEAT_DAMAGE_LEVEL_3, BURN)
-				else
+				  else
 					apply_damage(HEAT_DAMAGE_LEVEL_2, BURN)
 //				else
 //					apply_damage(HEAT_DAMAGE_LEVEL_1, BURN)
