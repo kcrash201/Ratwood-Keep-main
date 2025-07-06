@@ -42,6 +42,10 @@
 //	M.pixel_x = M.get_standard_pixel_x_offset(M.lying)
 //	M.pixel_y = M.get_standard_pixel_y_offset(M.lying)
 
+/obj/structure/chair/bench/CanAStarPass(ID, travel_dir, caller)
+	if(travel_dir == dir)
+		return FALSE // don't even bother climbing over it
+	return ..()
 
 /obj/structure/chair/bench/CanPass(atom/movable/mover, turf/target)
 	if(get_dir(mover,loc) == dir)
@@ -466,3 +470,20 @@
 	buckle_lying = 90
 	pixel_y = 5
 	sleepy = 3
+
+/obj/item/chair/wood/zybantine
+	name = "zybantine chair"
+	icon = 'icons/desert_town/chairs.dmi'
+	icon_state = "zybantinechair"
+	origin_type = /obj/structure/chair/wood/zybantine
+
+/obj/structure/chair/wood/zybantine
+	name = "zybantine chair"
+	icon = 'icons/desert_town/chairs.dmi'
+	icon_state = "zybantinechair"
+
+/obj/structure/chair/wood/rogue/throne/zybantine
+	name = "zybantine throne"
+	icon_state = "zybantinethrone"
+	icon = 'icons/desert_town/throne.dmi'
+	pixel_x = -16

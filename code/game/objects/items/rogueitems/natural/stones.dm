@@ -307,6 +307,15 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 	. = ..()
 
 
+/obj/item/natural/rock/desert
+	name = "sand rock"
+	icon = 'icons/desert_town/small_sandrock.dmi'
+	icon_state = "sandrock1"
+
+/obj/item/natural/rock/desert/Initialize()
+	. = ..()
+	icon_state = "sandrock[rand(1,2)]"
+
 /obj/item/natural/rock/Crossed(mob/living/L)
 	if(istype(L) && !L.throwing)
 		if(L.m_intent == MOVE_INTENT_RUN)

@@ -959,10 +959,10 @@
 		if(map_id != 0) //check for special map
 			use_custom_title = TRUE
 
-		if(use_custom_title && J.map_specific_title[map_id])
-			used_title = J.map_specific_title[map_id]
-			if(J.map_specific_f_title[map_id] && (gender == FEMALE))
-				used_title = J.map_specific_f_title[map_id]
+//		if(use_custom_title && J.map_specific_title[map_id])
+//			used_title = J.map_specific_title[map_id]
+//			if(J.map_specific_f_title[map_id] && (gender == FEMALE))
+//				used_title = J.map_specific_f_title[map_id]
 			if(J.advjob_examine)
 				used_title = advjob
 		else
