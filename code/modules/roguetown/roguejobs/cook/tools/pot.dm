@@ -40,13 +40,13 @@
 	. = ..()
 
 /* Process */
-obj/item/reagent_containers/glass/bucket/pot/proc/start_boiling()
+/obj/item/reagent_containers/glass/bucket/pot/proc/start_boiling()
 	if(!active)
 		active = TRUE
 		boil()
 
 /* Component Initialize */
-obj/item/reagent_containers/glass/bucket/pot/ComponentInitialize()
+/obj/item/reagent_containers/glass/bucket/pot/ComponentInitialize()
 	. = ..()
 	AddComponent(/datum/component/storage/concrete/pot)
 	boilloop = new(src, FALSE)
@@ -75,7 +75,7 @@ obj/item/reagent_containers/glass/bucket/pot/ComponentInitialize()
 
 
 /* Boil */
-obj/item/reagent_containers/glass/bucket/pot/proc/boil()
+/obj/item/reagent_containers/glass/bucket/pot/proc/boil()
 	// We only get a timer if we have a boil
 	// proc called, so don't do anything if called while one is active.
 	if(!active)
