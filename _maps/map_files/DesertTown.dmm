@@ -14021,8 +14021,6 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "ofk" = (
-/obj/structure/bed/rogue/inn/wool,
-/obj/item/bedsheet/rogue/pelt,
 /obj/effect/landmark/start/architect,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/dwarfin)
@@ -332112,10 +332110,10 @@ aqJ
 eDy
 aqJ
 aqJ
-xDX
+aqJ
 oXg
 aqJ
-aqJ
+xDX
 aqJ
 aqJ
 fqD
@@ -452971,7 +452969,7 @@ hYV
 hYV
 hYV
 cXv
-ofk
+pkF
 vbt
 vbt
 cXv
@@ -453579,7 +453577,7 @@ vbt
 vbt
 vbt
 mMW
-vbt
+ofk
 vbt
 vbt
 cXv
