@@ -18,7 +18,7 @@
 /turf/open/floor/rogue/dunes/Initialize()
 	. = ..()
 	dir = pick(GLOB.cardinals)
-	icon_state = "dune[rand(1,17)]"
+	icon_state = "dune[rand(1,16)]"
 
 /turf/open/floor/rogue/sandbrick
 	icon_state = "sand-brick1"
