@@ -4,8 +4,8 @@
 	icon = 'icons/desert_town/dune.dmi'
 	icon_state = "dune1"
 	footstep = FOOTSTEP_SAND
-	barefootstep = FOOTSTEP_SAND
-	clawfootstep = FOOTSTEP_SAND
+	//barefootstep = FOOTSTEP_SAND
+	//clawfootstep = FOOTSTEP_SAND
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 	landsound = 'sound/foley/jumpland/dirtland.wav'
 	smooth = SMOOTH_TRUE
@@ -73,7 +73,7 @@
 	. = ..()
 	icon_state = "city-brick1-[rand(1,4)]"
 
-	
+
 /turf/open/floor/rogue/citybrick/citybrick2
 	icon_state = "city-brick2-1"
 
@@ -115,8 +115,8 @@
 	canSmoothWith = list(/turf/open/floor/rogue, /turf/closed/mineral, /turf/closed/wall/mineral)
 	slowdown = 0
 	footstep = FOOTSTEP_SAND
-	barefootstep = FOOTSTEP_SAND
-	clawfootstep = FOOTSTEP_SAND
+	//barefootstep = FOOTSTEP_SAND
+	//clawfootstep = FOOTSTEP_SAND
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 	smooth = SMOOTH_TRUE
 
@@ -135,8 +135,8 @@
 	canSmoothWith = list(/turf/open/floor/rogue, /turf/closed/mineral, /turf/closed/wall/mineral)
 	slowdown = 0
 	footstep = FOOTSTEP_SAND
-	barefootstep = FOOTSTEP_SAND
-	clawfootstep = FOOTSTEP_SAND
+	//barefootstep = FOOTSTEP_SAND
+	//clawfootstep = FOOTSTEP_SAND
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 	smooth = SMOOTH_TRUE
 
@@ -171,7 +171,7 @@
 	landsound = 'sound/foley/jumpland/grassland.wav'
 	slowdown = 0
 	smooth = SMOOTH_TRUE
-	canSmoothWith = list( 
+	canSmoothWith = list(
 						/turf/open/floor/rogue/grass,
 						/turf/open/floor/rogue/dunes,
 						/turf/open/floor/rogue/citybrick,)
